@@ -17,7 +17,7 @@
 
         <title>{{$title or "default"}}</title>
     </head>
-    <body data-spy="scroll" data-target="#header-block-2" data-offset="150">
+    <body >
         <header  class="container wide pad-half-all ">
             @include('header')
         </header>
