@@ -9,7 +9,7 @@
         welcome to our online store!
     </div>
 </section>
-<section id="header-block-2" class="row justify-content-center padH ">
+<section id="header-block-2" class="row justify-content-center padH">
     <div class="flex-left">
         <h1>logo</h1>
     </div>

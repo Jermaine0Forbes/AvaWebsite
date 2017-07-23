@@ -12,5 +12,5 @@
 */
 
 Route::get('/', function () {
-    return view('home', ['title'=>"Women's Fashion", 'id' => "home"]);
+    return view('home', ['title'=>"Ava Fashion", 'id' => "home"]);
 });

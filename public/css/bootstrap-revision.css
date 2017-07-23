@@ -1,6 +1,6 @@
 /*
-	version: 0.02.6
-	date:	6/26/17
+	version: 0.02.9
+	date:	7/21/17
 */
 /*======Base======*/
 /*___body___ */
@@ -326,14 +326,58 @@ h6, .h6 {
 .col-lg-12 {
   padding: 0; }
 
-/*======Class======*/
+/*//////////////////////////////////
+
+	Class
+
+/////////////////////////////////*/
+/*=============================
+
+	.remove-bullets
+
+==============================*/
+ul.remove-bullets {
+  padding: 0; }
+  ul.remove-bullets li {
+    list-style: none; }
+
+/*=============================
+
+	.mobile-*
+
+==============================*/
 .mobile-text-center {
   text-align: initial; }
 
+.mobile-margin-center {
+  margin: initial; }
+
+/*=============================
+
+	.md-*
+
+==============================*/
+.md-text-center {
+  text-align: initial; }
+
+.md-margin-center {
+  margin: initial; }
+
+/*=============================
+
+	.flex-*
+
+==============================*/
 .flex-left {
   margin-right: auto; }
 
 .flex-right {
+  margin-left: auto; }
+
+.flex-left-mobile {
+  margin-right: auto; }
+
+.flex-right-mobile {
   margin-left: auto; }
 
 /*=============================
@@ -781,6 +825,24 @@ h6, .h6 {
 .mar-4th {
   margin: 0.25em; }
 
+.pad-all > div, .pad-all > section {
+  padding: 1em; }
+
+.mar-all > div, .mar-all > section {
+  margin: 1em; }
+
+.mar-3-4th-all > div, .mar-3-4th-all > section {
+  margin: 0.75em; }
+
+.mar-half-all > div, .mar-half-all > section {
+  margin: 0.5em; }
+
+.mar-3rd-all > div, .mar-3rd-all > section {
+  margin: 0.33em; }
+
+.mar-4th-all > div, .mar-4th-all > section {
+  margin: 0.25em; }
+
 .marH {
   margin-top: 0;
   margin-bottom: 0; }
@@ -947,10 +1009,12 @@ h6, .h6 {
   .adjust .three-fourth {
     width: 100%; } }
 
-/*======Responsive======*/
+/*//////////////////////////////////
+
+	Responsive
+
+/////////////////////////////////*/
 @media all and (max-width: 768px) {
-  .mobile-text-center {
-    text-align: center; }
   header nav.navbar {
     width: 100%; }
   header nav .list-inline a {
@@ -967,4 +1031,18 @@ h6, .h6 {
   .submenu > ul li,
   .submenu > ul a {
     width: 100%;
-    display: block; } }
+    display: block; }
+  .md-text-center {
+    text-align: center; }
+  .md-margin-center {
+    margin: center; } }
+
+@media all and (max-width: 576px) {
+  .flex-left-mobile {
+    margin: auto; }
+  .flex-right-mobile {
+    margin: auto; }
+  .mobile-text-center {
+    text-align: center; }
+  .mobile-margin-center {
+    margin: auto; } }

@@ -9,3 +9,86 @@ footer{
 
     background:$lite-grey;
 }
+
+
+/*====================================
+    #footer-block-1
+====================================*/
+
+#footer-block-1{
+
+    .block-item-1{
+        p{
+            font-size:0.8em;
+        }
+    }
+
+    .block-item-2{
+        h4{
+            font-size:0.9em;
+        }
+
+        ul{
+            padding:0;
+        }
+
+        li{
+            list-style:none;
+        }
+
+        a{
+            font-size:0.7em;
+            text-transform:uppercase;
+        }
+    }
+
+    .block-item-3{
+        padding-top:1.9em;
+
+        h4{
+            font-size:0.9em;
+        }
+
+        button{
+            border-radius:0;
+            color:white;
+            background:$teal;
+            margin-left:1em;
+            transition:all 0.3s;
+
+            &:hover{
+                background:$pink;
+                cursor:pointer;
+            }
+
+        }
+
+        input{
+            border-radius:0;
+        }
+
+        .social{
+            padding-top:1em;
+            display:flex;
+            justify-content: space-around;
+
+        }
+    }
+}
+
+
+/*====================================
+    #footer-block-2
+====================================*/
+#footer-block-2{
+    border-top:1px solid $grey;
+
+    .copyright{
+        font-size:0.8em;
+
+        a{
+            color:$teal;
+        }
+    }
+
+}

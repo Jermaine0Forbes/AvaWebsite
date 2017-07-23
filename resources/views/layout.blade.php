@@ -27,6 +27,11 @@
         <footer class="container wide pad-half padH">
             @include('footer')
         </footer>
+        <section class="social-fixed hidden-sm-down">
+            <a href="#" class="fa fa-facebook"></a>
+            <a href="#"  class="fa fa-twitter"></a>
+        </section>
+
         <script src="/js/effects.js"></script>
     </body>
 </html>

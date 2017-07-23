@@ -49,3 +49,37 @@ body{
 main{
     background:white;
 }
+
+
+/*====================================
+    .social-fixed
+====================================*/
+.social-fixed{
+    position:fixed;
+    top:20%;
+    right:0;
+    display:flex;
+    flex-direction:column;
+
+
+    a{
+        background:white;
+        padding:1em;
+        color:$teal;
+        font-size:1.5em;
+        transition:all 0.3s;
+        margin-bottom:0.2em;
+        &:hover{
+            background:$pink;
+            color:white;
+            text-decoration:none;
+        }
+    }
+}
+
+/*====================================
+    .center-all
+====================================*/
+.center-all *{
+    text-align:center;
+}
