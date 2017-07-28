@@ -10,17 +10,17 @@
     </div>
 </section>
 <section id="header-block-2" class="row justify-content-center padH">
-    <div class="flex-left">
-        <h1>logo</h1>
+    <div class="flex-left col-md-2">
+        <h1><img class="img-fluid" src="/img/ava-logo-teal.svg" alt="ava logo"></h1>
     </div>
-    <div class="nav col-md-8">
+    <div class="nav col-md-7">
         <nav class="navbar fluid-max-wide-6 center">
             <ul class="navbar-nav around">
-                <li class="nav-item"><a href="#" class="nav-link">home <span class="fa fa-caret-down"></span></a></li>
                 <li class="nav-item"><a href="#" class="nav-link">accessories <span class="fa fa-caret-down"></span></a></li>
-                <li class="nav-item"><a href="#" class="nav-link">men</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">men <span class="fa fa-caret-down"></span></a></li>
                 <li class="nav-item"><a href="#" class="nav-link">women <span class="fa fa-caret-down"></span></a></li>
-                <li class="nav-item"><a href="#" class="nav-link">page <span class="fa fa-caret-down"></span></a></li>
+                <li class="nav-item"><a href="#" class="nav-link">about us <span class="fa fa-caret-down"></span></a></li>
+                <li class="nav-item"><a href="#" class="nav-link">contact us </a></li>
             </ul>
         </nav>
     </div>

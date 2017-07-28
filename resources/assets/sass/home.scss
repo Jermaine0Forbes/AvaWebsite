@@ -5,7 +5,32 @@
 
 /////////////////////////////////////*/
 
+#home{
 
+    .slick-slide img{
+            padding:0 1em;
+    }
+
+    .slick-arrow{
+        position:absolute;
+        top:45%;
+        z-index:2;
+        border-style:none;
+        background:transparent;
+        color:$grey;
+        font-size:1.5em;
+        transition:all 0.3s;
+        &:hover{
+            color:$pink;
+        }
+    }
+    .slick-left{
+        left:0;
+    }
+    .slick-right{
+        right:0;
+    }
+}
 
 /*====================================
     #home-block-1
@@ -98,22 +123,58 @@
 
     }
 
+    .block-item-1,
+    .block-item-2,
+    .block-item-3,
+    .block-item-4,
     .block-item-5{
         position:relative;
-        .text{
+        .bg-container{
             position:absolute;
             top:0;
+            left:0;
+            background:transparent;
             width:100%;
             height:100%;
             padding:0.5em;
             display:flex;
             flex-direction:column;
-            background:rgba(0,0,0,0.5);
         }
+
+        .bg{
+            height:100%;
+            width:100%;
+            display:flex;
+            justify-content: center;
+            align-items:center;
+            flex-direction:column;
+            text-align:right;
+        }
+
+        h2{
+            color:$teal;
+        }
+
+
+    }
+
+    .block-item-5{
+
+            .bg{
+                background:transparentize($dark-grey, 0.5);
+            }
     }
 }
 
 
+/*====================================
+    #home-block-2
+====================================*/
+
+#home-block-2{
+
+
+}
 
 /*====================================
     #home-block-4
@@ -133,6 +194,10 @@
     h4{
         text-transform:uppercase;
         font-size:1.2em;
+    }
+
+    .quote{
+        font-size:4em;
     }
 }
 
@@ -164,6 +229,8 @@
             background:$pink;
         }
     }
+
+
 
     .date,
     .comments{

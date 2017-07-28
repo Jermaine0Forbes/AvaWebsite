@@ -10,21 +10,54 @@
 
     <section id="home-block-1" class="row pad-half-all">
         <div class="col-12 block-item-1">
-            <img class="img-fluid" src="/img/1400-2-2.jpg" alt="">
+            <img class="img-fluid" src="/img/1400-2-22.jpg" alt="">
+            <div class="bg-container">
+                <div class="bg">
+                    <h4>spring - summer 2017</h4>
+                    <h2>new arrivals</h2>
+                    <a href="btn btn-secondary">shop now!</a>
+                </div>
+            </div>
         </div>
         <div class="col-md-6 block-item-2">
             <img class="img-fluid" src="/img/700-2-1.jpg" alt="">
+            <div class="bg-container">
+                <div class="bg">
+                    <h3 class="teal-color">two</h3>
+                    <h3 class="teal-color">to ways</h3>
+                    <h2>wear</h2>
+                </div>
+            </div>
         </div>
         <div class="col-md-6 block-item-3">
             <img class="img-fluid" src="/img/700-2-2.jpg" alt="">
+            <div class="bg-container">
+                <div class="bg">
+                    <h3 class="teal-color">the chic</h3>
+                    <h3 class="teal-color">dress</h3>
+                    <h4>collection</h4>
+                    <h2>20% off</h2>
+                </div>
+            </div>
         </div>
         <div class="col-md-12 block-item-4">
             <img class="img-fluid" src="/img/1400-2-4.jpg" alt="">
+            <div class="bg-container">
+                <div class="bg">
+                    <h4 class="teal-color">spring - summer 2017</h4>
+                    <h2>the perfect utility</h2>
+                    <a href="btn  btn-secondary">shop now!</a>
+                </div>
+            </div>
         </div>
         <div class="col-md-6 block-item-5">
             <img class="img-fluid" src="/img/700-2-3.jpg" alt="">
-            <div class="text">
-
+            <div class="bg-container">
+                <div class="bg">
+                    <h3>buy 2 items</h3>
+                    <h3>get one</h3>
+                    <h2>for free</h2>
+                </div>
             </div>
         </div>
         <div class="col-md-6 block-item-6">
@@ -82,25 +115,53 @@
 
         <h3 class="text-center">new products</h3>
         <div class="row fluid-max-wide-10 center">
-            <div class="row no-pad pad-half-all">
-                <div class="col-sm-6 col-md-3">
+            <div class="slick row no-pad pad-half-all fluid">
+                <div class="">
                     <img class="img-fluid" src="https://via.placeholder.com/300x330" alt="">
                 </div>
-                <div class="col-sm-6 col-md-3">
+                <div class="">
                     <img class="img-fluid" src="https://via.placeholder.com/300x330" alt="">
                 </div>
-                <div class="col-sm-6 col-md-3">
+                <div class="">
                     <img class="img-fluid" src="https://via.placeholder.com/300x330" alt="">
                 </div>
-                <div class="col-sm-6 col-md-3">
+                <div class="">
                     <img class="img-fluid" src="https://via.placeholder.com/300x330" alt="">
                 </div>
+                <div class="">
+                    <img class="img-fluid" src="https://via.placeholder.com/300x330" alt="">
+                </div>
+                <div class="">
+                    <img class="img-fluid" src="https://via.placeholder.com/300x330" alt="">
+                </div>
+                <div class="">
+                    <img class="img-fluid" src="https://via.placeholder.com/300x330" alt="">
+                </div>
+                <div class="">
+                    <img class="img-fluid" src="https://via.placeholder.com/300x330" alt="">
+                </div>
+                <div class="">
+                    <img class="img-fluid" src="https://via.placeholder.com/300x330" alt="">
+                </div>
+
             </div>
         </div>
 
         <h3 class="text-center">special products</h3>
         <div class="row fluid-max-wide-10 center">
-            <div class="row no-pad pad-half-all">
+            <div class="slick row no-pad pad-half-all fluid">
+                <div class="col-sm-6 col-md-3">
+                    <img class="img-fluid" src="https://via.placeholder.com/300x330" alt="">
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <img class="img-fluid" src="https://via.placeholder.com/300x330" alt="">
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <img class="img-fluid" src="https://via.placeholder.com/300x330" alt="">
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <img class="img-fluid" src="https://via.placeholder.com/300x330" alt="">
+                </div>
                 <div class="col-sm-6 col-md-3">
                     <img class="img-fluid" src="https://via.placeholder.com/300x330" alt="">
                 </div>
