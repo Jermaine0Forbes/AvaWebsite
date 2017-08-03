@@ -21,7 +21,7 @@
         <title>{{$title or "default"}}</title>
     </head>
     <body >
-        <header  class="container wide pad-half-all ">
+        <header  class="container wide  ">
             @include('header')
         </header>
         <main  id="{{$id}}" class="container wide pad-half padH ">

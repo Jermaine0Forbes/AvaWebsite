@@ -14,13 +14,14 @@
             <div class="bg-container">
                 <div class="bg">
                     <h4>spring - summer 2017</h4>
-                    <h2>new arrivals</h2>
+                    <h2>new</h2>
+                    <h2>arrivals</h2>
                     <a href="btn btn-secondary">shop now!</a>
                 </div>
             </div>
         </div>
         <div class="col-md-6 block-item-2">
-            <img class="img-fluid" src="/img/700-2-1.jpg" alt="">
+            <img class="img-fluid" src="/img/700-2-7.jpg" alt="">
             <div class="bg-container">
                 <div class="bg">
                     <h3 class="teal-color">two</h3>
@@ -30,7 +31,7 @@
             </div>
         </div>
         <div class="col-md-6 block-item-3">
-            <img class="img-fluid" src="/img/700-2-2.jpg" alt="">
+            <img class="img-fluid" src="/img/700-2-8.jpg" alt="">
             <div class="bg-container">
                 <div class="bg">
                     <h3 class="teal-color">the chic</h3>
@@ -45,7 +46,7 @@
             <div class="bg-container">
                 <div class="bg">
                     <h4 class="teal-color">spring - summer 2017</h4>
-                    <h2>the perfect utility</h2>
+                    <h2>perfect utility</h2>
                     <a href="btn  btn-secondary">shop now!</a>
                 </div>
             </div>
@@ -216,29 +217,29 @@
     <section id="home-block-4" class="row justify-content-center">
 
         <div class="row fluid-max-wide-10">
-            <div class="col-md-6 mobile-text-center">
+            <div class="col-md-6 md-text-center">
                 <div class="row pad-half-all">
                     <div class="col-md-3">
-                        <img class="img-fluid" src="https://via.placeholder.com/126x126" alt="">
+                        <img class="img-fluid" src="/img/126-1.jpg" alt="">
                     </div>
                     <div class="col-md-9">
                         <p>
                             Guys, you rock! Made a purchase at your store recently. The order has been shipped and delivered on time. The quality is superb! The price is quite reasonable. Told all my friends about your excellent service and the variety of choice. I think I’ll be your loyal customer in future as well. I wish your store many more years of prosperity.
                         </p>
-                        <h4>Victoria</h4>
+                        <h4>- Victoria</h4>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 mobile-text-center">
+            <div class="col-md-6 md-text-center">
                 <div class="row pad-half-all">
                     <div class="col-md-3">
-                        <img class="img-fluid" src="https://via.placeholder.com/126x126" alt="">
+                        <img class="img-fluid" src="/img/126-2.jpg" alt="">
                     </div>
                     <div class="col-md-9">
                         <p>
                             Guys, you rock! Made a purchase at your store recently. The order has been shipped and delivered on time. The quality is superb! The price is quite reasonable. Told all my friends about your excellent service and the variety of choice. I think I’ll be your loyal customer in future as well. I wish your store many more years of prosperity.
                         </p>
-                        <h4>Jennifer</h4>
+                        <h4>- Jennifer</h4>
                     </div>
                 </div>
             </div>
@@ -247,11 +248,11 @@
 
     <section id="home-block-5">
         <h3 class="text-center">latest posts</h3>
-        <div class="fluid-max-wide-10 row center mobile-text-center">
+        <div class="fluid-max-wide-10 row center md-text-center">
             <div class="col-md-6">
                 <div class="row pad-half-all">
                     <div class="col-md-6">
-                        <img class="img-fluid" src="https://via.placeholder.com/576x406" alt="">
+                        <img class="img-fluid" src="/img/576-1.jpg" alt="picture">
                     </div>
                     <div class="col-md-6">
                         <div class="date">
@@ -270,7 +271,7 @@
             <div class="col-md-6">
                 <div class="row pad-half-all">
                     <div class="col-md-6">
-                        <img class="img-fluid" src="https://via.placeholder.com/576x406" alt="">
+                        <img class="img-fluid" src="/img/576-2.jpg" alt="">
                     </div>
                     <div class="col-md-6">
                         <div class="date">

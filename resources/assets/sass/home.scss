@@ -158,6 +158,32 @@
 
     }
 
+    .block-item-4{
+
+        h4{
+            font-size:0.9em;
+        }
+
+        h2{
+            font-size:3.5em;
+            color:$black;
+            margin-bottom:0.5em;
+        }
+
+        a{
+            display:block;
+            padding:0.5em 1.5em;
+            color:white;
+            background:$teal;
+            text-transform: uppercase;
+            transition:all 0.3s;
+            &:hover{
+                text-decoration:none;
+                background:$pink;
+            }
+        }
+    }
+
     .block-item-5{
 
             .bg{

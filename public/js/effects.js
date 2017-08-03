@@ -3,11 +3,29 @@ $(document).ready(function(){
     var
     positionY,
     originalHeaderClass,
-    stickyHeaderClass;
+    stickyHeaderClass,
+    submenu ='#header-block-2 .nav-item .submenu',
+    sub;
+
+    function hideMenus(selector){
+        $(selector).hide();
+    }
+
+    $('#header-block-2 .nav-item').hover( function(){
+        hideMenus(submenu);
+        sub = $(this).find(".submenu");
+        sub.slideDown(200);
+    },function(){
+        sub.hide();
+    })
 
 
-
-    // console.log("debug")
+    // class stickyMenu{
+    //     constructor(){
+    //
+    //     }
+    //
+    // }
 
   var header = document.getElementById('header-block-2');
     function getOffset(header) {
@@ -25,6 +43,7 @@ $(document).ready(function(){
     stickyHeaderClass = originalHeaderClass+" sticky-top container wide";
     window.addEventListener('scroll', function(){
         positionY = window.scrollY;
+        hideMenus(submenu);
 
         if(positionY > position){
             header.className = stickyHeaderClass ;
@@ -42,6 +61,29 @@ $(document).ready(function(){
         slidesToShow:4,
         slidesToScroll:2,
         autoplaySpeed:10000,
+        prevArrow:"<button class='fa fa-angle-left slick-arrow slick-left'></button>",
+        nextArrow:"<button class='fa fa-angle-right slick-arrow slick-right'></button>",
+        responsive:[
+            {
+                breakpoint:768,
+                settings:{
+                    slidesToShow:3
+                }
+            },
+            {
+                breakpoint:576,
+                settings:{
+                    slidesToShow:2
+                }
+            }
+        ]
+    })
+    $('.slick:nth-of-type(2)').slick({
+        infinite:true,
+        autoplay:true,
+        slidesToShow:4,
+        slidesToScroll:2,
+        autoplaySpeed:5000,
         prevArrow:"<button class='fa fa-angle-left slick-arrow slick-left'></button>",
         nextArrow:"<button class='fa fa-angle-right slick-arrow slick-right'></button>",
         responsive:[

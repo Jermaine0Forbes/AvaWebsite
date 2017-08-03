@@ -53,8 +53,34 @@ header{
     .nav-link{
         text-transform:uppercase;
         font-size:0.9em;
+        &:hover{
+            color:$dark-grey;
+            span{
 
+            }
+        }
     }
+
+    .nav-item{
+        align-self:stretch;
+        padding:0.5em 0;
+        position:relative;
+    }
+
+    .submenu{
+        position:absolute;
+        background:$grey;
+        display:none;
+        top:70%;
+        left:0;
+        z-index:5;
+        padding:1em 3em;
+
+        & > li{
+            list-style:none;
+        }
+    }
+
 
     .shopping-number{
         background:$teal;
@@ -70,9 +96,27 @@ header{
         font-size: 16px;
     }
 
-    .nav-item{
-        align-self:stretch;
-        padding:0.5em 0;
 
+
+
+}
+
+
+/*====================================
+    #mobile-nav
+====================================*/
+
+#mobile-nav{
+
+    .navbar-nav{
+        width:100%;
+        display:flex; 
+    }
+
+    .nav-item{
+        border-left:1px solid black;
+        display:flex;
+        flex:1;
+        justify-content: center;
     }
 }
