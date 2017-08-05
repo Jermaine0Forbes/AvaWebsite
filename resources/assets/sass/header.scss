@@ -130,4 +130,60 @@ header{
     .dropdown-menu{
         background:white;
     }
+
+    .submenu{
+        top:100%;
+        padding:0;
+    }
+
+    .menu.submenu .dropdown-item{
+       text-transform: uppercase;
+       font-size: 0.8em;
+       border-bottom: 1px solid #ededed;
+       color: rgba(255,255,255,.5);
+       background: #292b2c;
+       padding: 1em;
+       min-width: 200px;
+    }
+
+    .account.submenu .dropdown-item{
+        text-transform: capitalize;;
+        font-size: 0.8em;
+        border-bottom: 1px solid $grey;
+        color: $dark-grey;
+        background: white;
+        padding: 1em;
+        min-width: 200px;
+        width:100%;
+        transition:all 0.3s;
+        &:hover{
+            background:$lite-grey;
+        }
+    }
+
+
+    .search.submenu{
+        width:100%;
+        background:white;
+        padding:1em 0;
+
+        form{
+            width:80%;
+            margin:auto;
+        }
+
+        input{
+            border-style:none;
+            padding-right:2em;
+            font-size:0.9em;
+            color:$grey;
+        }
+
+        .btn{
+            color:$dark-grey;
+            background:transparent;
+            border-style:none;
+        }
+    }
+
 }
