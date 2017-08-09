@@ -4,19 +4,26 @@ $(document).ready(function(){
     positionY,
     originalHeaderClass,
     stickyHeaderClass,
-    submenu ='#header-block-2 .nav-item .submenu',
-    sub;
+    submenu ='#header-block-2 .nav-item .submenu.visible',
+    sub,
+    x = 0;
 
     function hideMenus(selector){
+
+        // console.log(selector.length)
         $(selector).hide();
+        $(selector).removeClass('visible');
     }
 
     $('#header-block-2 .nav-item').hover( function(){
-        hideMenus(submenu);
+
         sub = $(this).find(".submenu");
-        sub.slideDown(200);
+        sub.stop(true,true).slideDown(200);
+        sub.addClass('visible');
     },function(){
-        sub.hide();
+        sub.stop(true,true).delay(200).hide();
+        console.log("hover exited: "+sub)
+        // hideMenus(submenu);
     })
 
 

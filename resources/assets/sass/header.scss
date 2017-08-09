@@ -46,9 +46,9 @@ header{
         font-size:25px;
     }
 
-    .navbar{
-        margin-top:1em;
-    }
+    // .navbar{
+    //     margin-top:1em;
+    // }
 
     .nav-link{
         text-transform:uppercase;
@@ -76,7 +76,11 @@ header{
         z-index:5;
         padding:1em 3em;
 
-        & > li{
+        ul{
+            display:block;
+        }
+
+        ul > li{
             list-style:none;
         }
     }
@@ -98,6 +102,57 @@ header{
 
 
 
+
+}
+
+/*====================================
+    #desktop-nav
+====================================*/
+
+#desktop-nav{
+
+    .submenu.desktop{
+        text-transform:uppercase;
+        width:700px;
+        font-size:0.7em;
+        box-shadow:2px 2px 8px $dark-grey;
+        background:white;
+        left:-100%;
+        ul{
+            // border-left:1px $teal solid;
+            margin:0;
+            padding:0 1em;
+            list-style: none;
+            text-align:center;
+        }
+
+        .header a{
+            color:$teal;
+            font-size:1.2em;
+
+        }
+    }
+
+
+    > .navbar-nav{
+        height:100%;
+
+        > .nav-item{
+            display:flex;
+            align-items:center;
+            padding:0;
+        }
+
+    }
+
+
+    .dropdown-item{
+        padding:0.5em 0;
+        &:hover{
+            background:none;
+        }
+
+    }
 
 }
 
