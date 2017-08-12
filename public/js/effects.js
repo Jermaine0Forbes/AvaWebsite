@@ -17,12 +17,28 @@ $(document).ready(function(){
 
     $('#header-block-2 .nav-item').hover( function(){
 
-        sub = $(this).find(".submenu");
+        let
+            parentWidth,
+            childWidth,
+            percentage,
+            str,
+            device;
+
+            sub = $(this).find(".submenu");
+            device = sub.closest('.navbar').attr('data-device');
+            
+            if(device === "desktop"){
+                parentWidth = $(this).width();
+                childWidth = sub.width();
+                percentage = ((childWidth / 2) / parentWidth)*100;
+                percentage = Math.round(percentage);
+                str =`-${percentage}%`;
+                sub.css('left',str);
+            }
+
         sub.stop(true,true).slideDown(200);
-        sub.addClass('visible');
     },function(){
         sub.stop(true,true).delay(200).hide();
-        console.log("hover exited: "+sub)
         // hideMenus(submenu);
     })
 
@@ -45,7 +61,6 @@ $(document).ready(function(){
 
     let position = getOffset(header).top;
 
-    console.log("The top position is ... "+position)
     originalHeaderClass = header.className;
     stickyHeaderClass = originalHeaderClass+" sticky-top container wide";
     window.addEventListener('scroll', function(){

@@ -15,7 +15,7 @@
             <h1><img class="img-fluid" src="/img/ava-logo-teal.svg" alt="ava logo"></h1>
         </div>
         <div class="nav col-md-7 hidden-md-down">
-            <nav id="desktop-nav" class="navbar fluid-max-wide-6 ">
+            <nav id="desktop-nav" data-device="desktop" class="navbar hidden-md-down fluid-max-wide-6 ">
                 <ul class="navbar-nav around">
                     <li class="nav-item">
                         <a href="#" class="nav-link">
@@ -70,18 +70,27 @@
                         <a href="#" class="nav-link">
                             men <span class="fa fa-caret-down"></span>
                         </a>
-                        <div class="submenu desktop">
+                        <div class="submenu desktop men">
                             <div class="row justify-content-center">
                                 <ul class="col-6">
                                     <li class="dropdown-item header"><a href="#">features</a></li>
                                     <li class="dropdown-item"><a href="#">NEW ARRIVALS</a></li>
                                     <li class="dropdown-item"><a href="#">TOMMY JEANS</a></li>
+                                    <li class="dropdown-item"><a href="#">TAILORED</a></li>
+                                    <li class="dropdown-item"><a href="#">HILFIGER DENIM</a></li>
                                 </ul>
                                 <ul class="col-6">
                                     <li class="dropdown-item header"><a href="#">general</a></li>
                                     <li class="dropdown-item"><a href="#">CASUAL SHIRTS</a></li>
                                     <li class="dropdown-item"><a href="#">DRESS SHIRTS</a></li>
+                                    <li class="dropdown-item"><a href="#">SWEATERS & FLEECE</a></li>
+                                    <li class="dropdown-item"><a href="#">OUTERWEAR</a></li>
                                 </ul>
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="col">
+                                    <img class="img-fluid" src="https://via.placeholder.com/600x150" alt="image">
+                                </div>
                             </div>
                         </div>
                     </li>
@@ -89,13 +98,28 @@
                         <a href="#" class="nav-link">
                             women <span class="fa fa-caret-down"></span>
                         </a>
-                        <div class="submenu desktop">
-                            <div class="row">
-                                <ul class="col">
-                                    <li class="dropdown-item"><a href="#">link</a></li>
-                                    <li class="dropdown-item"><a href="#">link</a></li>
-                                    <li class="dropdown-item"><a href="#">link</a></li>
+                        <div class="submenu desktop women">
+                            <div class="row justify-content-center">
+                                <ul class="col-6">
+                                    <li class="dropdown-item header"><a href="#">features</a></li>
+                                    <li class="dropdown-item"><a href="#">NEW ARRIVALS</a></li>
+                                    <li class="dropdown-item"><a href="#">TOMMY JEANS</a></li>
+                                    <li class="dropdown-item"><a href="#">#TOMMYNOW</a></li>
+                                    <li class="dropdown-item"><a href="#">HILFIGER COLLECTION</a></li>
                                 </ul>
+                                <ul class="col-6">
+                                    <li class="dropdown-item header"><a href="#">general</a></li>
+                                    <li class="dropdown-item"><a href="#">BLOUSES & SHIRTS</a></li>
+                                    <li class="dropdown-item"><a href="#">SWEATERS & SWEATSHIRTS</a></li>
+                                    <li class="dropdown-item"><a href="#">OUTERWEAR</a></li>
+                                    <li class="dropdown-item"><a href="#">JEANS</a></li>
+                                    <li class="dropdown-item"><a href="#">PANTS</a></li>
+                                </ul>
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="col">
+                                    <img class="img-fluid" src="https://via.placeholder.com/600x150" alt="image">
+                                </div>
                             </div>
                         </div>
                     </li>
@@ -120,7 +144,7 @@
         </div>
     </div>
 
-    <nav id="mobile-nav" class="col-12 navbar navbar-inverse bg-inverse navbar-toggleable-md">
+    <nav id="mobile-nav" data-device="mobile" class="col-12 hidden-lg-up navbar navbar-inverse bg-inverse navbar-toggleable-md">
         <ul class="navbar-nav">
             <li class="nav-item dropdown">
                 <a class="nav-link" href="#"><span class="fa fa-bars"></span> menu</a>
