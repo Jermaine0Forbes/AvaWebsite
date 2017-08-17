@@ -13,31 +13,35 @@
             <img class="img-fluid" src="/img/1400-2-22.jpg" alt="">
             <div class="bg-container">
                 <div class="bg">
-                    <h4>spring - summer 2017</h4>
-                    <h2>new</h2>
-                    <h2>arrivals</h2>
-                    <a href="btn btn-secondary">shop now!</a>
+                    <div class="text teal">
+                        <h4 class="hidden-md-down">spring - summer 2017</h4>
+                        <h2 >new arrivals</h2>
+                        <a href="#" class="btn  btn-secondary">shop now</a>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="col-md-6 block-item-2">
-            <img class="img-fluid" src="/img/700-2-7.jpg" alt="">
+            <img class="img-fluid" src="/img/alt-1.jpg" alt="">
             <div class="bg-container">
                 <div class="bg">
-                    <h3 class="teal-color">two</h3>
-                    <h3 class="teal-color">to ways</h3>
-                    <h2>wear</h2>
+                    <div class="text pink">
+                        <h4 >two</h4>
+                        <h3 >ways to</h3>
+                        <h2 class="teal-color">wear</h2>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="col-md-6 block-item-3">
-            <img class="img-fluid" src="/img/700-2-8.jpg" alt="">
+            <img class="img-fluid" src="/img/alt-2.jpg" alt="">
             <div class="bg-container">
                 <div class="bg">
-                    <h3 class="teal-color">the chic</h3>
-                    <h3 class="teal-color">dress</h3>
-                    <h4>collection</h4>
-                    <h2>20% off</h2>
+                    <div class="text pink">
+                        <h4>the chic dress</h4>
+                        <h3 >collection</h3>
+                        <h2 class="teal-color">20% off</h2>
+                    </div>
                 </div>
             </div>
         </div>
@@ -45,19 +49,24 @@
             <img class="img-fluid" src="/img/1400-2-4.jpg" alt="">
             <div class="bg-container">
                 <div class="bg">
-                    <h4 class="teal-color">spring - summer 2017</h4>
-                    <h2>perfect utility</h2>
-                    <a href="btn  btn-secondary">shop now!</a>
+                    <div class="text teal">
+                        <h4 class="hidden-md-down"> spring - summer 2017</h4>
+                        <h2 >perfect utility</h2>
+
+                        <a href="#" class="btn  btn-secondary">shop now</a>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="col-md-6 block-item-5">
-            <img class="img-fluid" src="/img/700-2-3.jpg" alt="">
+            <img class="img-fluid" src="/img/alt-3.jpg" alt="">
             <div class="bg-container">
                 <div class="bg">
-                    <h3>buy 2 items</h3>
-                    <h3>get one</h3>
-                    <h2>for free</h2>
+                    <div class="text pink">
+                        <h3>buy 2 items</h3>
+                        <h3>get one</h3>
+                        <h2 class="teal-color">for free</h2>
+                    </div>
                 </div>
             </div>
         </div>
@@ -65,6 +74,7 @@
             <div class="row no-pad pad-half-all">
                 <div class="col-sm-6 ">
                     <div class="text">
+                        <img class="img-fluid" src="/img/blank.png" alt="blank">
                         <div class="block-1">
                             <h3>free shipping</h3>
                             <h4>on orders over $99</h4>
@@ -77,6 +87,7 @@
                 </div>
                 <div class="col-sm-6">
                     <div class="text">
+                        <img class="img-fluid" src="/img/blank.png" alt="blank">
                         <div class="block-1">
                             <h4>cod</h4>
                             <h3>cash on delivery</h3>
@@ -88,6 +99,7 @@
                 </div>
                 <div class="col-sm-6">
                     <div class="text">
+                        <img class="img-fluid" src="/img/blank.png" alt="blank">
                         <div class="block-1">
                             <h3>order return</h3>
                             <h4>return within 14 days</h4>
@@ -98,7 +110,8 @@
                     </div>
                 </div>
                 <div class="col-sm-6">
-                    <div class="text pink">
+                    <div class="text pinky">
+                        <img class="img-fluid" src="/img/blank.png" alt="blank">
                         <div class="block-1">
                             <h2>75% off</h2>
                             <h4>shop now</h4>
@@ -110,39 +123,37 @@
                 </div>
             </div>
         </div>
+
     </section>
 
     <section id="home-block-2" class="">
 
         <h3 class="text-center">new products</h3>
         <div class="row fluid-max-wide-10 center">
-            <div class="slick row no-pad pad-half-all fluid">
+            <div class="slick one row no-pad pad-half-all fluid">
                 <div class="">
-                    <img class="img-fluid" src="https://via.placeholder.com/300x330" alt="">
+                    <img class="img-fluid" src="/img/330-1.png" alt="slick image">
                 </div>
                 <div class="">
-                    <img class="img-fluid" src="https://via.placeholder.com/300x330" alt="">
+                    <img class="img-fluid" src="/img/330-2.png" alt="slick image">
                 </div>
                 <div class="">
-                    <img class="img-fluid" src="https://via.placeholder.com/300x330" alt="">
+                    <img class="img-fluid" src="/img/330-1.png" alt="slick image">
                 </div>
                 <div class="">
-                    <img class="img-fluid" src="https://via.placeholder.com/300x330" alt="">
+                    <img class="img-fluid" src="/img/330-2.png" alt="slick image">
                 </div>
                 <div class="">
-                    <img class="img-fluid" src="https://via.placeholder.com/300x330" alt="">
+                    <img class="img-fluid" src="/img/330-1.png" alt="slick image">
                 </div>
                 <div class="">
-                    <img class="img-fluid" src="https://via.placeholder.com/300x330" alt="">
+                    <img class="img-fluid" src="/img/330-2.png" alt="slick image">
                 </div>
                 <div class="">
-                    <img class="img-fluid" src="https://via.placeholder.com/300x330" alt="">
+                    <img class="img-fluid" src="/img/330-1.png" alt="slick image">
                 </div>
                 <div class="">
-                    <img class="img-fluid" src="https://via.placeholder.com/300x330" alt="">
-                </div>
-                <div class="">
-                    <img class="img-fluid" src="https://via.placeholder.com/300x330" alt="">
+                    <img class="img-fluid" src="/img/330-2.png" alt="slick image">
                 </div>
 
             </div>
@@ -150,30 +161,30 @@
 
         <h3 class="text-center">special products</h3>
         <div class="row fluid-max-wide-10 center">
-            <div class="slick row no-pad pad-half-all fluid">
-                <div class="col-sm-6 col-md-3">
-                    <img class="img-fluid" src="https://via.placeholder.com/300x330" alt="">
+            <div class="slick two row no-pad pad-half-all fluid">
+                <div class="">
+                    <img class="img-fluid" src="/img/330-3.png" alt="slick image">
                 </div>
-                <div class="col-sm-6 col-md-3">
-                    <img class="img-fluid" src="https://via.placeholder.com/300x330" alt="">
+                <div class="">
+                    <img class="img-fluid" src="/img/330-4.png" alt="slick image">
                 </div>
-                <div class="col-sm-6 col-md-3">
-                    <img class="img-fluid" src="https://via.placeholder.com/300x330" alt="">
+                <div class="">
+                    <img class="img-fluid" src="/img/330-3.png" alt="slick image">
                 </div>
-                <div class="col-sm-6 col-md-3">
-                    <img class="img-fluid" src="https://via.placeholder.com/300x330" alt="">
+                <div class="">
+                    <img class="img-fluid" src="/img/330-4.png" alt="slick image">
                 </div>
-                <div class="col-sm-6 col-md-3">
-                    <img class="img-fluid" src="https://via.placeholder.com/300x330" alt="">
+                <div class="">
+                    <img class="img-fluid" src="/img/330-3.png" alt="slick image">
                 </div>
-                <div class="col-sm-6 col-md-3">
-                    <img class="img-fluid" src="https://via.placeholder.com/300x330" alt="">
+                <div class="">
+                    <img class="img-fluid" src="/img/330-4.png" alt="slick image">
                 </div>
-                <div class="col-sm-6 col-md-3">
-                    <img class="img-fluid" src="https://via.placeholder.com/300x330" alt="">
+                <div class="">
+                    <img class="img-fluid" src="/img/330-3.png" alt="slick image">
                 </div>
-                <div class="col-sm-6 col-md-3">
-                    <img class="img-fluid" src="https://via.placeholder.com/300x330" alt="">
+                <div class="">
+                    <img class="img-fluid" src="/img/330-4.png" alt="slick image">
                 </div>
             </div>
         </div>

@@ -163,6 +163,10 @@ header{
 
 #mobile-nav{
 
+    p{
+        margin:1em 0; 
+    }
+
     .navbar-nav{
         width:100%;
         display:flex;
@@ -189,6 +193,7 @@ header{
     .submenu{
         top:100%;
         padding:0;
+        width:100%;
     }
 
     .menu.submenu .dropdown-item{
@@ -229,7 +234,7 @@ header{
 
         input{
             border-style:none;
-            padding-right:2em;
+            padding-right:15%;
             font-size:0.9em;
             color:$grey;
         }
@@ -240,5 +245,14 @@ header{
             border-style:none;
         }
     }
+
+}
+
+
+/*====================================
+    MEDIA
+====================================*/
+
+@media all and (max-width:992px) {
 
 }

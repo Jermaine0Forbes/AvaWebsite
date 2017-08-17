@@ -5,7 +5,7 @@ $(document).ready(function(){
     originalHeaderClass,
     stickyHeaderClass,
     submenu ='#header-block-2 .nav-item .submenu.visible',
-    sub,
+    sub = {0:0},
     x = 0;
 
     function hideMenus(selector){
@@ -15,7 +15,7 @@ $(document).ready(function(){
         $(selector).removeClass('visible');
     }
 
-    $('#header-block-2 .nav-item').hover( function(){
+    $('#desktop-nav .nav-item').hover( function(){
 
         let
             parentWidth,
@@ -26,7 +26,7 @@ $(document).ready(function(){
 
             sub = $(this).find(".submenu");
             device = sub.closest('.navbar').attr('data-device');
-            
+
             if(device === "desktop"){
                 parentWidth = $(this).width();
                 childWidth = sub.width();
@@ -35,20 +35,37 @@ $(document).ready(function(){
                 str =`-${percentage}%`;
                 sub.css('left',str);
             }
-
+        sub.addClass('visible');
         sub.stop(true,true).slideDown(200);
     },function(){
         sub.stop(true,true).delay(200).hide();
+        sub.removeClass('visible');
         // hideMenus(submenu);
     })
 
 
-    // class stickyMenu{
-    //     constructor(){
-    //
-    //     }
-    //
-    // }
+    $('#mobile-nav .nav-item').on('click', function(){
+
+        let
+        windowWidth = $(window).width(),
+        oldSub = sub[0] ,
+        left = $(this).offset().left;
+
+        sub = $(this).find('.submenu');
+        // console.log("oldSub: "+oldSub);
+        // console.log(sub);
+        console.log(left);
+        console.log(oldSub == sub[0]);
+        if(oldSub == sub[0]){
+            hideMenus(submenu);
+            console.log("hiding")
+        }else{
+            hideMenus(submenu);
+            sub.css({'width':windowWidth, 'left':-left});
+            sub.stop(true,true).slideDown(200);
+            sub.addClass('visible');
+        }
+    })
 
   var header = document.getElementById('header-block-2');
     function getOffset(header) {
@@ -77,7 +94,7 @@ $(document).ready(function(){
         }
     })//scroll
 
-    $('.slick').slick({
+    $('.slick.one').slick({
         infinite:true,
         autoplay:true,
         slidesToShow:4,
@@ -100,7 +117,7 @@ $(document).ready(function(){
             }
         ]
     })
-    $('.slick:nth-of-type(2)').slick({
+    $('.slick.two').slick({
         infinite:true,
         autoplay:true,
         slidesToShow:4,

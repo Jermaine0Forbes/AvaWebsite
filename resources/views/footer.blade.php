@@ -1,7 +1,10 @@
 <section id ="footer-block-1" class="row justify-content-center" >
     <div class="fluid-max-wide-10 row pad-all">
         <div class="col-md-3  block-item-1 logo">
-            <h2><img class="img-fluid" src="/img/ava-logo-teal.svg" alt="logo"></h2>
+            <h2 class="fluid-max-3 md-margin-center">
+                <img class="img-fluid hidden-sm-down" src="/img/logo.svg" alt="logo">
+                <img class="img-fluid hidden-md-up " src="/img/logo-mobile.svg" alt="logo">
+            </h2>
             <p>
                 The variety of products available at our store at the moment is vast, but we still continue to widen our assortment. We monitor the relevant market niche on regular basis to keep our prices competitive. Buying form us you can be sure that you’ll get the product you have offered quickly and hassle-free. We value our reputation of the trustworthy merchant and never upset our clients.
             </p>

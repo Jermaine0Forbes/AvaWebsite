@@ -1,4 +1,4 @@
-<section id="header-block-1" class="row pad ">
+<section id="header-block-1" class="row pad hidden-md-down ">
     <div class="fluid-max-4">
         <span>Your Language: english <span class="fa fa-angle-down"></span></span>
 
@@ -11,8 +11,11 @@
 </section>
 <section id="header-block-2" class="row justify-content-center">
     <div class="row fluid pad-half padH">
-        <div class="flex-left fluid-max-wide-2">
-            <h1><img class="img-fluid" src="/img/ava-logo-teal.svg" alt="ava logo"></h1>
+        <div class="flex-left fluid-max-wide-2 lg-margin-center">
+            <h1>
+                <img class="img-fluid hidden-md-down" src="/img/logo.svg" alt="ava logo">
+                <img class="img-fluid hidden-lg-up" src="/img/logo-mobile.svg" alt="ava logo">
+            </h1>
         </div>
         <div class="nav col-md-7 hidden-md-down">
             <nav id="desktop-nav" data-device="desktop" class="navbar hidden-md-down fluid-max-wide-6 ">
@@ -136,7 +139,7 @@
                 </ul>
             </nav>
         </div>
-        <div class="icons flex-right col-md-2 list-inline spaced">
+        <div class="icons flex-right col-md-2 list-inline spaced hidden-md-down">
             <a href="#"><span class="fa fa-search"></span></a>
             <a href="#"><span class="fa fa-user"></span></a>
             <a href="#"><span class="fa fa-shopping-cart"></span></a>
@@ -146,8 +149,7 @@
 
     <nav id="mobile-nav" data-device="mobile" class="col-12 hidden-lg-up navbar navbar-inverse bg-inverse navbar-toggleable-md">
         <ul class="navbar-nav">
-            <li class="nav-item dropdown">
-                <a class="nav-link" href="#"><span class="fa fa-bars"></span> menu</a>
+            <li class="nav-item dropdown"><p class="nav-link"><span class="fa fa-bars"></span> <span class="hidden-sm-down">menu</span></p>
                 <div class="menu submenu">
                     <a class="dropdown-item" href="#">accessories</a>
                     <a class="dropdown-item" href="#">men</a>
@@ -156,7 +158,7 @@
                     <a class="dropdown-item" href="#">contact us</a>
                 </div>
             </li>
-            <li class="nav-item"><a class="nav-link" href="#"><span class="fa fa-search"></span>  search</a>
+            <li class="nav-item"><p class="nav-link"><span class="fa fa-search"></span> <span class="hidden-sm-down">search</span></p>
                 <div class="search submenu">
                     <form class="" method="post">
                         <div class="input-group">
@@ -166,7 +168,7 @@
                     </form>
                 </div>
             </li>
-            <li class="nav-item"><a class="nav-link" href="#"><span class="fa fa-bars"></span>  account</a>
+            <li class="nav-item"><p class="nav-link"><span class="fa fa-bars"></span> <span class="hidden-sm-down">account</span></p>
                 <div class="account submenu">
                     <a class="dropdown-item" href="#">your language: english</a>
                     <a class="dropdown-item" href="#">currensy: usd</a>
@@ -178,7 +180,8 @@
                     <a class="dropdown-item" href="#">log in</a>
                 </div>
             </li>
-            <li class="nav-item"><a class="nav-link" href="#"><span class="fa fa-shopping-cart"></span>  cart</a></li>
+            <li class="nav-item"><p class="nav-link"><span class="fa fa-shopping-cart"></span> <span class="hidden-sm-down">cart</span></p>
+            </li>
         </ul>
     </nav>
 

@@ -1,6 +1,6 @@
 /*
-	version: 0.02.9
-	date:	7/21/17
+	version: 0.03.0
+	date:	8/16/17
 */
 /*======Base======*/
 /*___body___ */
@@ -361,6 +361,17 @@ ul.remove-bullets {
   text-align: initial; }
 
 .md-margin-center {
+  margin: initial; }
+
+/*=============================
+
+	.lg-*
+
+==============================*/
+.lg-text-center {
+  text-align: initial; }
+
+.lg-margin-center {
   margin: initial; }
 
 /*=============================
@@ -1014,6 +1025,12 @@ ul.remove-bullets {
 	Responsive
 
 /////////////////////////////////*/
+@media all and (max-width: 992px) {
+  .lg-text-center {
+    text-align: center; }
+  .lg-margin-center {
+    margin: auto; } }
+
 @media all and (max-width: 768px) {
   header nav.navbar {
     width: 100%; }
@@ -1035,7 +1052,7 @@ ul.remove-bullets {
   .md-text-center {
     text-align: center; }
   .md-margin-center {
-    margin: center; } }
+    margin: auto; } }
 
 @media all and (max-width: 576px) {
   .flex-left-mobile {
