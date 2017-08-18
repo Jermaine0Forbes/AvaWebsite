@@ -2,7 +2,7 @@
 
 # Ava Website
 
-A fashion website that I am developing
+Ava is a online clothing retailer that sells quality clothing and accessories for men and women. It sells such famous brands like tommy hilfiger, guess, hanes, old navy, and many more. The website was created with laravel
 
 ## Made with
 - Laravel
