@@ -13,6 +13,10 @@ A fashion website that I am developing
 
 ## Logs
 
+### 4/7/18
+
+- commiting  old changes  and pushing them up to github
+
 ### 8/17/17
 -  I was able to add the pictures to the #home-block-1 and it is not more responsive
 - #home-block-2 now has pictures within the slick slider, though there are only
