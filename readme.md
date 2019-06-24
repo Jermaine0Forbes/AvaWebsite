@@ -13,6 +13,10 @@ A fashion website that I am developing
 
 ## Logs
 
+### 6/24/19
+
+- converted the application into a react app version 16.8 
+
 ### 4/7/18
 
 - commiting  old changes  and pushing them up to github
