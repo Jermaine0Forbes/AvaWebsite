@@ -11,6 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home', ['title'=>"Ava Fashion", 'id' => "home"]);
-});
+Route::get('/{path?}',"HomeController@index");
+// Route::get('/', function () {
+//     return view('home', ['title'=>"Ava Fashion", 'id' => "home"]);
+// });

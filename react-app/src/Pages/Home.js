@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 
 
 export default function Home(){
@@ -14,7 +15,7 @@ export default function Home(){
                     <div className="text teal">
                         <h4 className="hidden-md-down">spring - summer 2017</h4>
                         <h2 >new arrivals</h2>
-                        <a href="/" className="btn  btn-secondary">shop now</a>
+                        <Link  to="/recent-arrivals" className="btn  btn-secondary">shop now</Link>
                     </div>
                 </div>
             </div>
@@ -51,7 +52,7 @@ export default function Home(){
                         <h4 className="hidden-md-down"> spring - summer 2017</h4>
                         <h2 >perfect utility</h2>
 
-                        <a href="/" className="btn  btn-secondary">shop now</a>
+                        <Link  to="/recent-arrivals" className="btn  btn-secondary">shop now</Link>
                     </div>
                 </div>
             </div>

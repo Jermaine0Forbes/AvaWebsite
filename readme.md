@@ -2,16 +2,33 @@
 
 # Ava Website
 
-A fashion website that I am developing
+A personal e-commerce project that I'm creating with laravel & react.
 
 ## Made with
 - Laravel
+- MySQL
+- React
+- SCSS
+- HTML
 
 ## Build tools
 - Webpack
 
 
 ## Logs
+
+### 3/1/20
+
+**Goals for the month**
+- Create login system with oAuth or JWT 
+- Create/Alter users table that will include permissions and other columns
+- Create profile/account  page for user 
+- create admin page for employees
+- generate fake users
+
+**Currently**
+- added all the components from the react app into the resources directory.
+
 
 ### 6/24/19
 
