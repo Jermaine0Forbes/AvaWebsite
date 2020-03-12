@@ -17,12 +17,48 @@ A personal e-commerce project that I'm creating with laravel & react.
 
 ## Logs
 
+
+### 3/12/20
+
+**Goals for the month**
+- Create login system with oAuth or JWT
+- Create/Alter users table that will include permissions and other columns
+- Create profile/account  page for user
+- create admin page for employees
+- generate fake users
+
+**Currently**
+- Practicing with react redux on a different web app before, I include it into the
+project
+- Created another laravel app to grab a table of data, next I need to add react redux
+to a new react app.
+- I have successfully setup a react redux app, and was able to pull data from a
+laravel app. Now, the next thing I need to do is the other CRUD methods and then
+I will start setting up redux on ava.
+
+### 3/11/20
+
+**Goals for the month**
+- Create login system with oAuth or JWT
+- Create/Alter users table that will include permissions and other columns
+- Create profile/account  page for user
+- create admin page for employees
+- generate fake users
+
+**Currently**
+- I'm trying to learn how to do Redirects with react router. I'm not sure how it
+will be able to determine an authenticated or logged in user
+- at this moment I need to use laravel passport, but I think I need to setup react
+redux first before I do any type of ajax requests.
+
+
+
 ### 3/1/20
 
 **Goals for the month**
-- Create login system with oAuth or JWT 
+- Create login system with oAuth or JWT
 - Create/Alter users table that will include permissions and other columns
-- Create profile/account  page for user 
+- Create profile/account  page for user
 - create admin page for employees
 - generate fake users
 
@@ -32,7 +68,7 @@ A personal e-commerce project that I'm creating with laravel & react.
 
 ### 6/24/19
 
-- converted the application into a react app version 16.8 
+- converted the application into a react app version 16.8
 
 ### 4/7/18
 

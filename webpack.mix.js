@@ -11,13 +11,9 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.options({ hmrOptions:{
-                    host:"ava.io", 
-                    port:"8000",
-                    }
-            })
-   .react('resources/js/app.js', 'public/js')
+mix.react('resources/js/app.js', 'public/js')
    .sass('resources/assets/sass/app.scss', 'public/css');
-// mix.browserSync({ proxy:'ava.io',host:"104.236.44.154", port:"8000", open:false})
+
+// mix.browserSync({ proxy:'104.236.44.154', port:"8000", open:false })
 //    .react('resources/js/app.js', 'public/js')
 //    .sass('resources/assets/sass/app.scss', 'public/css');

@@ -8,6 +8,9 @@
 /vendor
 /.idea
 /.vagrant
+/.env
+/package-lock.json
+/composer-lock
 Homestead.json
 Homestead.yaml
 npm-debug.log
