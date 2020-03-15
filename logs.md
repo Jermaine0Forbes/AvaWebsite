@@ -1,5 +1,19 @@
 # Logs
 
+### 3/15/20
+
+**Goals for the month**
+- Create login system with oAuth or JWT
+- Create/Alter users table that will include permissions and other columns
+- Create profile/account  page for user
+- create admin page for employees
+- generate fake users
+
+**Currently**
+- working on login system with JWT and laravel. Almost done, I finally have to make
+a request pull info about the user. After that, I will try to implement a google
+oAuth in order to pull information by signing into google.
+
 ### 3/13/20
 
 **Goals for the month**

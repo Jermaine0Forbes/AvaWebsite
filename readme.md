@@ -19,7 +19,7 @@ A personal e-commerce project that I'm creating with laravel & react.
 
 *Want to see more logs? visit* **logs.md**
 
-### 3/13/20
+### 3/15/20
 
 **Goals for the month**
 - Create login system with oAuth or JWT
@@ -29,6 +29,6 @@ A personal e-commerce project that I'm creating with laravel & react.
 - generate fake users
 
 **Currently**
-- Still working on doing a CRUD methods with the pratice react-redux app.
-- Completed the CRUD method, next step is to use laravel passport and see users
-that have different roles, and what can they see based on their role
+- working on login system with JWT and laravel. Almost done, I finally have to make
+a request pull info about the user. After that, I will try to implement a google
+oAuth in order to pull information by signing into google.
