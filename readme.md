@@ -1,4 +1,4 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+<p align="center"><img src="public/img/ava-logo.svg"></p>
 
 # Ava Website
 
@@ -19,16 +19,15 @@ A personal e-commerce project that I'm creating with laravel & react.
 
 *Want to see more logs? visit* **logs.md**
 
-### 3/15/20
+### 3/23/20
 
 **Goals for the month**
-- Create login system with oAuth or JWT
-- Create/Alter users table that will include permissions and other columns
-- Create profile/account  page for user
-- create admin page for employees
-- generate fake users
+- Create test website to receive and make changes to Ava
+- Create loading icon when for content on pages
+- Load components when in view
+- Create fake data for products, blogs, etc.
+- ~~Create login system with oAuth or JWT~~
+
 
 **Currently**
-- working on login system with JWT and laravel. Almost done, I finally have to make
-a request pull info about the user. After that, I will try to implement a google
-oAuth in order to pull information by signing into google.
+- Saving the current changes to github and transport them to test website.

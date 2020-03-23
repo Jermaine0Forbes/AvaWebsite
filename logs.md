@@ -1,5 +1,18 @@
 # Logs
 
+### 3/23/20
+
+**Goals for the month**
+- Create test website to receive and make changes to Ava
+- Create loading icon when for content on pages
+- Load components when in view
+- Create fake data for products, blogs, etc.
+- ~~Create login system with oAuth or JWT~~
+
+
+**Currently**
+- Saving the current changes to github and transport them to test website.
+
 ### 3/15/20
 
 **Goals for the month**
