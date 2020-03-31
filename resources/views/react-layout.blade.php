@@ -22,9 +22,9 @@
         {{-- <title>Home</title> --}}
     </head>
     <body >
-        <main class="container wide pad-half padH ">
+        
             @yield('main')
-        </main>
+
 
         {{-- <script src="{{asset('js/app.js')}}"></script> --}}
         <script src="{{mix('js/app.js')}}"></script>

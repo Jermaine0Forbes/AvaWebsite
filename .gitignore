@@ -1,5 +1,5 @@
 /node_modules
-/package-lock.json
+./package-lock.json
 /public/hot
 /public/storage
 /storage/*.key
@@ -9,9 +9,8 @@
 /.idea
 /.vagrant
 /.env
-/package-lock.json
-/composer-lock
+./composer-lock
 Homestead.json
 Homestead.yaml
 npm-debug.log
-.env
+composer.lock

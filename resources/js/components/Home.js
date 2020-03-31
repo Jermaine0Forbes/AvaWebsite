@@ -1,29 +1,67 @@
 import React,{Component} from 'react';
 import {Link} from "react-router-dom";
+// import Spinner from "react-bootstrap/Spinner";
+import {CircularProgress,Grow} from '@material-ui/core';
+import {makeStyles} from '@material-ui/core/styles';
 
+// const useStyles = makeStyles({
+//   root: {
+//     color: 'purple',
+//   },
+// });
+//
+//
+// const classes = useStyles();
+
+const HBlock1 = ({state}) =>{
+
+  console.log(state)
+  return (
+    <Grow>
+       <img className="img-fluid" src="/img/1400-2-22.jpg" alt="" />
+       <div className="bg-container">
+           <div className="bg">
+               <div className="text teal">
+                   <h4 className="hidden-md-down">spring - summer 2017</h4>
+                   <h2 >new arrivals</h2>
+                   <Link  to="/recent-arrivals" className="btn  btn-secondary">shop now</Link>
+               </div>
+           </div>
+       </div>
+   </Grow>
+  )
+}
 
 export default class Home extends Component{
 
+  constructor(props){
+    super(props);
+    this.state = {loading:true}
+  }
+
+  waiting (e) {
+    setTimeout(() =>{
+      this.setState({loading:false})
+    },2000);
+  }
   componentDidMount(){
-    document.title = "Ava Fashion";
+    document.title = "Ava Fashions";
+    // this.setState({loading:false})
+    this.waiting();
   }
 
   render(){
+
+     const {loading}= this.state;
+
+    const hBlock1 = loading ? <CircularProgress className="text-secondary" /> : <HBlock1 state={!loading}/>;
+    // const hBlock1 = loading ? <Spinner animation="border" variant="primary"><span className="sr-only">Loading...</span></Spinner> : <HBlock1 />;
     return(
       <main id="home" className="container wide pad-half padH">
 
       <section id="home-block-1" className="row pad-half-all">
-          <div className="col-12 block-item-1">
-              <img className="img-fluid" src="/img/1400-2-22.jpg" alt="" />
-              <div className="bg-container">
-                  <div className="bg">
-                      <div className="text teal">
-                          <h4 className="hidden-md-down">spring - summer 2017</h4>
-                          <h2 >new arrivals</h2>
-                          <Link  to="/recent-arrivals" className="btn  btn-secondary">shop now</Link>
-                      </div>
-                  </div>
-              </div>
+        <div className="col-12 block-item-1">
+            {hBlock1}
           </div>
           <div className="col-md-6 block-item-2">
               <img className="img-fluid" src="/img/alt-1.jpg"  alt="" />
