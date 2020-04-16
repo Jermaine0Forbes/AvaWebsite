@@ -94,53 +94,7 @@ $(document).ready(function(){
         }
     })//scroll
 
-    $('.slick.one').slick({
-        infinite:true,
-        autoplay:true,
-        slidesToShow:4,
-        slidesToScroll:2,
-        autoplaySpeed:10000,
-        prevArrow:"<button class='fa fa-angle-left slick-arrow slick-left'></button>",
-        nextArrow:"<button class='fa fa-angle-right slick-arrow slick-right'></button>",
-        responsive:[
-            {
-                breakpoint:768,
-                settings:{
-                    slidesToShow:3
-                }
-            },
-            {
-                breakpoint:576,
-                settings:{
-                    slidesToShow:2
-                }
-            }
-        ]
-    })
-    $('.slick.two').slick({
-        infinite:true,
-        autoplay:true,
-        slidesToShow:4,
-        slidesToScroll:2,
-        autoplaySpeed:5000,
-        prevArrow:"<button class='fa fa-angle-left slick-arrow slick-left'></button>",
-        nextArrow:"<button class='fa fa-angle-right slick-arrow slick-right'></button>",
-        responsive:[
-            {
-                breakpoint:768,
-                settings:{
-                    slidesToShow:3
-                }
-            },
-            {
-                breakpoint:576,
-                settings:{
-                    slidesToShow:2
-                }
-            }
-        ]
-    })
-
+    
 
 
 })// end ready

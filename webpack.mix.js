@@ -11,9 +11,9 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.react('resources/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css');
-
-// mix.browserSync({ proxy:'104.236.44.154', port:"8000", open:false })
-//    .react('resources/js/app.js', 'public/js')
+// mix.react('resources/js/app.js', 'public/js')
 //    .sass('resources/assets/sass/app.scss', 'public/css');
+
+mix.browserSync("ava.co")
+   .react('resources/js/app.js', 'public/js')
+   .sass('resources/assets/sass/style.scss', 'public/css');

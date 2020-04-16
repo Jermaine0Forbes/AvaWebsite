@@ -11,6 +11,7 @@ import Men from "./Men";
 import Women from "./Women";
 import Login from "./Login";
 import Cart from "./Cart";
+import Product from "./Product";
 
 
 export default class Main extends Component{
@@ -27,6 +28,7 @@ export default class Main extends Component{
         <Route path="/accessories"  component={Accessory}/>
         <Route path="/men"  component={Men}/>
         <Route path="/women"  component={Women}/>
+        <Route path="/product"  component={Product}/>
         <Route exact path="/cart">
           {isLoggedIn ?<Cart/>:  <Redirect to="/login" />}
         </Route>

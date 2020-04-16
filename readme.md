@@ -19,15 +19,14 @@ A personal e-commerce project that I'm creating with laravel & react.
 
 *Want to see more logs? visit* **logs.md**
 
-### 3/23/20
+### 4/16/20
 
 **Goals for the month**
-- Create test website to receive and make changes to Ava
-- Create loading icon when for content on pages
-- Load components when in view
-- Create fake data for products, blogs, etc.
-- ~~Create login system with oAuth or JWT~~
-
+- Create the single product page
+- Create fake data for products
+- Make "add to cart" work
+- Create the "check out" page
+- Create transition pages
 
 **Currently**
-- Saving the current changes to github and transport them to test website.
+- Focused on creating the product page

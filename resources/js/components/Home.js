@@ -1,8 +1,14 @@
 import React,{Component} from 'react';
 import {Link} from "react-router-dom";
+import Loader from  'react-loaders';
+import "loaders.css/loaders.css.js";
+import "loaders.css/loaders.min.css";
+import {Fade,Zoom,LightSpeed, Bounce} from 'react-reveal';
+import NewProducts from "./NewProducts";
+import SpecialProducts from "./SpecialProducts";
 // import Spinner from "react-bootstrap/Spinner";
-import {CircularProgress,Grow} from '@material-ui/core';
-import {makeStyles} from '@material-ui/core/styles';
+// import {CircularProgress,Grow} from '@material-ui/core';
+// import {makeStyles} from '@material-ui/core/styles';
 
 // const useStyles = makeStyles({
 //   root: {
@@ -17,7 +23,7 @@ const HBlock1 = ({state}) =>{
 
   console.log(state)
   return (
-    <Grow>
+    <Fade bottom={true}>
        <img className="img-fluid" src="/img/1400-2-22.jpg" alt="" />
        <div className="bg-container">
            <div className="bg">
@@ -28,7 +34,7 @@ const HBlock1 = ({state}) =>{
                </div>
            </div>
        </div>
-   </Grow>
+   </Fade>
   )
 }
 
@@ -42,51 +48,55 @@ export default class Home extends Component{
   waiting (e) {
     setTimeout(() =>{
       this.setState({loading:false})
-    },2000);
+    },5000);
   }
   componentDidMount(){
-    document.title = "Ava Fashions";
+    document.title = "Ava Fashion";
     // this.setState({loading:false})
-    this.waiting();
+    // this.waiting();
   }
 
   render(){
 
      const {loading}= this.state;
 
-    const hBlock1 = loading ? <CircularProgress className="text-secondary" /> : <HBlock1 state={!loading}/>;
+    //const hBlock1 = loading ? <Loader type="ball-grid-beat" style={{display:"block"}} /> : <HBlock1 state={!loading}/>;
     // const hBlock1 = loading ? <Spinner animation="border" variant="primary"><span className="sr-only">Loading...</span></Spinner> : <HBlock1 />;
     return(
       <main id="home" className="container wide pad-half padH">
 
       <section id="home-block-1" className="row pad-half-all">
         <div className="col-12 block-item-1">
-            {hBlock1}
+            <HBlock1 state={!loading}/>;
           </div>
-          <div className="col-md-6 block-item-2">
-              <img className="img-fluid" src="/img/alt-1.jpg"  alt="" />
-              <div className="bg-container">
-                  <div className="bg">
-                      <div className="text pink">
-                          <h4 >two</h4>
-                          <h3 >ways to</h3>
-                          <h2 className="teal-color">wear</h2>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <div className="col-md-6 block-item-3">
-              <img className="img-fluid" src="/img/alt-2.jpg" alt="" />
-              <div className="bg-container">
-                  <div className="bg">
-                      <div className="text pink">
-                          <h4>the chic dress</h4>
-                          <h3 >collection</h3>
-                          <h2 className="teal-color">20% off</h2>
-                      </div>
-                  </div>
-              </div>
-          </div>
+          <Fade bottom cascade>
+            <div className="col-md-6 block-item-2">
+                <img className="img-fluid" src="/img/alt-1.jpg"  alt="" />
+                <div className="bg-container">
+                    <div className="bg">
+                        <div className="text pink">
+                            <h4 >two</h4>
+                            <h3 >ways to</h3>
+                            <h2 className="teal-color">wear</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="col-md-6 block-item-3">
+                <img className="img-fluid" src="/img/alt-2.jpg" alt="" />
+                <div className="bg-container">
+                    <div className="bg">
+                        <div className="text pink">
+                            <h4>the chic dress</h4>
+                            <h3 >collection</h3>
+                            <h2 className="teal-color">20% off</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+          </Fade>
+
           <div className="col-md-12 block-item-4">
               <img className="img-fluid" src="/img/1400-2-4.jpg"alt="" />
               <div className="bg-container">
@@ -169,67 +179,8 @@ export default class Home extends Component{
       </section>
 
       <section id="home-block-2" className="">
-
-          <h3 className="text-center">new products</h3>
-          <div className="row fluid-max-wide-10 center">
-              <div className="slick one row no-pad pad-half-all fluid">
-                  <div className="">
-                      <img className="img-fluid" src="/img/330-1.png" alt="" />
-                  </div>
-                  <div className="">
-                      <img className="img-fluid" src="/img/330-2.png" alt="" />
-                  </div>
-                  <div className="">
-                      <img className="img-fluid" src="/img/330-1.png" alt="" />
-                  </div>
-                  <div className="">
-                      <img className="img-fluid" src="/img/330-2.png" alt="" />
-                  </div>
-                  <div className="">
-                      <img className="img-fluid" src="/img/330-1.png" alt="" />
-                  </div>
-                  <div className="">
-                      <img className="img-fluid" src="/img/330-2.png" alt="" />
-                  </div>
-                  <div className="">
-                      <img className="img-fluid" src="/img/330-1.png" alt="" />
-                  </div>
-                  <div className="">
-                      <img className="img-fluid" src="/img/330-2.png" alt="" />
-                  </div>
-
-              </div>
-          </div>
-
-          <h3 className="text-center">special products</h3>
-          <div className="row fluid-max-wide-10 center">
-              <div className="slick two row no-pad pad-half-all fluid">
-                  <div className="">
-                      <img className="img-fluid" src="/img/330-3.png" alt="" />
-                  </div>
-                  <div className="">
-                      <img className="img-fluid" src="/img/330-4.png" alt="" />
-                  </div>
-                  <div className="">
-                      <img className="img-fluid" src="/img/330-3.png" alt="" />
-                  </div>
-                  <div className="">
-                      <img className="img-fluid" src="/img/330-4.png" alt="" />
-                  </div>
-                  <div className="">
-                      <img className="img-fluid" src="/img/330-3.png" alt="" />
-                  </div>
-                  <div className="">
-                      <img className="img-fluid" src="/img/330-4.png" alt="" />
-                  </div>
-                  <div className="">
-                      <img className="img-fluid" src="/img/330-3.png" alt="" />
-                  </div>
-                  <div className="">
-                      <img className="img-fluid" src="/img/330-4.png" alt="" />
-                  </div>
-              </div>
-          </div>
+        <NewProducts />
+        <SpecialProducts />
       </section>
 
       <section id="home-block-3" >

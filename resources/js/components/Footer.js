@@ -66,10 +66,10 @@ export default function Footer(){
                     </div>
                 </form>
                 <div className="fluid-max-slim-2 social">
-                    <a href="/"><span className="fa fa-facebook"></span></a>
-                    <a href="/"><span className="fa fa-twitter"></span></a>
-                    <a href="/"><span className="fa fa-google-plus"></span></a>
-                    <a href="/"><span className="fa fa-instagram"></span></a>
+                    <a href="/"><span className="fab fa-facebook-f"></span></a>
+                    <a href="/"><span className="fab fa-twitter"></span></a>
+                    <a href="/"><span className="fab fa-google-plus"></span></a>
+                    <a href="/"><span className="fab fa-instagram"></span></a>
                 </div>
             </div>
         </div>

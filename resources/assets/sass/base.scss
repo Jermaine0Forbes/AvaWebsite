@@ -5,6 +5,28 @@
 
 /////////////////////////////////////*/
 
+/*====================================
+    .carousel-product
+====================================*/
+
+.carousel-product{
+  &:hover{
+    text-decoration:none;
+  }
+  .product{
+
+    &-name, &-price{
+      text-align:center;
+      font-size:0.8em;
+    }
+
+    &-price{
+      color:$teal;
+    }
+
+  }
+}
+
 
 /*====================================
     body
@@ -89,4 +111,35 @@ main{
 ====================================*/
 .pink-color{
     color:$pink;
+}
+
+
+
+/*====================================
+    loaders.css
+====================================*/
+.loader.loader-active{
+
+    .loader-inner{
+      display:block;
+      margin:auto;
+        &>div{
+            background:$teal;
+        }
+    }
+}
+
+
+/*====================================
+    .star-rating
+====================================*/
+
+.star-rating{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  .fa-star{
+    color: $yellow;
+    // font-size:3em;
+  }
 }
