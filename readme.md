@@ -1,4 +1,4 @@
-<p align="center"><img src="public/img/ava-logo.svg"></p>
+<p align="center"><img src="public/img/ava-logo-top.svg"></p>
 
 # Ava Website
 
@@ -19,14 +19,14 @@ A personal e-commerce project that I'm creating with laravel & react.
 
 *Want to see more logs? visit* **logs.md**
 
-### 4/16/20
+### 4/19/20
 
 **Goals for the month**
-- Create the single product page
+- ~~~Create the single product page~~~
 - Create fake data for products
 - Make "add to cart" work
 - Create the "check out" page
 - Create transition pages
 
 **Currently**
-- Focused on creating the product page
+- creating the models for the app, and deleting tables that I don't need
