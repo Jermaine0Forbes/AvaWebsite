@@ -1,5 +1,18 @@
 # Logs
 
+### 4/23/20
+
+**Goals for the month**
+- Create the single product page[**done**]
+- Create fake data for products
+- Make "add to cart" work
+- Create the "check out" page
+- Create transition pages
+
+**Currently**
+- Created the migrations for the models, now I need to add the fake data
+
+
 ### 4/19/20
 
 **Goals for the month**
