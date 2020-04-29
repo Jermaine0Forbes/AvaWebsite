@@ -16,9 +16,11 @@ class CreateProductcommentTable extends Migration
         Schema::create('productcomments', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('product_id')->unsigned();
-            $table->bigInteger('size_id')->unsigned();
+            $table->bigInteger('user_id')->unsigned();
             $table->index("product_id");
-            $table->index("size_id");
+            $table->index("user_id");
+            $table->foreign("product_id")->references("id")->on('products')->onDelete('cascade');
+            $table->foreign("user_id")->references("id")->on('users')->onDelete('cascade');
             $table->string("title",100);
             $table->text("summary");
             $table->tinyInteger("rating")->unsigned();

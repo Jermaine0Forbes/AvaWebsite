@@ -5659,7 +5659,7 @@ function Product() {
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
         { className: 'col-md-5' },
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { className: 'img-fluid', src: 'https://via.placeholder.com/680x720.png' })
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { className: 'img-fluid', src: 'https://via.placeholder.com/680x720?text=Name+of+Product' })
       ),
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',

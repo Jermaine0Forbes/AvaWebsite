@@ -30,7 +30,7 @@ export default function Product() {
       </nav>
       <div className="row justify-content-between">
         <div className="col-md-5">
-          <img className="img-fluid" src="https://via.placeholder.com/680x720.png"/>
+          <img className="img-fluid" src="https://via.placeholder.com/680x720?text=Name+of+Product"/>
         </div>
         <div className="col-md-6">
           <h2 className="product-name">Product Name</h2>

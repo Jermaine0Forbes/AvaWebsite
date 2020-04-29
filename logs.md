@@ -1,5 +1,18 @@
 # Logs
 
+### 4/29/20
+
+**Goals for the month**
+- Create the single product page[**done**]
+- ~Create fake data for products~
+- Make "add to cart" work
+- Create the "check out" page
+- Create transition pages
+
+**Currently**
+- I generated all the data for the tables, now I need to load the data when a customer
+clicks on a random product
+
 ### 4/23/20
 
 **Goals for the month**

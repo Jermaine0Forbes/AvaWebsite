@@ -19,6 +19,8 @@ class CreateProductsizeTable extends Migration
             $table->bigInteger('size_id')->unsigned();
             $table->index("product_id");
             $table->index("size_id");
+            $table->foreign("product_id")->references("id")->on('products')->onDelete('cascade');
+            $table->foreign("size_id")->references("id")->on('sizes')->onDelete('cascade');
             $table->timestamps();
         });
     }
