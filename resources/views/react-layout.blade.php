@@ -18,7 +18,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
         <script src="/js/slick.min.js"></script>
 
-        <title>{{$title}}</title>
+        <title>Ava Fashion | For all the fashion you need</title>
         {{-- <title>Home</title> --}}
     </head>
     <body >

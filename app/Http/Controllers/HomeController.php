@@ -8,7 +8,7 @@ use Faker\Generator as Faker;
 class HomeController extends Controller
 {
     public function index(){
-      return view("example", ["title" => "Default React App"]);
+      return view("react", ["title" => "Ava Fashion | For all the fashion you need"]);
     }
 
     public function test(){

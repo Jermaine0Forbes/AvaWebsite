@@ -13,7 +13,13 @@
 
 Route::get("/test", "HomeController@test");
 
-Route::get('/',"HomeController@index");
+// Route::get('/{path?}', "HomeController@index");
+Route::view('/{path?}/{id?}', "react");
+// Route::view('/{path?}', "react");
+
+// Route::any('{query}',
+//     function() { return redirect('/'); });
+// Route::get('/',"HomeController@index");
 // Route::get('/', function () {
 //     return view('home', ['title'=>"Ava Fashion", 'id' => "home"]);
 // });

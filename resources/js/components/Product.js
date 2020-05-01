@@ -6,7 +6,16 @@ import Loader from  'react-loaders';
 import { useInView } from 'react-intersection-observer'
 
 
-export default function Product() {
+export default function Product({id}) {
+
+  useEffect(() => {
+    fetch("http://localhost:3001/api/product/"+id)
+    .then(res => res.text())
+    .then(res => {
+      console.log(res)
+    })
+    .catch( err => console.error(err))
+  },[])
 
   return (
     <main id="product" className="container wide pad-half padH">

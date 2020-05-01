@@ -20,6 +20,11 @@
       font-size:0.8em;
     }
 
+    &-name{
+      margin-top:0.5em;
+      font-size:0.7em;
+    }
+
     &-price{
       color:$teal;
     }
@@ -138,8 +143,9 @@ main{
   display:flex;
   justify-content: center;
   align-items: center;
-  .fa-star{
-    color: $yellow;
+  margin: 3px 0;
+  .fa-star,.fa-star-half-alt{
+    color: $pink;
     // font-size:3em;
   }
 }

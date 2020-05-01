@@ -2,7 +2,7 @@
 
 
 @section('main')
-  <div id="example">
+  <div id="react">
 
   </div>
 @endsection

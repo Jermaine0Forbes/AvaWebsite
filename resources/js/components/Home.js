@@ -21,7 +21,7 @@ import SpecialProducts from "./SpecialProducts";
 
 const HBlock1 = ({state}) =>{
 
-  console.log(state)
+  // console.log(state)
   return (
     <Fade bottom={true}>
        <img className="img-fluid" src="/img/1400-2-22.jpg" alt="" />
@@ -52,6 +52,7 @@ export default class Home extends Component{
   }
   componentDidMount(){
     document.title = "Ava Fashion";
+
     // this.setState({loading:false})
     // this.waiting();
   }
@@ -67,7 +68,7 @@ export default class Home extends Component{
 
       <section id="home-block-1" className="row pad-half-all">
         <div className="col-12 block-item-1">
-            <HBlock1 state={!loading}/>;
+            <HBlock1 state={!loading}/>
           </div>
           <Fade bottom cascade>
             <div className="col-md-6 block-item-2">
