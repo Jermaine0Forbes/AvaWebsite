@@ -13,7 +13,7 @@ $factory->define(ProductComment::class, function (Faker $faker) {
   $twoStar = ["This makes me look fat","Product not as advertised","I feel cheated"];
   $oneStar = ["I hate this","My friends make fun of me for wearing this","I want my money back!"];
 
-  $rating = $faker->numberBetween(5,1);
+  $rating = $faker->numberBetween(2,5);
 
   switch ($rating) {
     case 5:

@@ -23,7 +23,7 @@ const HBlock1 = ({state}) =>{
 
   // console.log(state)
   return (
-    <Fade bottom={true}>
+    <Fade  duration={500}>
        <img className="img-fluid" src="/img/1400-2-22.jpg" alt="" />
        <div className="bg-container">
            <div className="bg">
@@ -70,7 +70,7 @@ export default class Home extends Component{
         <div className="col-12 block-item-1">
             <HBlock1 state={!loading}/>
           </div>
-          <Fade bottom cascade>
+          <Fade bottom cascade duration={300}>
             <div className="col-md-6 block-item-2">
                 <img className="img-fluid" src="/img/alt-1.jpg"  alt="" />
                 <div className="bg-container">

@@ -29,7 +29,7 @@ export default class Main extends Component{
           <Route path="/accessories"  component={Accessory}/>
           <Route path="/men"  component={Men}/>
           <Route path="/women"  component={Women}/>
-          <Route path={["/product","/product/:id"]}   render={ id => <Product id={id}/> }/>
+          <Route path={"/product/:id"}   component={Product}/>
           <Route exact path="/cart">
             {isLoggedIn ?<Cart/>:  <Redirect to="/login" />}
           </Route>

@@ -18,6 +18,6 @@ class DatabaseSeeder extends Seeder
          factory(User::class,100)->create();
          factory(Product::class,200)->create();
          $this->call(ProductSizeTableSeeder::class);
-          factory(ProductComment::class,400)->create();
+          factory(ProductComment::class,800)->create();
     }
 }

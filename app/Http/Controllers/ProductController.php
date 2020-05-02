@@ -8,11 +8,14 @@ use DB;
 class ProductController extends Controller
 {
     public function index(){
-        $product = Product::find(1)->toArray();
+        $product = Product::find(1)->comments()->selectRaw()->get();
         return response()->json($product);
+        // $product = Product::find(1)->toArray();
+        // return response()->json($product);
     }
     public function getProduct($id){
-      $product = Product::find($id);
+      // $product = Product::find($id);
+      $product = Product::getDetail($id)[0];
       return response()->json($product);
     }
     public function recent(){

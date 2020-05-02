@@ -65,7 +65,7 @@ $factory->define(Product::class, function (Faker $faker) {
     return [
           "name" => $name,
           "price" => $price,
-          "image" => "https://via.placeholder.com/680x720/text=$imgName",
+          "image" => "https://via.placeholder.com/680x720?text=$imgName",
           "sex" => $sex,
           "brand" => $brand,
           "type" => $type,

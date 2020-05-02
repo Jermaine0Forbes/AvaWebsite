@@ -119,6 +119,11 @@
     &price{
       font-size:1.5em;
       color:$dark-grey;
+      &-container{
+        p{
+          margin-bottom:0;
+        }
+      }
     }
 
     &quantity{
@@ -153,6 +158,7 @@
     &container{
       display:flex;
       margin-right:1.5em;
+      align-items: center;
     }
 
     &reviews{
@@ -160,6 +166,14 @@
       font-style:oblique;
       font-size:0.7em;
       margin-left:1em;
+    }
+  }
+
+  .quantity-btn{
+    &:hover{
+      span{
+        color:$pink;
+      }
     }
   }
 

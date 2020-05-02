@@ -15,5 +15,5 @@ const mix = require('laravel-mix');
 //    .sass('resources/assets/sass/app.scss', 'public/css');
 
 mix.browserSync("ava.co")
-   .react('resources/js/app.js', 'public/js')
+   .react('resources/react/app.js', 'public/js')
    .sass('resources/assets/sass/style.scss', 'public/css');
