@@ -29,6 +29,17 @@ export default function Product() {
         </React.Fragment>
       )
     }
+
+    return (
+      <React.Fragment>
+        <p>
+          <span className="label">current:</span>
+          <span className="product-price">
+             ${price}
+          </span>
+        </p>
+      </React.Fragment>
+    )
   }
 
 
@@ -36,22 +47,33 @@ export default function Product() {
     let breadItem = [];
     switch (sex) {
       case "male":
-        breadItem.push(<li className="breadcrumb-item"><Link to="/male">Male</Link></li>);
+        breadItem.push(<Link to="/male">Male</Link>);
         break;
       case "female":
-        breadItem.push(<li className="breadcrumb-item"><Link to="/female">Female</Link></li>);
+        breadItem.push(<Link to="/female">Female</Link>);
         break;
       default:
 
     }
-    if(accessory) breadItem.push(<li className="breadcrumb-item"><Link to="/accessory">Accessory</Link></li>);
+    if(accessory) breadItem.push(<Link to="/accessory">Accessory</Link>);
 
-     breadItem.push(<li className="breadcrumb-item"><Link to={"/"+type}>{_.capitalize(type)}</Link></li>);
+     breadItem.push(<Link to={"/"+type}>{_.capitalize(type)}</Link>);
 
-      breadItem.push(<li className="breadcrumb-item active" aria-current="page">{name}</li>);
+      breadItem.push(name);
 
-     return breadItem.map(item => item);
+     return breadItem.map((item, i, arr) => {
+       if(i == (arr.length-1)){
+         return <li className="breadcrumb-item active" aria-current="page" key={i}>{item}</li>;
+       }
+      return  <li className="breadcrumb-item" key={i}>{item}</li>;
 
+    });
+
+  }
+
+// need to finish
+  const sizeList = (size) => {
+    if(size.search("Small")) console.log("foo")
   }
   useEffect(() => {
     fetch(url)

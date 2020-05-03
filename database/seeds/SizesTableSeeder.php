@@ -32,6 +32,7 @@ class SizesTableSeeder extends Seeder
         ["name" => "36", "created_at" => Carbon::now() ,"updated_at" => Carbon::now()],
         ["name" => "38", "created_at" => Carbon::now() ,"updated_at" => Carbon::now()],
         ["name" => "40", "created_at" => Carbon::now() ,"updated_at" => Carbon::now()],
+        ["name" => "none", "created_at" => Carbon::now() ,"updated_at" => Carbon::now()],
       ]);
     }
 }

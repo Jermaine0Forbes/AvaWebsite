@@ -14,6 +14,7 @@ class ProductSizeTableSeeder extends Seeder
      private $id;
 
     public function insertSizes($size){
+        
       foreach ($size as &$val) {
         ProductSize::create(["product_id" => $this->id, "size_id" => $val]);
       }
@@ -23,6 +24,7 @@ class ProductSizeTableSeeder extends Seeder
         $generalSize = [1,2,3,4];
         $shoeSize = [5,6,7,8,9,10,11];
         $waistSize = [12,13,14,15,16,17,18,19];
+        $none = [20];
         $general = [
           "jacket",
           "coat",
@@ -59,6 +61,8 @@ class ProductSizeTableSeeder extends Seeder
               $this->insertSizes($shoeSize);
             }elseif (in_array($type,$waist)) {
               $this->insertSizes($waistSize);
+            }else{
+              $this->insertSizes($none);
             }
 
         }//for loop

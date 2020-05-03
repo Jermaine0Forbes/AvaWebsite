@@ -8,7 +8,23 @@ use DB;
 class ProductController extends Controller
 {
     public function index(){
-        $product = Product::find(1)->comments()->selectRaw()->get();
+        $product = Product::select(["name","price","discount","accessory"])
+        ->where("id",1)
+        ->get();
+        $comment = Product::find(1)
+        ->comments()
+        ->selectRaw("round(avg(rating),1) as rating, product_id as id")
+        ->groupBy("product_id")
+        ->get();
+
+        $size = Product::find(1)
+        ->sizes()
+        ->pluck("name");
+       $product = array_merge($product->toArray(), $comment->toArray() );
+       $product["size"]= $size;
+       // $product->size = $size;
+       // $product = $product->toBase()->merge($comment->toBase());
+
         return response()->json($product);
         // $product = Product::find(1)->toArray();
         // return response()->json($product);

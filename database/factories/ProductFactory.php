@@ -55,8 +55,8 @@ $factory->define(Product::class, function (Faker $faker) {
 
 
   $isDiscount = $faker->numberBetween(0,1);
-  $discount = $isDiscount ? $faker->numberBetween(5,75) : 0;
-  $price = $faker->randomFloat(2, 24.99, 215.99);
+  $discount = $isDiscount ? $faker->numberBetween(5,50) : 0;
+  $price = $faker->randomFloat(2, 50.99, 350.99);
   $brand = $faker->randomElement($brandArr);
   $type = $faker->randomElement($regularType);
   $name = ucwords("$brand {$faker->city} $type");

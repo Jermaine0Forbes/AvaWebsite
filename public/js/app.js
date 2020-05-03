@@ -5416,6 +5416,26 @@ function Product() {
         )
       );
     }
+
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.Fragment,
+      null,
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'p',
+        null,
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'span',
+          { className: 'label' },
+          'current:'
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'span',
+          { className: 'product-price' },
+          '$',
+          price
+        )
+      )
+    );
   };
 
   var breadCrumb = function breadCrumb(accessory, sex, type, name) {
@@ -5423,58 +5443,54 @@ function Product() {
     switch (sex) {
       case "male":
         breadItem.push(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'li',
-          { className: 'breadcrumb-item' },
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["f" /* Link */],
-            { to: '/male' },
-            'Male'
-          )
+          __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["f" /* Link */],
+          { to: '/male' },
+          'Male'
         ));
         break;
       case "female":
         breadItem.push(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'li',
-          { className: 'breadcrumb-item' },
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["f" /* Link */],
-            { to: '/female' },
-            'Female'
-          )
+          __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["f" /* Link */],
+          { to: '/female' },
+          'Female'
         ));
         break;
       default:
 
     }
     if (accessory) breadItem.push(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      'li',
-      { className: 'breadcrumb-item' },
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["f" /* Link */],
-        { to: '/accessory' },
-        'Accessory'
-      )
+      __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["f" /* Link */],
+      { to: '/accessory' },
+      'Accessory'
     ));
 
     breadItem.push(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      'li',
-      { className: 'breadcrumb-item' },
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["f" /* Link */],
-        { to: "/" + type },
-        __WEBPACK_IMPORTED_MODULE_5_lodash___default.a.capitalize(type)
-      )
+      __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["f" /* Link */],
+      { to: "/" + type },
+      __WEBPACK_IMPORTED_MODULE_5_lodash___default.a.capitalize(type)
     ));
 
-    breadItem.push(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      'li',
-      { className: 'breadcrumb-item active', 'aria-current': 'page' },
-      name
-    ));
+    breadItem.push(name);
 
-    return breadItem.map(function (item) {
-      return item;
+    return breadItem.map(function (item, i, arr) {
+      if (i == arr.length - 1) {
+        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'li',
+          { className: 'breadcrumb-item active', 'aria-current': 'page', key: i },
+          item
+        );
+      }
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'li',
+        { className: 'breadcrumb-item', key: i },
+        item
+      );
     });
+  };
+
+  // need to finish
+  var sizeList = function sizeList(size) {
+    if (size.search("Small")) console.log("foo");
   };
   __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_react__["useEffect"])(function () {
     fetch(url).then(function (res) {
@@ -6155,22 +6171,25 @@ var StarRating = function StarRating(_ref) {
   function starLoop(num) {
     var decimal = Number.isInteger(rating) ? 0 : (rating % 1).toFixed(1);
     // console.log(rating+" decimal is "+decimal)
-    var remainder = decimal > 0 ? 5 - (num + 1) : 5 - num;
+    var remainder = 5 - num;
     // console.log("remainder is "+remainder)
     var starArr = [];
     for (var i = 0; i < num; i++) {
       starArr.push(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("i", { className: "fas fa-star" }));
     }
-    if (decimal >= 0.3 && decimal <= 0.6) {
-      starArr.push(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("i", { className: "fas fa-star-half-alt" }));
-      // stars += <i className="fas fa-star"></i>;
-    } else if (decimal >= 0.7) {
-      starArr.push(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("i", { className: "fas fa-star" }));
-      // stars += <i className="fas fa-star-half-alt"></i>;
-    }
 
     if (remainder) {
       for (var i = 0; i < remainder; i++) {
+
+        if (i == 0 && decimal >= 0.3 && decimal <= 0.6) {
+          starArr.push(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("i", { className: "fas fa-star-half-alt" }));
+          continue;
+          // stars += <i className="fas fa-star"></i>;
+        } else if (i == 0 && decimal >= 0.7) {
+          starArr.push(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("i", { className: "fas fa-star" }));
+          continue;
+          // stars += <i className="fas fa-star-half-alt"></i>;
+        }
         starArr.push(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("i", { className: "far fa-star" }));
         // stars += <i className="far fa-star"></i>;
       }
@@ -37337,7 +37356,7 @@ var SlickProducts = function SlickProducts(_ref2) {
     fetch(url).then(function (res) {
       return res.json();
     }).then(function (res) {
-      // console.log(res)
+      console.log(res);
       var items = res.map(function (e, i) {
         var img = i % 2 == 0 ? "2" : "1";
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(SlickProduct, { key: e["product_id"], id: e.product_id, name: e.name, im: img, rating: e.rating, price: e.price });
