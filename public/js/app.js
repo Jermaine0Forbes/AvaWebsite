@@ -5352,8 +5352,6 @@ var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = [
 
 
 
-// import "loaders.css/loaders.css.js";
-// import "loaders.css/loaders.min.css";
 
 
 
@@ -5363,12 +5361,32 @@ function Product() {
       id = _useParams.id;
 
   var origin = window.location.origin;
-  var url = origin + "/api/product/" + id;
+  var productUrl = origin + "/api/product/" + id;
+  var commentUrl = origin + "/api/product/comments/" + id;
 
   var _useState = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_react__["useState"])(null),
       _useState2 = _slicedToArray(_useState, 2),
       product = _useState2[0],
       setProduct = _useState2[1];
+
+  var _useState3 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_react__["useState"])(1),
+      _useState4 = _slicedToArray(_useState3, 2),
+      number = _useState4[0],
+      setNumber = _useState4[1];
+
+  var _useState5 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_react__["useState"])(false),
+      _useState6 = _slicedToArray(_useState5, 2),
+      comments = _useState6[0],
+      setComments = _useState6[1];
+
+  var _useInView = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_react_intersection_observer__["a" /* useInView */])({
+    /* Optional options */
+    threshold: 0.5
+  }),
+      _useInView2 = _slicedToArray(_useInView, 3),
+      ref = _useInView2[0],
+      inView = _useInView2[1],
+      entry = _useInView2[2];
 
   var listPrice = function listPrice(price, discount) {
     if (discount) {
@@ -5444,15 +5462,15 @@ function Product() {
       case "male":
         breadItem.push(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["f" /* Link */],
-          { to: '/male' },
-          'Male'
+          { to: '/men' },
+          'Men'
         ));
         break;
       case "female":
         breadItem.push(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["f" /* Link */],
-          { to: '/female' },
-          'Female'
+          { to: '/women' },
+          'Women'
         ));
         break;
       default:
@@ -5490,21 +5508,180 @@ function Product() {
 
   // need to finish
   var sizeList = function sizeList(size) {
-    if (size.search("Small")) console.log("foo");
+    if (size.includes("Small")) {
+      // console.log(size.search("Small"))
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'select',
+        { name: 'size', className: 'form-control' },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'option',
+          { 'default': true },
+          'choose a size'
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'option',
+          { value: 'small' },
+          'Small'
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'option',
+          { value: 'medium' },
+          'Medium'
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'option',
+          { value: 'large' },
+          'Large'
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'option',
+          { value: 'x-large' },
+          'X-Large'
+        )
+      );
+    } else if (size.includes("6")) {
+      size = __WEBPACK_IMPORTED_MODULE_5_lodash___default.a.words(size);
+      size.sort();
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'select',
+        { name: 'size', className: 'form-control' },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'option',
+          { 'default': true },
+          'choose a size'
+        ),
+        size.map(function (e, i) {
+          return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'option',
+            { value: e, key: i },
+            e
+          );
+        })
+      );
+    } else if (size.includes("26")) {
+      size = __WEBPACK_IMPORTED_MODULE_5_lodash___default.a.words(size);
+      size.sort();
+
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'select',
+        { name: 'size', className: 'form-control' },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'option',
+          { 'default': true },
+          'choose a size'
+        ),
+        size.map(function (e, i) {
+          return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'option',
+            { value: e, key: i },
+            e
+          );
+        })
+      );
+    }
+
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', null);
   };
+
+  var setQuantity = function setQuantity(num) {
+
+    num = number + num;
+    // console.log(num)
+    if (num <= 0) {
+      num = 1;
+    }
+    setNumber(num);
+  };
+
+  var commentList = function commentList(comms) {
+
+    return comms.map(function (e, i) {
+      var fInitial = e.firstName[0];
+      var lInitial = e.lastName[0];
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        { className: 'customer-review row border-bottom', key: i },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'div',
+          { className: 'col-md-4' },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'span',
+            { className: 'customer-icon' },
+            fInitial
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'span',
+            { className: 'customer-name' },
+            e.firstName,
+            ' ',
+            lInitial,
+            '.'
+          )
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'div',
+          { className: 'col-md-8' },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            { className: 'customer-rating' },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__StarRating__["a" /* default */], { rating: e.rating }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'span',
+              { className: 'date' },
+              e.date
+            )
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            { className: 'customer-title' },
+            e.title
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            { className: 'customer-summary' },
+            e.summary
+          )
+        )
+      );
+    });
+  };
+
   __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_react__["useEffect"])(function () {
-    fetch(url).then(function (res) {
+
+    window.scrollTo(1, 0);
+    fetch(productUrl).then(function (res) {
       return res.json();
     }).then(function (res) {
 
       res.listPrice = listPrice(res.price, res.discount);
       res.breadCrumb = breadCrumb(res.accessory, res.sex, res.type, res.name);
-      console.log(res);
+      res.sizeList = sizeList(res.size);
+      // console.log(res)
       setProduct(res);
     }).catch(function (err) {
       return console.error(err);
     });
   }, []);
+
+  __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_react__["useEffect"])(function () {
+    if (inView && !comments) {
+      fetch(commentUrl).then(function (res) {
+        return res.json();
+      }).then(function (res) {
+        console.log(res);
+        var comment = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.Fragment,
+          null,
+          commentList(res)
+        );
+        setComments(comment);
+      }).catch(function (err) {
+        console.log(err);
+      });
+      console.log("product-reviews in view");
+      console.log(entry);
+    }
+  }, [inView]);
 
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
     'main',
@@ -5571,7 +5748,7 @@ function Product() {
     ),
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'div',
-      { className: 'row justify-content-between' },
+      { id: 'detail', className: 'row justify-content-between' },
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
         { className: 'col-md-5' },
@@ -5593,9 +5770,9 @@ function Product() {
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
           { className: 'product-size' },
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          product ? product.sizeList : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'select',
-            { className: 'form-control' },
+            { name: 'size', className: 'form-control' },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'option',
               { 'default': true },
@@ -5620,7 +5797,7 @@ function Product() {
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
-          { className: 'product-quantity' },
+          { id: 'product-quantity' },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'span',
             { className: 'label mr-3' },
@@ -5628,13 +5805,17 @@ function Product() {
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'button',
-            { className: 'quantity-btn' },
+            { className: 'minus-btn', onClick: function onClick() {
+                setQuantity(-1);
+              } },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', { className: 'fas fa-minus' })
           ),
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { id: 'quantity-item', type: 'text', defaultValue: '1' }),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { id: 'quantity-item', type: 'text', readOnly: true, value: number }),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'button',
-            { className: 'quantity-btn' },
+            { className: 'plus-btn', onClick: function onClick() {
+                setQuantity(1);
+              } },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', { className: 'fas fa-plus' })
           )
         ),
@@ -5693,7 +5874,7 @@ function Product() {
     ),
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'div',
-      { className: 'product-reviews' },
+      { className: 'product-reviews', ref: ref },
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
         { className: 'customer-reviews' },
@@ -5722,7 +5903,7 @@ function Product() {
         { className: 'review-header' },
         'reviews'
       ),
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      comments ? comments : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
         { className: 'customer-review row border-bottom' },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -37336,7 +37517,7 @@ var SlickProducts = function SlickProducts(_ref2) {
   var onInit = function onInit() {
     slick.on("init", function () {
       setLoading(false);
-      console.log("slick loaded");
+      // console.log("slick loaded")
       $(slickContainer).removeAttr("style");
     });
   };
@@ -37356,7 +37537,7 @@ var SlickProducts = function SlickProducts(_ref2) {
     fetch(url).then(function (res) {
       return res.json();
     }).then(function (res) {
-      console.log(res);
+      // console.log(res)
       var items = res.map(function (e, i) {
         var img = i % 2 == 0 ? "2" : "1";
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(SlickProduct, { key: e["product_id"], id: e.product_id, name: e.name, im: img, rating: e.rating, price: e.price });

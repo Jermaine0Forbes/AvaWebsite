@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+use App\ProductComment;
 use DB;
 class ProductController extends Controller
 {
@@ -28,6 +29,17 @@ class ProductController extends Controller
         return response()->json($product);
         // $product = Product::find(1)->toArray();
         // return response()->json($product);
+    }
+
+    public function getComments($id){
+      if(is_numeric($id)){
+        $id = intval($id);
+        $comments = DB::select("call getComments(?)",[$id]);
+        return response()->json($comments);
+      }
+
+      return response(500)->json("something ain't right");
+
     }
     public function getProduct($id){
       // $product = Product::find($id);

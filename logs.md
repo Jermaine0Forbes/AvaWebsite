@@ -1,5 +1,19 @@
 # Logs
 
+### 5/5/20
+
+**Goals for the month**
+- Add react redux and modify current components
+- make "add to cart" button change cart quantity icon
+- create cart list when clicking on cart quantity icon
+- Create the "check out" page
+- create the recent-arrivals page
+
+**Currently**
+- The single product page, loads all data that has to deal with the products  and
+the fake reviews it receives. Now, I need to include redux in order to store values
+all throughout the application.
+
 ### 4/29/20
 
 **Goals for the month**

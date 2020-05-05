@@ -1,8 +1,6 @@
 import React,{Component, useEffect, useState, useRef} from 'react';
 import {Link, useParams} from "react-router-dom";
 import Loader from  'react-loaders';
-// import "loaders.css/loaders.css.js";
-// import "loaders.css/loaders.min.css";
 import { useInView } from 'react-intersection-observer';
 import StarRating from './StarRating';
 import _ from "lodash";
@@ -12,8 +10,15 @@ export default function Product() {
 
   const {id} = useParams();
   const origin = window.location.origin;
-  const url = origin+"/api/product/"+id;
+  const productUrl = origin+"/api/product/"+id;
+  const commentUrl = origin+"/api/product/comments/"+id;
   const[product,setProduct] = useState(null);
+  const[number, setNumber] = useState(1);
+  const[comments, setComments] = useState(false);
+  const [ref, inView, entry] = useInView({
+         /* Optional options */
+         threshold: 0.5,
+       })
   const listPrice  = (price, discount) =>{
     if(discount){
       let newPrice = (price - (price * (discount * 0.01))).toFixed(2);
@@ -47,10 +52,10 @@ export default function Product() {
     let breadItem = [];
     switch (sex) {
       case "male":
-        breadItem.push(<Link to="/male">Male</Link>);
+        breadItem.push(<Link to="/men">Men</Link>);
         break;
       case "female":
-        breadItem.push(<Link to="/female">Female</Link>);
+        breadItem.push(<Link to="/women">Women</Link>);
         break;
       default:
 
@@ -73,20 +78,119 @@ export default function Product() {
 
 // need to finish
   const sizeList = (size) => {
-    if(size.search("Small")) console.log("foo")
+    if(size.includes("Small")){
+      // console.log(size.search("Small"))
+      return (
+        <select name="size" className="form-control">
+          <option default>choose a size</option>
+          <option value="small">Small</option>
+          <option value="medium">Medium</option>
+          <option value="large">Large</option>
+          <option value="x-large">X-Large</option>
+        </select>
+      )
+    }else if(size.includes("6")){
+      size = _.words(size)
+      size.sort();
+      return (
+        <select name="size" className="form-control">
+          <option default>choose a size</option>
+        {  size.map((e,i) => {
+            return <option value={e} key={i}>{e}</option>;
+          })}
+        </select>
+      )
+
+    } else if(size.includes("26")){
+      size = _.words(size)
+      size.sort()
+
+      return (
+        <select name="size" className="form-control">
+          <option default>choose a size</option>
+        {  size.map((e,i) => {
+            return <option value={e} key={i}>{e}</option>;
+          })}
+        </select>
+      )
+
+    }
+
+    return (<span></span>)
   }
+
+  const setQuantity = (num) =>{
+
+     num = number+num;
+     // console.log(num)
+    if(num <= 0){
+      num =1;
+    }
+    setNumber(num);
+  }
+
+
+  const commentList = (comms) => {
+
+    return comms.map((e,i) =>{
+      const fInitial = e.firstName[0];
+      const lInitial = e.lastName[0];
+      return(<div className="customer-review row border-bottom" key={i}>
+            <div className="col-md-4">
+              <span className="customer-icon">{fInitial}</span>
+                <span className="customer-name">{e.firstName} {lInitial}.</span>
+            </div>
+            <div className="col-md-8">
+              <div className="customer-rating">
+                <StarRating rating={e.rating} />
+                <span className="date">{e.date}</span>
+              </div>
+
+              <div className="customer-title">{e.title}</div>
+              <div className="customer-summary">{e.summary}</div>
+            </div>
+          </div>)
+    })
+  }
+
+
   useEffect(() => {
-    fetch(url)
+
+    window.scrollTo(1, 0);
+    fetch(productUrl)
     .then(res => res.json())
     .then(res => {
 
       res.listPrice = listPrice(res.price, res.discount);
       res.breadCrumb = breadCrumb(res.accessory, res.sex, res.type, res.name);
-      console.log(res)
+      res.sizeList = sizeList(res.size);
+      // console.log(res)
       setProduct(res)
     })
     .catch( err => console.error(err))
   },[])
+
+
+  useEffect(() => {
+    if(inView  && !comments){
+      fetch(commentUrl)
+      .then(res => res.json())
+      .then(res => {
+        console.log(res)
+        const comment = (
+          <React.Fragment>
+            {commentList(res)}
+          </React.Fragment>
+        )
+        setComments(comment)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+      console.log("product-reviews in view")
+      console.log(entry)
+    }
+  },[inView])
 
   return (
     <main id="product" className="container wide pad-half padH">
@@ -114,7 +218,7 @@ export default function Product() {
         </div>
 
       </nav>
-      <div className="row justify-content-between">
+      <div id="detail" className="row justify-content-between">
         <div className="col-md-5">
           <img className="img-fluid" src={ product ? product.image : "https://via.placeholder.com/680x720?text=Name+of+Product"}/>
         </div>
@@ -126,18 +230,24 @@ export default function Product() {
           </div>
 
           <div className="product-size">
-            <select className="form-control">
-              <option default>choose a size</option>
-              <option value="small">small</option>
-              <option value="medium">medium</option>
-              <option value="large">large</option>
-            </select>
+            {
+              product ?
+              product.sizeList
+              :
+              <select name="size" className="form-control">
+                <option default>choose a size</option>
+                <option value="small">small</option>
+                <option value="medium">medium</option>
+                <option value="large">large</option>
+              </select>
+            }
+
           </div>
-          <div className="product-quantity">
+          <div id="product-quantity">
               <span className="label mr-3">quantity :</span>
-              <button className="quantity-btn"><span className="fas fa-minus"></span></button>
-              <input id="quantity-item" type="text" defaultValue="1" />
-              <button className="quantity-btn"><span className="fas fa-plus"></span></button>
+              <button className="minus-btn" onClick={ () => {setQuantity(-1)}}><span className="fas fa-minus"></span></button>
+              <input id="quantity-item" type="text"  readOnly value={number} />
+            <button className="plus-btn" onClick={() => {setQuantity(1)}}><span className="fas fa-plus"></span></button>
           </div>
           <button className="btn btn-primary cart-btn">Add to cart</button>
           <div className="product-links">
@@ -157,7 +267,7 @@ export default function Product() {
           </div>
         </div>
       </div>
-      <div className="product-reviews">
+      <div className="product-reviews" ref={ref}>
           <div className="customer-reviews">
             { product ? <StarRating rating={product.rating}/>:<StarRating rating={4}/>}
             <div className="title">Customer Reviews</div>
@@ -168,26 +278,34 @@ export default function Product() {
           </div>
 
           <div className="review-header">reviews</div>
-          <div className="customer-review row border-bottom">
-            <div className="col-md-4">
-              <span className="customer-icon">M</span>
-                <span className="customer-name">Mary C.</span>
+    {
+
+        comments ?
+
+          comments
+        :
+
+      <div className="customer-review row border-bottom">
+        <div className="col-md-4">
+          <span className="customer-icon">M</span>
+            <span className="customer-name">Mary C.</span>
+        </div>
+        <div className="col-md-8">
+          <div className="customer-rating">
+            <div className="star-rating">
+              <i className="fas fa-star"></i>
+              <i className="fas fa-star"></i>
+              <i className="fas fa-star"></i>
+              <i className="fas fa-star"></i>
+              <i className="far fa-star"></i>
             </div>
-            <div className="col-md-8">
-              <div className="customer-rating">
-                <div className="star-rating">
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                  <i className="far fa-star"></i>
-                </div>
-                <span className="date">4/19/20</span>
-              </div>
-              <div className="customer-title">This is a good product</div>
-              <div className="customer-summary">This is a good product</div>
-            </div>
+            <span className="date">4/19/20</span>
           </div>
+          <div className="customer-title">This is a good product</div>
+          <div className="customer-summary">This is a good product</div>
+        </div>
+      </div>
+    }
       </div>
     </main>
 

@@ -56,7 +56,7 @@ const SlickProducts = ({selector, slickContainer, url,visible}) => {
   const onInit = () => {
     slick.on("init", function(){
       setLoading(false)
-      console.log("slick loaded")
+      // console.log("slick loaded")
       $(slickContainer).removeAttr("style")
     })
 
@@ -79,7 +79,7 @@ const SlickProducts = ({selector, slickContainer, url,visible}) => {
     fetch(url)
     .then( res => res.json())
     .then(res => {
-      console.log(res)
+      // console.log(res)
       let items = res.map((e,i) => {
          let img = i % 2 ==  0 ? "2" :"1";
         return <SlickProduct key={e["product_id"]} id={e.product_id} name={e.name} im={img} rating={e.rating} price={e.price}/>

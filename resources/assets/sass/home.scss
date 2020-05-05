@@ -16,7 +16,7 @@
         top:45%;
         z-index:2;
         border-style:none;
-        background-color:$teal;
+        background-color:$grey;
         border-radius:10%;
         padding:15px 10px;
         // padding-left: 8px;
@@ -24,7 +24,7 @@
         font-size:1.5em;
         transition:all 0.3s;
         &:hover{
-            background-color:$pink;
+            background-color:$dark-grey;
         }
     }
     .slick-left{

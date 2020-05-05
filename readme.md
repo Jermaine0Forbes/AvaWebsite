@@ -19,15 +19,16 @@ A personal e-commerce project that I'm creating with laravel & react.
 
 *Want to see more logs? visit* **logs.md**
 
-### 4/29/20
+### 5/5/20
 
 **Goals for the month**
-- ~Create the single product page~
-- ~Create fake data for products~
-- Make "add to cart" work
+- Add react redux and modify current components
+- make "add to cart" button change cart quantity icon
+- create cart list when clicking on cart quantity icon
 - Create the "check out" page
-- Create transition pages
+- create the recent-arrivals page
 
 **Currently**
-- I generated all the data for the tables, now I need to load the data when a customer
-clicks on a random product
+- The single product page, loads all data that has to deal with the products  and
+the fake reviews it receives. Now, I need to include redux in order to store values
+all throughout the application.
