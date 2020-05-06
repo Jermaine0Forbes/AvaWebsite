@@ -1,7 +1,19 @@
 import React, {Component} from 'react';
 import {Link} from "react-router-dom";
 import {AccessoryMenu, MenMenu, WomenMenu} from "./SubMenu";
+import {connect} from 'react-redux';
+import {addItem} from "./action";
+const mapStateToProps = (state) => {
+  return {
+    quantity:state.quantity,
+    cartIcon: state.cartIcon,
+    message:state.message
+  }
+}
 
+const mapDispatchToProps = {
+  addItem,
+};
 
 export function HeaderB1(){
 
@@ -64,10 +76,11 @@ function MobileNav(){
 }
 
 
-export class HeaderB2 extends Component{
+ class HeaderB2 extends Component{
 
 
   render(){
+    const {cartIcon,message, quantity} = this.props;
     const link = false;
     const loginBtn = link ? <Link to="/login"><span className="fa fa-user"  data-toggle="tooltip" data-placement="bottom" title="Sign In"></span></Link>
     : <a data-toggle="modal" data-target="#exampleModal"><span className="fa fa-user"  data-toggle="tooltip" data-placement="bottom" title="Sign In"></span></a>;
@@ -112,7 +125,7 @@ export class HeaderB2 extends Component{
                   <a href="/"><span className="fa fa-search"></span></a>
                   {loginBtn}
                   <Link to="/cart"><span className="fa fa-shopping-cart"></span></Link>
-                  <span className="shopping-number">0</span>
+                  <span className={ quantity > 0 ? "shopping-number active" :"shopping-number"}>{quantity}</span>
               </div>
           </div>
           <MobileNav />
@@ -125,3 +138,5 @@ export class HeaderB2 extends Component{
   }
 
 }
+
+export default connect(mapStateToProps)(HeaderB2);

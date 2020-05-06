@@ -4,6 +4,8 @@ import Loader from  'react-loaders';
 import { useInView } from 'react-intersection-observer';
 import StarRating from './StarRating';
 import _ from "lodash";
+import {useDispatch, useSelector} from "react-redux";
+import {updateQuantity,addItem} from "./action"
 
 
 export default function Product() {
@@ -12,6 +14,8 @@ export default function Product() {
   const origin = window.location.origin;
   const productUrl = origin+"/api/product/"+id;
   const commentUrl = origin+"/api/product/comments/"+id;
+  const cartItems = useSelector( state => state.quantity);
+  const dispatch = useDispatch();
   const[product,setProduct] = useState(null);
   const[number, setNumber] = useState(1);
   const[comments, setComments] = useState(false);
@@ -130,6 +134,8 @@ export default function Product() {
   }
 
 
+
+
   const commentList = (comms) => {
 
     return comms.map((e,i) =>{
@@ -153,6 +159,21 @@ export default function Product() {
     })
   }
 
+  const addToCart = () =>{
+    console.log(number)
+    let quantity = cartItems + number;
+    let price = product.discount > 0 ? (product.price - (product.price * (product.discount * 0.01))).toFixed(2) : 0;
+    let item = {
+      price: price,
+      name: product.name,
+      id: id,
+      url: origin+"/product/"+id,
+      img: product.image,
+      quantity:number
+    }
+    dispatch(updateQuantity(quantity))
+    dispatch(addItem(item))
+  }
 
   useEffect(() => {
 
@@ -249,7 +270,7 @@ export default function Product() {
               <input id="quantity-item" type="text"  readOnly value={number} />
             <button className="plus-btn" onClick={() => {setQuantity(1)}}><span className="fas fa-plus"></span></button>
           </div>
-          <button className="btn btn-primary cart-btn">Add to cart</button>
+          <button className="btn btn-primary cart-btn" onClick={ () => addToCart()}>Add to cart</button>
           <div className="product-links">
             <div className="wish-list">
               <a href="#" className="label">wishlist</a>

@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {HeaderB1, HeaderB2} from "./HeaderBlock";
+import HeaderB2, {HeaderB1 } from "./HeaderBlock";
 
 
 
