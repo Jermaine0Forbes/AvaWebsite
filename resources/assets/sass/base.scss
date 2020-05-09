@@ -138,6 +138,42 @@ main{
     }
 }
 
+/*====================================
+    .loads
+====================================*/
+
+.loads {
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeload;
+  animation-timing-function: linear;
+  background: $lite-grey;
+  background: $grey;
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    color-stop(8%, $lite-grey),
+    color-stop(18%,$grey),
+    color-stop(33%, $lite-grey)
+  );
+  background: linear-gradient(to right, $lite-grey 8%, $grey 18%, $lite-grey 33%);
+  background-size: 1200px 104px;
+  position: relative;
+}
+
+
+@keyframes placeload {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
+  }
+}
+
+
 
 /*====================================
     .star-rating

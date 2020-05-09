@@ -197,7 +197,7 @@ export default function Product() {
       fetch(commentUrl)
       .then(res => res.json())
       .then(res => {
-        console.log(res)
+        // console.log(res)
         const comment = (
           <React.Fragment>
             {commentList(res)}
@@ -208,8 +208,8 @@ export default function Product() {
       .catch(err => {
         console.log(err)
       })
-      console.log("product-reviews in view")
-      console.log(entry)
+      // console.log("product-reviews in view")
+      // console.log(entry)
     }
   },[inView])
 

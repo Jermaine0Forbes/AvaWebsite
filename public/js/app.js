@@ -6451,17 +6451,60 @@ var Home = function (_Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_router_dom__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_reveal__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_reveal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_reveal__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Placeholder__ = __webpack_require__(118);
 /* harmony export (immutable) */ __webpack_exports__["a"] = HomeSection1;
+
 
 
 
 
 var HBlock1 = function HBlock1() {
 
+    var x = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        __WEBPACK_IMPORTED_MODULE_3__Placeholder__["a" /* PlaceholderImg */],
+        { src: 'div.block-item-1 img.img-fluid' },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            __WEBPACK_IMPORTED_MODULE_2_react_reveal__["Fade"],
+            { duration: 500 },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { className: 'img-fluid', src: '/img/1400-2-22.jpg', alt: '' }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'div',
+                { className: 'bg-container' },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'div',
+                    { className: 'bg' },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        { className: 'text teal' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'h4',
+                            { className: 'hidden-md-down' },
+                            'spring - summer 2017'
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'h2',
+                            null,
+                            'new arrivals'
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["f" /* Link */],
+                            { to: '/recent-arrivals', className: 'btn  btn-secondary' },
+                            'shop now'
+                        )
+                    )
+                )
+            )
+        )
+    );
+
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         __WEBPACK_IMPORTED_MODULE_2_react_reveal__["Fade"],
         { duration: 500 },
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { className: 'img-fluid', src: '/img/1400-2-22.jpg', alt: '' }),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            __WEBPACK_IMPORTED_MODULE_3__Placeholder__["a" /* PlaceholderImg */],
+            { src: 'div.block-item-1 img.img-fluid' },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { id: 'hsection-1', className: 'img-fluid', src: '/img/1400-2-22.jpg', alt: '' })
+        ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
             { className: 'bg-container' },
@@ -6508,7 +6551,11 @@ function HomeSection1() {
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
                 { className: 'col-md-6 block-item-2' },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { className: 'img-fluid', src: '/img/alt-1.jpg', alt: '' }),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    __WEBPACK_IMPORTED_MODULE_3__Placeholder__["a" /* PlaceholderImg */],
+                    null,
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { id: 'hsection-1-2', className: 'img-fluid', src: '/img/alt-1.jpg', alt: '' })
+                ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
                     { className: 'bg-container' },
@@ -6540,7 +6587,11 @@ function HomeSection1() {
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
                 { className: 'col-md-6 block-item-3' },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { className: 'img-fluid', src: '/img/alt-2.jpg', alt: '' }),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    __WEBPACK_IMPORTED_MODULE_3__Placeholder__["a" /* PlaceholderImg */],
+                    null,
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { id: 'hsection-1-3', className: 'img-fluid', src: '/img/alt-2.jpg', alt: '' })
+                ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
                     { className: 'bg-container' },
@@ -6571,64 +6622,80 @@ function HomeSection1() {
             )
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'div',
-            { className: 'col-md-12 block-item-4' },
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { className: 'img-fluid', src: '/img/1400-2-4.jpg', alt: '' }),
+            __WEBPACK_IMPORTED_MODULE_2_react_reveal__["Fade"],
+            { duration: 500 },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
-                { className: 'bg-container' },
+                { className: 'col-md-12 block-item-4' },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    __WEBPACK_IMPORTED_MODULE_3__Placeholder__["a" /* PlaceholderImg */],
+                    null,
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { id: 'hsection-1-4', className: 'img-fluid', src: '/img/1400-2-4.jpg', alt: '' })
+                ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
-                    { className: 'bg' },
+                    { className: 'bg-container' },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'div',
-                        { className: 'text teal' },
+                        { className: 'bg' },
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'h4',
-                            { className: 'hidden-md-down' },
-                            ' spring - summer 2017'
-                        ),
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'h2',
-                            null,
-                            'perfect utility'
-                        ),
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["f" /* Link */],
-                            { to: '/recent-arrivals', className: 'btn  btn-secondary' },
-                            'shop now'
+                            'div',
+                            { className: 'text teal' },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'h4',
+                                { className: 'hidden-md-down' },
+                                ' spring - summer 2017'
+                            ),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'h2',
+                                null,
+                                'perfect utility'
+                            ),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["f" /* Link */],
+                                { to: '/recent-arrivals', className: 'btn  btn-secondary' },
+                                'shop now'
+                            )
                         )
                     )
                 )
             )
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'div',
-            { className: 'col-md-6 block-item-5' },
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { className: 'img-fluid', src: '/img/alt-3.jpg', alt: '' }),
+            __WEBPACK_IMPORTED_MODULE_2_react_reveal__["Fade"],
+            { bottom: true, cascade: true, duration: 500 },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
-                { className: 'bg-container' },
+                { className: 'col-md-6 block-item-5' },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    __WEBPACK_IMPORTED_MODULE_3__Placeholder__["a" /* PlaceholderImg */],
+                    null,
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { id: 'hsection-1-5', className: 'img-fluid', src: '/img/alt-3.jpg', alt: '' })
+                ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
-                    { className: 'bg' },
+                    { className: 'bg-container' },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'div',
-                        { className: 'text pink' },
+                        { className: 'bg' },
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'h3',
-                            null,
-                            'buy 2 items'
-                        ),
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'h3',
-                            null,
-                            'get one'
-                        ),
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'h2',
-                            { className: 'teal-color' },
-                            'for free'
+                            'div',
+                            { className: 'text pink' },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'h3',
+                                null,
+                                'buy 2 items'
+                            ),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'h3',
+                                null,
+                                'get one'
+                            ),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'h2',
+                                { className: 'teal-color' },
+                                'for free'
+                            )
                         )
                     )
                 )
@@ -7580,7 +7647,7 @@ function Product() {
       fetch(commentUrl).then(function (res) {
         return res.json();
       }).then(function (res) {
-        console.log(res);
+        // console.log(res)
         var comment = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.Fragment,
           null,
@@ -7590,8 +7657,8 @@ function Product() {
       }).catch(function (err) {
         console.log(err);
       });
-      console.log("product-reviews in view");
-      console.log(entry);
+      // console.log("product-reviews in view")
+      // console.log(entry)
     }
   }, [inView]);
 
@@ -57232,6 +57299,65 @@ module.exports = function(module) {
 __webpack_require__(39);
 module.exports = __webpack_require__(40);
 
+
+/***/ }),
+/* 117 */,
+/* 118 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony export (immutable) */ __webpack_exports__["a"] = PlaceholderImg;
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+
+
+function PlaceholderImg(_ref) {
+  var children = _ref.children,
+      height = _ref.height;
+
+  var _useState = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_react__["useState"])(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      loaded = _useState2[0],
+      setLoaded = _useState2[1];
+
+  var h = height || "600px";
+  __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_react__["useEffect"])(function () {
+
+    // console.log(children.props)
+
+    var img = document.getElementById(children.props.id);
+
+    // console.log(img)
+
+    // let img = document.querySelector(src);
+    if (!img.complete) {
+      img.onload = function () {
+        console.log("image loaded");
+        // console.log(img)
+        setLoaded(true);
+      };
+    } else {
+      setLoaded(true);
+    }
+  }, []);
+
+  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.Fragment,
+    null,
+    loaded ? children : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      "span",
+      null,
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", { className: "img-placeholder loads", style: { width: "100%", height: h } }),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        "div",
+        { style: { visibility: "hidden", position: "absolute" } },
+        children
+      )
+    )
+  );
+}
 
 /***/ })
 /******/ ]);

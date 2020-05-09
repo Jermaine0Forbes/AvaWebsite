@@ -1,22 +1,48 @@
-import React,{Component} from 'react';
+import React,{Component, useState, useEffect, useRef} from 'react';
 import {Link} from "react-router-dom";
 import {Fade} from 'react-reveal';
+import {PlaceholderImg} from "./Placeholder";
 
 const HBlock1 = () =>{
 
+  let x = (
+    <PlaceholderImg src="div.block-item-1 img.img-fluid">
+        <Fade  duration={500}>
+         <img className="img-fluid" src="/img/1400-2-22.jpg" alt=""/>
+         <div className="bg-container">
+             <div className="bg">
+                 <div className="text teal">
+                     <h4 className="hidden-md-down">spring - summer 2017</h4>
+                     <h2 >new arrivals</h2>
+                     <Link  to="/recent-arrivals" className="btn  btn-secondary">shop now</Link>
+                 </div>
+             </div>
+         </div>
+     </Fade>
+    </PlaceholderImg>
+  )
+
   return (
-    <Fade  duration={500}>
-       <img className="img-fluid" src="/img/1400-2-22.jpg" alt="" />
-       <div className="bg-container">
-           <div className="bg">
-               <div className="text teal">
-                   <h4 className="hidden-md-down">spring - summer 2017</h4>
-                   <h2 >new arrivals</h2>
-                   <Link  to="/recent-arrivals" className="btn  btn-secondary">shop now</Link>
-               </div>
-           </div>
-       </div>
-   </Fade>
+
+
+        <Fade  duration={500}>
+        <PlaceholderImg src="div.block-item-1 img.img-fluid">
+          <img id="hsection-1" className="img-fluid" src="/img/1400-2-22.jpg" alt="" />
+          </PlaceholderImg>
+          <div className="bg-container">
+              <div className="bg">
+                  <div className="text teal">
+                      <h4 className="hidden-md-down">spring - summer 2017</h4>
+                      <h2 >new arrivals</h2>
+                      <Link  to="/recent-arrivals" className="btn  btn-secondary">shop now</Link>
+                  </div>
+              </div>
+          </div>
+        </Fade>
+
+
+
+
   )
 }
 
@@ -30,9 +56,13 @@ export default function HomeSection1(){
       <div className="col-12 block-item-1">
           <HBlock1 />
         </div>
+
+
         <Fade bottom cascade duration={300}>
           <div className="col-md-6 block-item-2">
-              <img className="img-fluid" src="/img/alt-1.jpg"  alt="" />
+            <PlaceholderImg>
+              <img id="hsection-1-2" className="img-fluid" src="/img/alt-1.jpg"  alt="" />
+            </PlaceholderImg>
               <div className="bg-container">
                   <div className="bg">
                       <div className="text pink">
@@ -44,7 +74,9 @@ export default function HomeSection1(){
               </div>
           </div>
           <div className="col-md-6 block-item-3">
-              <img className="img-fluid" src="/img/alt-2.jpg" alt="" />
+              <PlaceholderImg>
+              <img id="hsection-1-3" className="img-fluid" src="/img/alt-2.jpg" alt="" />
+              </PlaceholderImg>
               <div className="bg-container">
                   <div className="bg">
                       <div className="text pink">
@@ -58,8 +90,13 @@ export default function HomeSection1(){
 
         </Fade>
 
+
+
+        <Fade  duration={500}>
         <div className="col-md-12 block-item-4">
-            <img className="img-fluid" src="/img/1400-2-4.jpg"alt="" />
+            <PlaceholderImg>
+              <img id="hsection-1-4" className="img-fluid" src="/img/1400-2-4.jpg"alt="" />
+            </PlaceholderImg>
             <div className="bg-container">
                 <div className="bg">
                     <div className="text teal">
@@ -71,8 +108,12 @@ export default function HomeSection1(){
                 </div>
             </div>
         </div>
+      </Fade >
+      <Fade bottom cascade duration={500}>
         <div className="col-md-6 block-item-5">
-            <img className="img-fluid" src="/img/alt-3.jpg" alt="" />
+            <PlaceholderImg>
+              <img id="hsection-1-5" className="img-fluid" src="/img/alt-3.jpg" alt="" />
+            </PlaceholderImg>
             <div className="bg-container">
                 <div className="bg">
                     <div className="text pink">
@@ -83,6 +124,7 @@ export default function HomeSection1(){
                 </div>
             </div>
         </div>
+        </Fade>
         <div className="col-md-6 block-item-6">
             <div className="row no-pad pad-half-all">
                 <div className="col-sm-6 ">
