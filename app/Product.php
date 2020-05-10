@@ -25,4 +25,8 @@ class Product extends Model
       $result = DB::select("call getProductDetail(?)",[intval($id)]);
       return $result;
     }
+
+    public static function getSpecialProducts($id){
+      return  DB::select("call getSpecialProducts(?)",[intval($id)]);
+    }
 }

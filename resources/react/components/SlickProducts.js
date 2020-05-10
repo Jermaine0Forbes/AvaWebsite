@@ -7,24 +7,45 @@ import SlickDefaultProducts from './SlickDefaultProducts';
 
 
 
-const SlickProduct = ({id,im,name,price, rating}) =>  {
+const SlickProduct = ({discount,id,im,name,price, rating}) =>  {
+    let newPrice;
+    if(discount)  newPrice = (price - (price * (discount * 0.01))).toFixed(2);
+
   return (
     <Link className="carousel-product" to={"/product/"+id}>
-        <img className="img-fluid" src={"/img/330-"+im+".png"} alt={"image of "+name} />
+      {
+        discount ?
+        <div className="slick-img-container">
+          <span className="discount">{discount}%</span>
+          <img className="img-fluid" src={"/img/330-"+im+".png"} alt={"image of "+name} title={name}/>
+        </div>
+        :
+        <img className="img-fluid" src={"/img/330-"+im+".png"} alt={"image of "+name} title={name} />
+      }
+
+
         <div className="product-name">{name}</div>
         <StarRating rating={rating} key={id}/>
-        <div className="product-price">
-            ${price}
-        </div>
+        {
+          discount ?
+          <div className="product-price">
+              ${newPrice}
+          </div>
+          :
+          <div className="product-price">
+              ${price}
+          </div>
+        }
+
     </Link>
   )
 }
 
 
-const SlickProducts = ({selector, slickContainer, url,visible}) => {
+const SlickProducts = ({imgArr, slider, url,visible}) => {
   const [products, setProducts] = useState(null)
   const [loading, setLoading] = useState(true);
-  const slick  = $(selector);
+  const slick  = $(slider.selector);
 
   const initSlick = () =>{
 
@@ -57,7 +78,7 @@ const SlickProducts = ({selector, slickContainer, url,visible}) => {
     slick.on("init", function(){
       setLoading(false)
       // console.log("slick loaded")
-      $(slickContainer).removeAttr("style")
+      $(slider.idSelector).removeAttr("style")
     })
 
   }
@@ -81,14 +102,14 @@ const SlickProducts = ({selector, slickContainer, url,visible}) => {
     .then(res => {
       // console.log(res)
       let items = res.map((e,i) => {
-         let img = i % 2 ==  0 ? "2" :"1";
-        return <SlickProduct key={e["product_id"]} id={e.product_id} name={e.name} im={img} rating={e.rating} price={e.price}/>
+         let img = i % 2 ==  0 ? imgArr[0] :imgArr[1];
+        return <SlickProduct key={e["product_id"]} id={e.product_id} discount={e.discount} name={e.name} im={img} rating={e.rating} price={e.price}/>
       });
 
       let newProducts = (
                         <React.Fragment>
-                          <div id="slick-new-products" className="row fluid-max-wide-10 center" style={{visibility:"hidden", position:"absolute"}} >
-                              <div className="slick one row no-pad pad-half-all fluid"  >
+                          <div id={slider.id} className="row fluid-max-wide-10 center" style={{visibility:"hidden", position:"absolute"}} >
+                              <div className={ slider.class+" row no-pad pad-half-all fluid"}  >
                                 {items}
                               </div>
                           </div>

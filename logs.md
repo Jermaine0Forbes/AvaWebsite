@@ -1,5 +1,22 @@
 # Logs
 
+
+### 5/9/20
+
+**Goals for the month**
+- ~Add react redux and modify current components~
+- ~make "add to cart" button change cart quantity icon~
+- create cart list when clicking on cart quantity icon
+- Create the "check out" page
+- create the recent-arrivals page
+
+**Currently**
+- At this moment, I'm trying to develop the recent-arrivals page  which comes with
+with filter sidebar and a possible pagination at the top of the page. This is probably
+going to take a long time to develop.
+
+
+
 ### 5/5/20
 
 **Goals for the month**

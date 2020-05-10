@@ -11,6 +11,12 @@ import SlickProducts from './SlickProducts';
 const NewProducts = () => {
   const origin = window.location.origin;
   const [visible, setVisible] = useState(false);
+  const slick = {
+    idSelector : "#slick-new-products",
+    id : "slick-new-products",
+    class : "slick one",
+    selector:".slick.one"
+  }
   const [ref, inView, entry] = useInView({
          /* Optional options */
          threshold: 0.5,
@@ -24,7 +30,7 @@ const NewProducts = () => {
     return(
       <div className="new-products"  ref={ref}>
           <h3 className="text-center">new products</h3>
-          <SlickProducts url={origin+"/api/recent/products"} slickContainer="#slick-new-products"  selector=".slick.one" visible={visible} />
+          <SlickProducts url={origin+"/api/recent/products"} slider={slick}   visible={visible} imgArr={["2","1"]} />
       </div>
     )
 

@@ -6,11 +6,12 @@ export  function PlaceholderImg ({children,height}){
 
     const [loaded, setLoaded] = useState(false);
     const h = height || "600px";
+
     useEffect(()=>{
 
       // console.log(children.props)
 
-      let img = document.getElementById(children.props.id);
+        const img = document.getElementById(children.props.id);
 
       // console.log(img)
 

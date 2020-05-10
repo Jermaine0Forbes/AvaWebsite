@@ -7260,6 +7260,13 @@ var NewProducts = function NewProducts() {
       visible = _useState2[0],
       setVisible = _useState2[1];
 
+  var slick = {
+    idSelector: "#slick-new-products",
+    id: "slick-new-products",
+    class: "slick one",
+    selector: ".slick.one"
+  };
+
   var _useInView = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4_react_intersection_observer__["a" /* useInView */])({
     /* Optional options */
     threshold: 0.5
@@ -7281,7 +7288,7 @@ var NewProducts = function NewProducts() {
       { className: 'text-center' },
       'new products'
     ),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__SlickProducts__["a" /* default */], { url: origin + "/api/recent/products", slickContainer: '#slick-new-products', selector: '.slick.one', visible: visible })
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__SlickProducts__["a" /* default */], { url: origin + "/api/recent/products", slider: slick, visible: visible, imgArr: ["2", "1"] })
   );
 };
 
@@ -7971,9 +7978,23 @@ var RecentArrivals = function (_Component) {
         "main",
         { className: "container wide pad-half padH" },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          "div",
-          null,
-          "Recent Arrivals Page"
+          "section",
+          { className: "row pad-half-all" },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("img", { className: "img-fluid", src: "https://via.placeholder.com/1400x400?text=Recent+Arrivals" })
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          "section",
+          { className: "row pad-half-all" },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            "div",
+            { className: "col-md-3" },
+            "filter"
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            "div",
+            { className: "col-md-9" },
+            "Recent Arrivals Page"
+          )
         )
       );
     }
@@ -8227,23 +8248,42 @@ var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = [
 
 
 var SlickProduct = function SlickProduct(_ref) {
-  var id = _ref.id,
+  var discount = _ref.discount,
+      id = _ref.id,
       im = _ref.im,
       name = _ref.name,
       price = _ref.price,
       rating = _ref.rating;
 
+  var newPrice = void 0;
+  if (discount) newPrice = (price - price * (discount * 0.01)).toFixed(2);
+
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
     __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["f" /* Link */],
     { className: 'carousel-product', to: "/product/" + id },
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { className: 'img-fluid', src: "/img/330-" + im + ".png", alt: "image of " + name }),
+    discount ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      'div',
+      { className: 'slick-img-container' },
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'span',
+        { className: 'discount' },
+        discount,
+        '%'
+      ),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { className: 'img-fluid', src: "/img/330-" + im + ".png", alt: "image of " + name, title: name })
+    ) : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { className: 'img-fluid', src: "/img/330-" + im + ".png", alt: "image of " + name, title: name }),
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'div',
       { className: 'product-name' },
       name
     ),
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__StarRating__["a" /* default */], { rating: rating, key: id }),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+    discount ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      'div',
+      { className: 'product-price' },
+      '$',
+      newPrice
+    ) : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'div',
       { className: 'product-price' },
       '$',
@@ -8253,8 +8293,8 @@ var SlickProduct = function SlickProduct(_ref) {
 };
 
 var SlickProducts = function SlickProducts(_ref2) {
-  var selector = _ref2.selector,
-      slickContainer = _ref2.slickContainer,
+  var imgArr = _ref2.imgArr,
+      slider = _ref2.slider,
       url = _ref2.url,
       visible = _ref2.visible;
 
@@ -8268,7 +8308,7 @@ var SlickProducts = function SlickProducts(_ref2) {
       loading = _useState4[0],
       setLoading = _useState4[1];
 
-  var slick = $(selector);
+  var slick = $(slider.selector);
 
   var initSlick = function initSlick() {
 
@@ -8298,7 +8338,7 @@ var SlickProducts = function SlickProducts(_ref2) {
     slick.on("init", function () {
       setLoading(false);
       // console.log("slick loaded")
-      $(slickContainer).removeAttr("style");
+      $(slider.idSelector).removeAttr("style");
     });
   };
 
@@ -8319,8 +8359,8 @@ var SlickProducts = function SlickProducts(_ref2) {
     }).then(function (res) {
       // console.log(res)
       var items = res.map(function (e, i) {
-        var img = i % 2 == 0 ? "2" : "1";
-        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(SlickProduct, { key: e["product_id"], id: e.product_id, name: e.name, im: img, rating: e.rating, price: e.price });
+        var img = i % 2 == 0 ? imgArr[0] : imgArr[1];
+        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(SlickProduct, { key: e["product_id"], id: e.product_id, discount: e.discount, name: e.name, im: img, rating: e.rating, price: e.price });
       });
 
       var newProducts = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -8328,10 +8368,10 @@ var SlickProducts = function SlickProducts(_ref2) {
         null,
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
-          { id: 'slick-new-products', className: 'row fluid-max-wide-10 center', style: { visibility: "hidden", position: "absolute" } },
+          { id: slider.id, className: 'row fluid-max-wide-10 center', style: { visibility: "hidden", position: "absolute" } },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
-            { className: 'slick one row no-pad pad-half-all fluid' },
+            { className: slider.class + " row no-pad pad-half-all fluid" },
             items
           )
         )
@@ -8365,6 +8405,8 @@ var SlickProducts = function SlickProducts(_ref2) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_loaders___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_loaders__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_reveal__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_reveal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_react_reveal__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__SlickProducts__ = __webpack_require__(64);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_intersection_observer__ = __webpack_require__(26);
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
 
@@ -8374,95 +8416,73 @@ var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = [
 // import "loaders.css/loaders.min.css";
 
 
+
+
 var SpecialProducts = function SpecialProducts() {
-    var _useState = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_react__["useState"])(false),
-        _useState2 = _slicedToArray(_useState, 2),
-        loading = _useState2[0],
-        SetLoading = _useState2[1];
+  var origin = window.location.origin;
+  var url = origin + "/api/special/products";
 
-    var initSlick = function initSlick() {
-        $('.slick.two').not('.slick-initialized').slick({
-            infinite: true,
-            autoplay: true,
-            slidesToShow: 4,
-            slidesToScroll: 2,
-            autoplaySpeed: 5000,
-            prevArrow: "<button class='fa fa-angle-left slick-arrow slick-left'></button>",
-            nextArrow: "<button class='fa fa-angle-right slick-arrow slick-right'></button>",
-            responsive: [{
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 3
-                }
-            }, {
-                breakpoint: 576,
-                settings: {
-                    slidesToShow: 2
-                }
-            }]
-        });
-    };
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_react__["useEffect"])(function () {
-        initSlick();
-    }, [loading]);
+  var _useState = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_react__["useState"])(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      visible = _useState2[0],
+      setVisible = _useState2[1];
 
-    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'div',
-        { className: 'special-products' },
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'h3',
-            { className: 'text-center' },
-            'special products'
-        ),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'div',
-            { className: 'row fluid-max-wide-10 center' },
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'div',
-                { className: 'slick two row no-pad pad-half-all fluid' },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'div',
-                    { className: '' },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { className: 'img-fluid', src: '/img/330-3.png', alt: '' })
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'div',
-                    { className: '' },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { className: 'img-fluid', src: '/img/330-4.png', alt: '' })
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'div',
-                    { className: '' },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { className: 'img-fluid', src: '/img/330-3.png', alt: '' })
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'div',
-                    { className: '' },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { className: 'img-fluid', src: '/img/330-4.png', alt: '' })
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'div',
-                    { className: '' },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { className: 'img-fluid', src: '/img/330-3.png', alt: '' })
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'div',
-                    { className: '' },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { className: 'img-fluid', src: '/img/330-4.png', alt: '' })
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'div',
-                    { className: '' },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { className: 'img-fluid', src: '/img/330-3.png', alt: '' })
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'div',
-                    { className: '' },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { className: 'img-fluid', src: '/img/330-4.png', alt: '' })
-                )
-            )
-        )
-    );
+  var slick = {
+    idSelector: "#slick-special-products",
+    id: "slick-special-products",
+    class: "slick two",
+    selector: ".slick.two"
+  };
+
+  var _useInView = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5_react_intersection_observer__["a" /* useInView */])({
+    /* Optional options */
+    threshold: 0.5
+  }),
+      _useInView2 = _slicedToArray(_useInView, 3),
+      ref = _useInView2[0],
+      inView = _useInView2[1],
+      entry = _useInView2[2];
+  // const initSlick = () => {
+  //   $('.slick.two').not('.slick-initialized').slick({
+  //       infinite:true,
+  //       autoplay:true,
+  //       slidesToShow:4,
+  //       slidesToScroll:2,
+  //       autoplaySpeed:5000,
+  //       prevArrow:"<button class='fa fa-angle-left slick-arrow slick-left'></button>",
+  //       nextArrow:"<button class='fa fa-angle-right slick-arrow slick-right'></button>",
+  //       responsive:[
+  //           {
+  //               breakpoint:768,
+  //               settings:{
+  //                   slidesToShow:3
+  //               }
+  //           },
+  //           {
+  //               breakpoint:576,
+  //               settings:{
+  //                   slidesToShow:2
+  //               }
+  //           }
+  //       ]
+  //   })
+  //
+
+
+  __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_react__["useEffect"])(function () {
+    if (inView) console.log(inView);setVisible(true);
+  }, [inView]);
+
+  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+    'div',
+    { className: 'special-products', ref: ref },
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      'h3',
+      { className: 'text-center' },
+      'special products'
+    ),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__SlickProducts__["a" /* default */], { url: url, slider: slick, visible: visible, imgArr: ["3", "4"] })
+  );
 };
 
 /* harmony default export */ __webpack_exports__["a"] = (SpecialProducts);
@@ -57323,6 +57343,7 @@ function PlaceholderImg(_ref) {
       setLoaded = _useState2[1];
 
   var h = height || "600px";
+
   __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_react__["useEffect"])(function () {
 
     // console.log(children.props)

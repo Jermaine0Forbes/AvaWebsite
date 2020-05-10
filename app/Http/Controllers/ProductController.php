@@ -51,4 +51,9 @@ class ProductController extends Controller
         // $product = Product::select("name","price","rating")->limit(10)->latest()->get();
         return response()->json($product);
     }
+
+    public function getSpecial(){
+       $product = Product::getSpecialProducts(10);
+       return response()->json($product);
+    }
 }

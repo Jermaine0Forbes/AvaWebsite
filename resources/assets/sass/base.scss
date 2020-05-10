@@ -173,6 +173,26 @@ main{
   }
 }
 
+/*====================================
+    .slick-img-container
+====================================*/
+
+.slick-img-container{
+
+  position:relative;
+
+  .discount{
+    background:$pink;
+    color:white;
+    position:absolute;
+    top:-7px;
+    right:0;
+    min-width:45px;
+    text-align:center;
+    padding:9px 4px;
+    border-radius:50%;
+  }
+}
 
 
 /*====================================
