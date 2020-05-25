@@ -1,5 +1,17 @@
 # Logs
 
+### 5/24/20
+
+**Goals for the month**
+- ~Add react redux and modify current components~
+- ~make "add to cart" button change cart quantity icon~
+- create cart list when clicking on cart quantity icon
+- Create the "check out" page
+- ~create the recent-arrivals page~
+
+**Currently**
+- Created the basic structure of the recent-arrivals page. Now, I need to make the
+pagination to work and after that make the option to filter products.
 
 ### 5/9/20
 

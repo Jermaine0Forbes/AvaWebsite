@@ -7497,7 +7497,7 @@ function PlaceholderImg(_ref) {
     // let img = document.querySelector(src);
     if (!img.complete) {
       img.onload = function () {
-        console.log("image loaded");
+        // console.log("image loaded")
         // console.log(img)
         setLoaded(true);
       };
@@ -8181,7 +8181,12 @@ function Product() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_router_dom__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_loaders__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_loaders___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_loaders__);
 /* harmony export (immutable) */ __webpack_exports__["a"] = RecentArrivals;
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+
 
 
 
@@ -8261,80 +8266,103 @@ function RecentArrivals() {
   );
 }
 
-var ProductSelection = function ProductSelection() {
+var Product = function Product(_ref) {
+  var id = _ref.id,
+      img = _ref.img,
+      name = _ref.name,
+      price = _ref.price,
+      url = _ref.url;
 
+  var link = "/product/" + id;
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-    "div",
-    { className: "row justify-content-between" },
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.Fragment,
+    null,
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["f" /* Link */],
-      { className: "card col-md-4", to: "#" },
+      { className: "card col-md-4", to: link },
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         "div",
         null,
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("img", { className: "card-img-top", src: "https://via.placeholder.com/300x300", alt: "Card image cap" }),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("img", { className: "card-img-top img-fluid", src: img, alt: img }),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           "div",
           { className: "card-body" },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             "h5",
             { className: "product-name" },
-            "Product Name"
+            name
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             "p",
             { className: "product-price" },
-            "$29.99"
-          )
-        )
-      )
-    ),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["f" /* Link */],
-      { className: "card col-md-4", to: "#" },
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        "div",
-        null,
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("img", { className: "card-img-top", src: "https://via.placeholder.com/300x300", alt: "Card image cap" }),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          "div",
-          { className: "card-body" },
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            "h5",
-            { className: "product-name" },
-            "Product Name"
-          ),
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            "p",
-            { className: "product-price" },
-            "$29.99"
-          )
-        )
-      )
-    ),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["f" /* Link */],
-      { className: "card col-md-4", to: "#" },
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        "div",
-        null,
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("img", { className: "card-img-top", src: "https://via.placeholder.com/300x300", alt: "Card image cap" }),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          "div",
-          { className: "card-body" },
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            "h5",
-            { className: "product-name" },
-            "Product Name"
-          ),
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            "p",
-            { className: "product-price" },
-            "$29.99"
+            "$",
+            price
           )
         )
       )
     )
+  );
+};
+
+var ProductSelection = function ProductSelection() {
+
+  var origin = window.location.origin;
+  var url = origin + "/api/products/filter/";
+
+  var _useState = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_react__["useState"])(true),
+      _useState2 = _slicedToArray(_useState, 2),
+      loading = _useState2[0],
+      setLoading = _useState2[1];
+
+  var _useState3 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_react__["useState"])(null),
+      _useState4 = _slicedToArray(_useState3, 2),
+      products = _useState4[0],
+      setProducts = _useState4[1];
+
+  var x = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+    __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["f" /* Link */],
+    { className: "card col-md-4", to: "#" },
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      "div",
+      null,
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("img", { className: "card-img-top", src: "https://via.placeholder.com/300x300", alt: "Card image cap" }),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        "div",
+        { className: "card-body" },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          "h5",
+          { className: "product-name" },
+          "Product Name"
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          "p",
+          { className: "product-price" },
+          "$29.99"
+        )
+      )
+    )
+  );
+  __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_react__["useEffect"])(function () {
+
+    fetch(url + 1).then(function (res) {
+      return res.json();
+    }).then(function (res) {
+      // console.log(res)
+      var products = res.map(function (e, i) {
+        var price = e.discount > 0 ? (e.price - e.discount_price).toFixed(2) : e.price;
+        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Product, { key: i, id: e.id, price: price, img: e.image, name: e.name, url: origin });
+      });
+      setLoading(false);
+      setProducts(products);
+    }).catch(function (err) {
+      return console.err(err);
+    });
+  }, []);
+
+  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+    "div",
+    { className: "row justify-content-between" },
+    loading ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_loaders___default.a, { type: "ball-pulse", style: { textAlign: "center", display: "block", width: "100%" } }) : products
   );
 };
 

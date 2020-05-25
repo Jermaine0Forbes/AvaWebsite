@@ -1,5 +1,6 @@
-import React, {Component, useRef} from "react";
+import React, {Component, useRef, useEffect, useState} from "react";
 import {Link} from "react-router-dom";
+import Loader from  'react-loaders';
 
 export default function RecentArrivals (){
 
@@ -29,37 +30,59 @@ export default function RecentArrivals (){
     )
 }
 
+const Product = ({id,img,name,price,url}) => {
+  const link = "/product/"+id
+  return (
+    <React.Fragment>
+      <Link className="card col-md-4" to={link}>
+        <div>
+          <img className="card-img-top img-fluid" src={img} alt={img} />
+          <div className="card-body">
+            <h5 className="product-name">{name}</h5>
+            <p className="product-price">${price}</p>
+          </div>
+        </div>
+      </Link>
+    </React.Fragment>
+  )
+}
+
 const ProductSelection = () => {
+
+  const origin = window.location.origin;
+  const url = origin+"/api/products/filter/";
+  const [loading, setLoading] = useState(true);
+  const [products,setProducts] = useState(null);
+  const x = (
+    <Link className="card col-md-4" to="#">
+      <div  >
+        <img className="card-img-top" src="https://via.placeholder.com/300x300" alt="Card image cap" />
+        <div className="card-body">
+          <h5 className="product-name">Product Name</h5>
+          <p className="product-price">$29.99</p>
+        </div>
+      </div>
+    </Link>
+  );
+      useEffect(() =>{
+
+        fetch(url+1)
+        .then(res => res.json())
+        .then(res => {
+          // console.log(res)
+          const products = res.map((e,i) => {
+            const price = e.discount > 0 ?( e.price - e.discount_price).toFixed(2): e.price;
+            return <Product key={i} id={e.id} price={price} img={e.image} name={e.name} url={origin}/>
+          })
+          setLoading(false);
+          setProducts(products);
+        })
+        .catch(err => console.err(err))
+      },[]);
 
   return (
     <div className="row justify-content-between">
-      <Link className="card col-md-4" to="#">
-        <div  >
-          <img className="card-img-top" src="https://via.placeholder.com/300x300" alt="Card image cap" />
-          <div className="card-body">
-            <h5 className="product-name">Product Name</h5>
-            <p className="product-price">$29.99</p>
-          </div>
-        </div>
-      </Link>
-      <Link className="card col-md-4" to="#">
-        <div  >
-          <img className="card-img-top" src="https://via.placeholder.com/300x300" alt="Card image cap"/>
-          <div className="card-body">
-          <h5 className="product-name">Product Name</h5>
-          <p className="product-price">$29.99</p>
-          </div>
-        </div>
-      </Link>
-      <Link className="card col-md-4" to="#">
-        <div  >
-          <img className="card-img-top" src="https://via.placeholder.com/300x300" alt="Card image cap"/>
-          <div className="card-body">
-          <h5 className="product-name">Product Name</h5>
-          <p className="product-price">$29.99</p>
-          </div>
-        </div>
-      </Link>
+     {loading ? <Loader type="ball-pulse"  style={{textAlign:"center", display:"block", width:"100%"}}/> : products}
     </div>
   )
 }

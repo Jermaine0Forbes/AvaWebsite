@@ -18,7 +18,7 @@ export  function PlaceholderImg ({children,height}){
       // let img = document.querySelector(src);
       if(!img.complete){
         img.onload = () => {
-          console.log("image loaded")
+          // console.log("image loaded")
           // console.log(img)
           setLoaded(true);
         }
