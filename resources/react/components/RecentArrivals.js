@@ -1,9 +1,141 @@
 import React, {Component, useRef, useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import Loader from  'react-loaders';
+import {updatePage} from "./action";
+import {useDispatch, useSelector} from "react-redux";
+import {Fade,Zoom,LightSpeed, Bounce} from 'react-reveal';
 
 export default function RecentArrivals (){
+  const [showNext, setShowNext] = useState(true);
+  const [showPrev, setShowPrev] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [products,setProducts] = useState(null);
+  const dispatch = useDispatch();
+  const page = useSelector(state => state.page);
+  const origin = useSelector(state => state.origin);
+  const url = origin+"/api/products/filter/";
 
+  const moveAr = (num,text) => {
+
+      Array.from(document.querySelectorAll(".page-link[data-rank]")).forEach((e) =>{
+        let r = e.dataset.rank;
+         switch (r) {
+           case "first":
+             e.innerHTML = text == "Next"? num : num-2;
+             text == "Next" && e.classList.add("active");
+             break;
+           case "second":
+           e.innerHTML = text == "Next"? num+1 : num-1;
+             break;
+           default:
+           e.innerHTML = text == "Next"? num+2 : num;
+           text == "Previous" && e.classList.add("active");
+         }
+
+      })
+  }
+  const handleArrow = (e) => {
+    e.preventDefault();
+    const elem = document.querySelector(".page-link.active");
+    const link = parseInt(elem.textContent);
+    const text = e.target.textContent.trim();
+    let num = text == "Next" ? link+1 : link-1;
+    // num = (num < 1 || num > 22 )? 1: num;
+    // let num = link;
+    const rank = elem.dataset.rank;
+    const item = elem.closest(".page-item");
+    // console.log(link)
+    // console.log(item)
+    if( num < 22 && num > 0){
+      elem.classList.remove("active")
+      if(rank == "third" && text == "Next"){
+        moveAr(num, text)
+      }else if(rank == "first" && text == "Previous" ){
+       moveAr(num,text)
+      }else{
+        let next = text == "Next" ? item.nextSibling.querySelector(".page-link"): item.previousSibling.querySelector(".page-link")
+        next.classList.add("active")
+      }
+       dispatch(updatePage(num))
+  }
+
+}//handleArrow
+  const handleClick = (e) => {
+    e.preventDefault();
+    const elem = e.target;
+    const num = parseInt(e.target.textContent.trim());
+    const rank = elem.dataset.rank;
+    document.querySelector(".page-link.active").classList.remove("active");
+
+    if(num >= 22){
+
+      Array.from(document.querySelectorAll(".page-link")).forEach(e => {
+        let r = e.dataset.rank;
+         switch (r) {
+           case "first":
+             e.innerHTML = 20;
+             break;
+           case "second":
+           e.innerHTML = 21;
+             break;
+           default:
+           e.innerHTML = 22;
+          e.classList.add("active");
+         }
+
+      })
+    }else{
+        elem.classList.add("active")
+    }
+
+     dispatch(updatePage(num))
+    // activePage(elem);
+     // console.log(document.querySelector("a[data-rank='"+rank+"']"))
+     // console.log(origin)
+     // fetch(url+num)
+     // .then(res => res.json())
+     // .then(res => {
+     //   console.log(res)
+       // dispatch(updatePage(res.page))
+     // }).catch( err => console.error(err))
+
+  }//handleClick
+
+  useEffect(() => {
+    setLoading(true)
+    setShowNext(true)
+    setShowPrev(true)
+    if(page <= 1){
+      setShowPrev(false)
+    }
+    if(page >= 20){
+      setShowNext(false)
+    }
+    fetch(url+page)
+    .then(res => res.json())
+    .then(res => {
+      console.log(res)
+      setLoading(false);
+      setProducts(res.data);
+
+    })
+    .catch(err => console.error(err))
+  },[page])
+
+
+  useEffect(() =>{
+
+    fetch(url+1)
+    .then(res => res.json())
+    .then(res => {
+      console.log(res)
+      setLoading(false);
+      setProducts(res.data);
+      dispatch(updatePage(res.page));
+
+    })
+    .catch(err => console.error(err))
+  },[]);
 
     return(
       <main id="recent-arrivals"  className="container wide pad-half padH">
@@ -13,16 +145,38 @@ export default function RecentArrivals (){
         <section className="row pad-half-all">
           <FilterAside />
           <div className="col-md-9">
-            <nav aria-label="Page navigation example">
+            <nav aria-label="Page navigation">
               <ul className="pagination">
-                <li className="page-item"><a className="page-link" href="#">Previous</a></li>
-                <li className="page-item"><a className="page-link" href="#">1</a></li>
-                <li className="page-item"><a className="page-link" href="#">2</a></li>
-                <li className="page-item"><a className="page-link" href="#">3</a></li>
-                <li className="page-item"><a className="page-link" href="#">Next</a></li>
+                {
+                  showPrev ?
+                  <li className="page-item"><a className="page-arrow " onClick={handleArrow} href="#">
+                    <span className="fas fa-chevron-left"></span> Previous
+                    </a>
+                  </li>
+                  :
+                  null
+                }
+
+                <li className="page-item"><a className="page-link active" data-rank="first" onClick={handleClick} href="#">1</a></li>
+                <li className="page-item"><a className="page-link" data-rank="second"  onClick={handleClick} href="#">2</a></li>
+                <li className="page-item"><a className="page-link" data-rank="third" onClick={handleClick} href="#">3</a></li>
+                {
+                  showNext ?
+                  <React.Fragment>
+                    <li className="page-item">...</li>
+                      <li className="page-item"><a className="page-link" onClick={handleClick} href="#">22</a></li>
+                      <li className="page-item"><a className="page-arrow" onClick={handleArrow} href="#">
+                        Next <span className="fas fa-chevron-right"></span>
+                        </a>
+                      </li>
+                  </React.Fragment>
+                  :
+                  null
+                }
+
               </ul>
             </nav>
-            <ProductSelection />
+            <ProductSelection loading={loading} data={products} />
           </div>
 
         </section>
@@ -30,55 +184,56 @@ export default function RecentArrivals (){
     )
 }
 
+
+
 const Product = ({id,img,name,price,url}) => {
-  const link = "/product/"+id
+  const link = "/product/"+id;
+  const [loading , setLoading ] = useState(true);
+  const handleLoad = (e) =>{
+    const img = e.target;
+   if(e.target.complete){
+     setLoading(false);
+     img.classList.remove("d-none")
+   }
+  }
   return (
     <React.Fragment>
+
+
       <Link className="card col-md-4" to={link}>
+        <Fade duration={300} bottom cascade>
         <div>
-          <img className="card-img-top img-fluid" src={img} alt={img} />
+          {
+            loading ?
+            <svg className="img-fluid" xmlns="http://www.w3.org/2000/svg" width="400" height="400" >
+                <rect width="400" height="400" fill="#262626" />
+            </svg>
+                    : null
+
+          }
+            <img className="card-img-top img-fluid d-none" onLoad={handleLoad} src={img} alt={img} />
           <div className="card-body">
             <h5 className="product-name">{name}</h5>
             <p className="product-price">${price}</p>
           </div>
         </div>
+      </Fade>
       </Link>
     </React.Fragment>
   )
 }
 
-const ProductSelection = () => {
+const ProductSelection = ({loading, data}) => {
 
   const origin = window.location.origin;
   const url = origin+"/api/products/filter/";
-  const [loading, setLoading] = useState(true);
-  const [products,setProducts] = useState(null);
-  const x = (
-    <Link className="card col-md-4" to="#">
-      <div  >
-        <img className="card-img-top" src="https://via.placeholder.com/300x300" alt="Card image cap" />
-        <div className="card-body">
-          <h5 className="product-name">Product Name</h5>
-          <p className="product-price">$29.99</p>
-        </div>
-      </div>
-    </Link>
-  );
-      useEffect(() =>{
 
-        fetch(url+1)
-        .then(res => res.json())
-        .then(res => {
-          // console.log(res)
-          const products = res.map((e,i) => {
-            const price = e.discount > 0 ?( e.price - e.discount_price).toFixed(2): e.price;
-            return <Product key={i} id={e.id} price={price} img={e.image} name={e.name} url={origin}/>
-          })
-          setLoading(false);
-          setProducts(products);
-        })
-        .catch(err => console.err(err))
-      },[]);
+  const dispatch = useDispatch();
+  const products = data && data.map((e,i) => {
+    const price = e.discount > 0 ?( e.price - e.discount_price).toFixed(2): e.price;
+    return <Product key={i} id={e.id} price={price} img={e.image} name={e.name} url={origin}/>
+  })
+
 
   return (
     <div className="row justify-content-between">

@@ -32,11 +32,17 @@ class Product extends Model
 
     public static function getFilteredProducts($page){
       $start = 9;
-      $next = $page * $start;
-      return Product::join("productcomments","products.id", "=","productcomments.product_id")->
+      $next = ($page * $start)- $start;
+      $count = Product::count();
+      $product = Product::join("productcomments","products.id", "=","productcomments.product_id")->
      selectRaw(" products.id as id , products.name as name, round(avg(productcomments.rating),1) as rating,
       if( products.discount > 0 , round((products.price *(products.discount / 100)),2),products.discount) as discount_price,
       products.price as price, products.discount as discount, products.image as image")
      ->groupBy("id")->orderBy("products.created_at", "desc")->offset($next)->limit($start)->get();
+     return [
+       "page" => intval($page),
+       "lastPage" => floor($count / $start),
+       "data" => $product
+     ];
     }
 }

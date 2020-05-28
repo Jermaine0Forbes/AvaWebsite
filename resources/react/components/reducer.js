@@ -1,5 +1,5 @@
 import {GET_RECENT,GET_RECENT_SUCCESS
-        ,ADD_ITEM, UPDATE_QUANTITY} from "./types";
+        ,ADD_ITEM, UPDATE_QUANTITY, UPDATE_PAGE} from "./types";
 
 
 const initState  = {
@@ -7,7 +7,9 @@ const initState  = {
   cartIcon: null,
   cart : [],
   currentProduct : [],
-  message:null
+  message:null,
+  page:0,
+  origin: window.location.origin
 }
 
 
@@ -25,12 +27,7 @@ export const reducer = (state = initState, action ) => {
           recentProducts:action.payload
         }
       break;
-    case UPDATE_QUANTITY:
-        return{
-          ...state,
-          quantity:action.payload
-        }
-      break;
+
     case ADD_ITEM:
         let cart = state.cart;
         if(cart.some(obj => obj.id == action.payload.id)){
@@ -42,11 +39,21 @@ export const reducer = (state = initState, action ) => {
         }else{
           cart.push(action.payload);
         }
-
-
         return{
           ...state,
           cart:cart
+        }
+      break;
+    case UPDATE_QUANTITY:
+        return{
+          ...state,
+          quantity:action.payload
+        }
+      break;
+    case UPDATE_PAGE:
+        return{
+          ...state,
+          page:action.payload
         }
       break;
     default:

@@ -40,10 +40,41 @@
       justify-content: space-between;
       margin:0;
       width:100%;
-      align-items: center;
+      align-self: center;
     }
 
   }//.filter
+
+  .page{
+      &-arrow{
+        color:$black;
+        align-self: center;
+        margin:0 8px;
+      }
+      &-item{
+        display:flex;
+      }
+      &-link{
+        color:$black;
+        background:white;
+        margin:0 8px;
+        &:hover,&.active{
+          background:$black;
+          color:white;
+        }
+      }
+  }
+
+  .pagination{
+    margin:1em 0;
+    padding:1em 0;
+    display:flex;
+    justify-content: center;
+    border-top:1px solid $grey;
+    border-bottom:1px solid $grey;
+
+
+  }//.pagination
 
   .product{
 
@@ -61,14 +92,5 @@
       color:$teal;
     }
 
-  }
-
-  .pagination{
-    margin:1em 0;
-    padding:1em 0;
-    display:flex;
-    justify-content: center;
-    border-top:1px solid $grey;
-    border-bottom:1px solid $grey;
-  }
-}
+  }// .product
+}// #recent-arrivals

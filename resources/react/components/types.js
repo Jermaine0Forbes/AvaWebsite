@@ -4,3 +4,4 @@ export const GET_PRODUCT = "GET_PRODUCT";
 export const GET_PRODUCT_SUCCESS = "GET_PRODUCT_SUCCESS";
 export const UPDATE_QUANTITY = "UPDATE_QUANTITY";
 export const ADD_ITEM = "ADD_ITEM";
+export const UPDATE_PAGE = "UPDATE_PAGE";

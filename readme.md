@@ -19,7 +19,7 @@ A personal e-commerce project that I'm creating with laravel & react.
 
 *Want to see more logs? visit* **logs.md**
 
-### 5/24/20
+### 5/28/20
 
 **Goals for the month**
 - ~Add react redux and modify current components~
@@ -29,5 +29,6 @@ A personal e-commerce project that I'm creating with laravel & react.
 - ~create the recent-arrivals page~
 
 **Currently**
-- Created the basic structure of the recent-arrivals page. Now, I need to make the
-pagination to work and after that make the option to filter products.
+- The pagination works with the recent-arrivals page. There are still a few bugs,
+but it generally works. Now, I have to figure out how to integrate the filter sidebar
+to make the get requests.
