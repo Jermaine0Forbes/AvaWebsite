@@ -1,10 +1,10 @@
 import{ ADD_ITEM, UPDATE_QUANTITY, UPDATE_PAGE} from "./types";
 
 
-export const updatePage = (page) => {
+export const updatePage = (page,last) => {
   return {
     type:UPDATE_PAGE,
-    payload:page
+    payload:{page:page,last:last}
   }
 }
 export const updateQuantity = (items) => {

@@ -1,5 +1,19 @@
 # Logs
 
+### 5/31/20
+
+**Goals for the month**
+- ~Add react redux and modify current components~
+- ~make "add to cart" button change cart quantity icon~
+- create cart list when clicking on cart quantity icon
+- Create the "check out" page
+- ~create the recent-arrivals page~
+
+**Currently**
+- The filter sidebar finally works...for the most part. I'm relieved since it took
+me some time to complete so it works. I still need to work on the pagination to see
+how it works if there is only 0 results or only 4 pages.
+
 ### 5/28/20
 
 **Goals for the month**

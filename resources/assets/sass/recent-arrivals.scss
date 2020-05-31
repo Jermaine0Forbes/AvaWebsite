@@ -50,6 +50,12 @@
         color:$black;
         align-self: center;
         margin:0 8px;
+        &.disabled{
+          color:$grey;
+          &:hover{
+            cursor:not-allowed;
+          }
+        }
       }
       &-item{
         display:flex;

@@ -1959,10 +1959,10 @@ var SlickProducts = function SlickProducts(_ref2) {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return addItem; });
 
 
-var updatePage = function updatePage(page) {
+var updatePage = function updatePage(page, last) {
   return {
     type: __WEBPACK_IMPORTED_MODULE_0__types__["a" /* UPDATE_PAGE */],
-    payload: page
+    payload: { page: page, last: last }
   };
 };
 var updateQuantity = function updateQuantity(items) {
@@ -8199,6 +8199,8 @@ function Product() {
 /* harmony export (immutable) */ __webpack_exports__["a"] = RecentArrivals;
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 
 
 
@@ -8209,33 +8211,36 @@ var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = [
 function RecentArrivals() {
   var _useState = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_react__["useState"])(true),
       _useState2 = _slicedToArray(_useState, 2),
-      showNext = _useState2[0],
-      setShowNext = _useState2[1];
+      loading = _useState2[0],
+      setLoading = _useState2[1];
 
-  var _useState3 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_react__["useState"])(false),
+  var _useState3 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_react__["useState"])(null),
       _useState4 = _slicedToArray(_useState3, 2),
-      showPrev = _useState4[0],
-      setShowPrev = _useState4[1];
+      products = _useState4[0],
+      setProducts = _useState4[1];
 
-  var _useState5 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_react__["useState"])(true),
+  var _useState5 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_react__["useState"])({ category: null, price: null, sex: null, brand: null }),
       _useState6 = _slicedToArray(_useState5, 2),
-      loading = _useState6[0],
-      setLoading = _useState6[1];
-
-  var _useState7 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_react__["useState"])(null),
-      _useState8 = _slicedToArray(_useState7, 2),
-      products = _useState8[0],
-      setProducts = _useState8[1];
+      filter = _useState6[0],
+      setFilter = _useState6[1];
 
   var dispatch = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4_react_redux__["c" /* useDispatch */])();
   var page = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4_react_redux__["b" /* useSelector */])(function (state) {
     return state.page;
   });
+  var lastPage = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4_react_redux__["b" /* useSelector */])(function (state) {
+    return state.lastPage;
+  });
+  var showNext = lastPage - 2 >= page ? true : false;
+  var showPrev = page > 1 ? true : false;
   var origin = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4_react_redux__["b" /* useSelector */])(function (state) {
     return state.origin;
   });
   var url = origin + "/api/products/filter/";
-
+  // console.log("lastPage:"+lastPage);
+  // console.log("showNext:"+showNext);
+  // console.log("products:"+products);
+  // console.log("loading:"+loading);
   var moveAr = function moveAr(num, text) {
 
     Array.from(document.querySelectorAll(".page-link[data-rank]")).forEach(function (e) {
@@ -8266,7 +8271,7 @@ function RecentArrivals() {
     var item = elem.closest(".page-item");
     // console.log(link)
     // console.log(item)
-    if (num < 22 && num > 0) {
+    if (num < lastPage && num > 0) {
       elem.classList.remove("active");
       if (rank == "third" && text == "Next") {
         moveAr(num, text);
@@ -8276,7 +8281,7 @@ function RecentArrivals() {
         var next = text == "Next" ? item.nextSibling.querySelector(".page-link") : item.previousSibling.querySelector(".page-link");
         next.classList.add("active");
       }
-      dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__action__["c" /* updatePage */])(num));
+      dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__action__["c" /* updatePage */])(num, lastPage));
     }
   }; //handleArrow
   var handleClick = function handleClick(e) {
@@ -8286,19 +8291,19 @@ function RecentArrivals() {
     var rank = elem.dataset.rank;
     document.querySelector(".page-link.active").classList.remove("active");
 
-    if (num >= 22) {
+    if (num >= lastPage) {
 
       Array.from(document.querySelectorAll(".page-link")).forEach(function (e) {
         var r = e.dataset.rank;
         switch (r) {
           case "first":
-            e.innerHTML = 20;
+            e.innerHTML = lastPage - 2;
             break;
           case "second":
-            e.innerHTML = 21;
+            e.innerHTML = lastPage - 1;
             break;
           default:
-            e.innerHTML = 22;
+            e.innerHTML = lastPage;
             e.classList.add("active");
         }
       });
@@ -8306,52 +8311,124 @@ function RecentArrivals() {
       elem.classList.add("active");
     }
 
-    dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__action__["c" /* updatePage */])(num));
-    // activePage(elem);
-    // console.log(document.querySelector("a[data-rank='"+rank+"']"))
-    // console.log(origin)
-    // fetch(url+num)
-    // .then(res => res.json())
-    // .then(res => {
-    //   console.log(res)
-    // dispatch(updatePage(res.page))
-    // }).catch( err => console.error(err))
+    dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__action__["c" /* updatePage */])(num, lastPage));
   }; //handleClick
 
-  __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_react__["useEffect"])(function () {
+  var toggleFilter = function toggleFilter(e) {
+    var elem = e.target.classList.contains("fas") ? e.target.parentNode : e.target;
+    var list = elem.nextSibling.classList.contains("filter-list") ? elem.nextSibling : false;
+    var chevron = elem.querySelector(".fas").classList;
+    if (list) {
+      var isClosed = !list.classList.contains("closed");
+      list.classList.toggle("closed", isClosed);
+    }
+    chevron.contains("fa-chevron-up") ? chevron.replace("fa-chevron-up", "fa-chevron-down") : chevron.replace("fa-chevron-down", "fa-chevron-up");
+  }; //toggleFilter
+
+  var handleFilter = function handleFilter(e) {
+    var val = e.target.checked ? e.target.value : null;
+    var removed = val == null ? e.target.value : "";
+
+    var data = {
+      category: filter.category,
+      brand: filter.brand,
+      price: filter.price,
+      sex: filter.sex
+    };
+    switch (e.target.name) {
+      case "category":
+        if (removed) {
+          data.category = data.category.filter(function (e) {
+            return e != removed;
+          });
+        } else if (data.category) {
+          data.category.push(val);
+        } else {
+          data.category = [val];
+        }
+        break;
+      case "brand":
+        if (removed) {
+          data.brand = data.brand.filter(function (e) {
+            return e != removed;
+          });
+        } else if (data.brand) {
+          data.brand.push(val);
+        } else {
+          data.brand = [val];
+        }
+        break;
+      case "price":
+        if (removed) {
+          data.price = data.price.filter(function (e) {
+            return e != removed && e != removed - 50;
+          });
+        } else if (data.price) {
+          data.price.push(parseInt(val - 50), parseInt(val));
+          var max = Math.max.apply(Math, _toConsumableArray(data.price)),
+              min = Math.min.apply(Math, _toConsumableArray(data.price));
+          data.price = [min, max];
+        } else {
+          data.price = [parseInt(val - 50), parseInt(val)];
+        }
+        break;
+      default:
+        if (removed) {
+          data.sex = data.sex.filter(function (e) {
+            return e != removed;
+          });
+        } else if (data.sex) {
+          data.sex.push(val);
+        } else {
+          data.sex = [val];
+        }
+    }
+
+    setFilter(data);
+    console.log(data);
     setLoading(true);
-    setShowNext(true);
-    setShowPrev(true);
-    if (page <= 1) {
-      setShowPrev(false);
-    }
-    if (page >= 20) {
-      setShowNext(false);
-    }
+    fetch(url + 1, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    }).then(function (res) {
+      return res.json();
+    }).then(function (res) {
+      dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__action__["c" /* updatePage */])(res.page, res.lastPage));
+      setLoading(false);
+      setProducts(res.data);
+    });
+  }; //handleFilter
+
+  __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_react__["useEffect"])(function () {
+    console.log("when page changes");
+    setLoading(true);
+    // if( page > 1){
     fetch(url + page).then(function (res) {
       return res.json();
     }).then(function (res) {
       console.log(res);
+      dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__action__["c" /* updatePage */])(res.page, res.lastPage));
       setLoading(false);
       setProducts(res.data);
     }).catch(function (err) {
       return console.error(err);
     });
+    // }
   }, [page]);
 
-  __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_react__["useEffect"])(function () {
-
-    fetch(url + 1).then(function (res) {
-      return res.json();
-    }).then(function (res) {
-      console.log(res);
-      setLoading(false);
-      setProducts(res.data);
-      dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__action__["c" /* updatePage */])(res.page));
-    }).catch(function (err) {
-      return console.error(err);
-    });
-  }, []);
+  // useEffect(() =>{
+  //   setShowNext(true)
+  //   setShowPrev(true)
+  //   if(page <= 1){
+  //     setShowPrev(false)
+  //   }
+  //   if(page >= lastPage-2 ){
+  //     setShowNext(false)
+  //   }
+  // },[lastPage]);
 
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
     "main",
@@ -8364,7 +8441,226 @@ function RecentArrivals() {
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       "section",
       { className: "row pad-half-all" },
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(FilterAside, null),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        "aside",
+        { className: "col-md-3 border-right" },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          "div",
+          { className: "filter-list-group list-group list-group-flush " },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            "div",
+            { className: "filter-section list-group-item" },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              "p",
+              { className: "filter-name", onClick: toggleFilter },
+              "Categories ",
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("span", { className: "fas fa-chevron-up" })
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              "div",
+              { className: "filter-list toggle" },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                "p",
+                { className: "filter-item" },
+                " ",
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "checkbox", name: "category", value: "shirt", onChange: handleFilter }),
+                " Shirt"
+              ),
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                "p",
+                { className: "filter-item" },
+                " ",
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "checkbox", name: "category", value: "jacket", onChange: handleFilter }),
+                " Jacket"
+              ),
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                "p",
+                { className: "filter-item" },
+                " ",
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "checkbox", name: "category", value: "sweater", onChange: handleFilter }),
+                " Sweater"
+              ),
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                "p",
+                { className: "filter-item" },
+                " ",
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "checkbox", name: "category", value: "jeans", onChange: handleFilter }),
+                " Jeans"
+              ),
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                "p",
+                { className: "filter-item" },
+                " ",
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "checkbox", name: "category", value: "shorts", onChange: handleFilter }),
+                " Shorts"
+              )
+            )
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            "div",
+            { className: "filter-section list-group-item" },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              "p",
+              { className: "filter-name", onClick: toggleFilter },
+              "Brand ",
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("span", { className: "fas fa-chevron-up" })
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              "div",
+              { className: "filter-list toggle" },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                "p",
+                { className: "filter-item" },
+                " ",
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "checkbox", name: "brand", value: "nike", onChange: handleFilter }),
+                " nike"
+              ),
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                "p",
+                { className: "filter-item" },
+                " ",
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "checkbox", name: "brand", value: "gucci", onChange: handleFilter }),
+                " gucci"
+              ),
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                "p",
+                { className: "filter-item" },
+                " ",
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "checkbox", name: "brand", value: "louis vuitton", onChange: handleFilter }),
+                " louis vuitton"
+              ),
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                "p",
+                { className: "filter-item" },
+                " ",
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "checkbox", name: "brand", value: "tommy hilfiger", onChange: handleFilter }),
+                " tommy hilfiger"
+              ),
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                "p",
+                { className: "filter-item" },
+                " ",
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "checkbox", name: "brand", value: "ralph lauren", onChange: handleFilter }),
+                " ralph lauren"
+              ),
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                "p",
+                { className: "filter-item" },
+                " ",
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "checkbox", name: "brand", value: "calvin klein", onChange: handleFilter }),
+                " calvin klein"
+              ),
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                "p",
+                { className: "filter-item" },
+                " ",
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "checkbox", name: "brand", value: "versace", onChange: handleFilter }),
+                " versace"
+              )
+            )
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            "div",
+            { className: "filter-section list-group-item" },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              "p",
+              { className: "filter-name", onClick: toggleFilter },
+              "Gender ",
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("span", { className: "fas fa-chevron-up" })
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              "div",
+              { className: "filter-list toggle" },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                "p",
+                { className: "filter-item" },
+                " ",
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                  "a",
+                  { href: "#" },
+                  " Any"
+                )
+              ),
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                "p",
+                { className: "filter-item" },
+                " ",
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                  "a",
+                  { href: "#" },
+                  " Men"
+                )
+              ),
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                "p",
+                { className: "filter-item" },
+                " ",
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                  "a",
+                  { href: "#" },
+                  " Women"
+                )
+              )
+            )
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            "div",
+            { className: "filter-section list-group-item" },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              "p",
+              { className: "filter-name", onClick: toggleFilter },
+              "Price ",
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("span", { className: "fas fa-chevron-up" })
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              "div",
+              { className: "filter-list toggle" },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                "p",
+                { className: "filter-item" },
+                " ",
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "checkbox", name: "price", value: "300", onChange: handleFilter }),
+                " $300 - $250"
+              ),
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                "p",
+                { className: "filter-item" },
+                " ",
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "checkbox", name: "price", value: "250", onChange: handleFilter }),
+                " $250 - $200"
+              ),
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                "p",
+                { className: "filter-item" },
+                " ",
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "checkbox", name: "price", value: "200", onChange: handleFilter }),
+                " $200 - $150"
+              ),
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                "p",
+                { className: "filter-item" },
+                " ",
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "checkbox", name: "price", value: "150", onChange: handleFilter }),
+                " $150 - $100"
+              ),
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                "p",
+                { className: "filter-item" },
+                " ",
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "checkbox", name: "price", value: "100", onChange: handleFilter }),
+                " $100 - $50"
+              ),
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                "p",
+                { className: "filter-item" },
+                " ",
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "checkbox", name: "price", value: "50", onChange: handleFilter }),
+                " $50 - $0"
+              )
+            )
+          )
+        )
+      ),
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         "div",
         { className: "col-md-9" },
@@ -8374,16 +8670,17 @@ function RecentArrivals() {
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             "ul",
             { className: "pagination" },
-            showPrev ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               "li",
               { className: "page-item" },
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 "a",
-                { className: "page-arrow ", onClick: handleArrow, href: "#" },
+                { className: showPrev ? "page-arrow" : "page-arrow disabled", onClick: showPrev ? handleArrow : null,
+                  href: "#" },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("span", { className: "fas fa-chevron-left" }),
                 " Previous"
               )
-            ) : null,
+            ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               "li",
               { className: "page-item" },
@@ -8411,7 +8708,7 @@ function RecentArrivals() {
                 "3"
               )
             ),
-            showNext ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            lastPage == 0 || page >= lastPage - 2 ? null : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.Fragment,
               null,
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -8425,20 +8722,21 @@ function RecentArrivals() {
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                   "a",
                   { className: "page-link", onClick: handleClick, href: "#" },
-                  "22"
-                )
-              ),
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                "li",
-                { className: "page-item" },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                  "a",
-                  { className: "page-arrow", onClick: handleArrow, href: "#" },
-                  "Next ",
-                  __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("span", { className: "fas fa-chevron-right" })
+                  lastPage
                 )
               )
-            ) : null
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              "li",
+              { className: "page-item" },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                "a",
+                { className: showNext ? "page-arrow" : "page-arrow disabled", onClick: showNext ? handleArrow : null,
+                  href: "#" },
+                "Next ",
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("span", { className: "fas fa-chevron-right" })
+              )
+            )
           )
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(ProductSelection, { loading: loading, data: products })
@@ -8456,10 +8754,10 @@ var Product = function Product(_ref) {
 
   var link = "/product/" + id;
 
-  var _useState9 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_react__["useState"])(true),
-      _useState10 = _slicedToArray(_useState9, 2),
-      loading = _useState10[0],
-      setLoading = _useState10[1];
+  var _useState7 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_react__["useState"])(true),
+      _useState8 = _slicedToArray(_useState7, 2),
+      loading = _useState8[0],
+      setLoading = _useState8[1];
 
   var handleLoad = function handleLoad(e) {
     var img = e.target;
@@ -8534,10 +8832,12 @@ var FilterAside = function FilterAside() {
     var elem = e.target.classList.contains("fas") ? e.target.parentNode : e.target;
     // console.log(elem);
     var list = elem.nextSibling.classList.contains("filter-list") ? elem.nextSibling : false;
+    var chevron = elem.querySelector(".fas").classList;
     if (list) {
       var isClosed = !list.classList.contains("closed");
       list.classList.toggle("closed", isClosed);
     }
+    chevron.contains("fa-chevron-up") ? chevron.replace("fa-chevron-up", "fa-chevron-down") : chevron.replace("fa-chevron-down", "fa-chevron-up");
 
     // console.log(e.target.nextSibling);
   };
@@ -8555,7 +8855,7 @@ var FilterAside = function FilterAside() {
           "p",
           { className: "filter-name", onClick: toggleFilter },
           "Categories ",
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("span", { className: "fas fa-chevron-down" })
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("span", { className: "fas fa-chevron-up" })
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           "div",
@@ -8564,35 +8864,35 @@ var FilterAside = function FilterAside() {
             "p",
             { className: "filter-item" },
             " ",
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "radio", name: "category", value: "shirt" }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "checkbox", name: "category", value: "shirt" }),
             " Shirt"
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             "p",
             { className: "filter-item" },
             " ",
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "radio", name: "category", value: "jacket" }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "checkbox", name: "category", value: "jacket" }),
             " Jacket"
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             "p",
             { className: "filter-item" },
             " ",
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "radio", name: "category", value: "sweater" }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "checkbox", name: "category", value: "sweater" }),
             " Sweater"
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             "p",
             { className: "filter-item" },
             " ",
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "radio", name: "category", value: "jeans" }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "checkbox", name: "category", value: "jeans" }),
             " Jeans"
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             "p",
             { className: "filter-item" },
             " ",
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "radio", name: "category", value: "shorts" }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "checkbox", name: "category", value: "shorts" }),
             " Shorts"
           )
         )
@@ -8604,7 +8904,7 @@ var FilterAside = function FilterAside() {
           "p",
           { className: "filter-name", onClick: toggleFilter },
           "Brand ",
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("span", { className: "fas fa-chevron-down" })
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("span", { className: "fas fa-chevron-up" })
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           "div",
@@ -8613,49 +8913,49 @@ var FilterAside = function FilterAside() {
             "p",
             { className: "filter-item" },
             " ",
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "radio", name: "brand", value: "nike" }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "checkbox", name: "brand", value: "nike" }),
             " nike"
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             "p",
             { className: "filter-item" },
             " ",
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "radio", name: "brand", value: "gucci" }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "checkbox", name: "brand", value: "gucci" }),
             " gucci"
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             "p",
             { className: "filter-item" },
             " ",
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "radio", name: "brand", value: "louis vuitton" }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "checkbox", name: "brand", value: "louis vuitton" }),
             " louis vuitton"
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             "p",
             { className: "filter-item" },
             " ",
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "radio", name: "brand", value: "tommy hilfiger" }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "checkbox", name: "brand", value: "tommy hilfiger" }),
             " tommy hilfiger"
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             "p",
             { className: "filter-item" },
             " ",
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "radio", name: "brand", value: "ralph lauren" }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "checkbox", name: "brand", value: "ralph lauren" }),
             " ralph lauren"
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             "p",
             { className: "filter-item" },
             " ",
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "radio", name: "brand", value: "calvin klein" }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "checkbox", name: "brand", value: "calvin klein" }),
             " calvin klein"
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             "p",
             { className: "filter-item" },
             " ",
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "radio", name: "brand", value: "versace" }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "checkbox", name: "brand", value: "versace" }),
             " versace"
           )
         )
@@ -8667,7 +8967,7 @@ var FilterAside = function FilterAside() {
           "p",
           { className: "filter-name", onClick: toggleFilter },
           "Gender ",
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("span", { className: "fas fa-chevron-down" })
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("span", { className: "fas fa-chevron-up" })
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           "div",
@@ -8711,7 +9011,7 @@ var FilterAside = function FilterAside() {
           "p",
           { className: "filter-name", onClick: toggleFilter },
           "Price ",
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("span", { className: "fas fa-chevron-down" })
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("span", { className: "fas fa-chevron-up" })
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           "div",
@@ -8720,54 +9020,44 @@ var FilterAside = function FilterAside() {
             "p",
             { className: "filter-item" },
             " ",
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "checkbox", name: "price", value: "nike" }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "checkbox", name: "price", value: "300" }),
             " $300 - $250"
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             "p",
             { className: "filter-item" },
             " ",
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "checkbox", name: "price", value: "gucci" }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "checkbox", name: "price", value: "250" }),
             " $250 - $200"
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             "p",
             { className: "filter-item" },
             " ",
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "checkbox", name: "price", value: "louis vuitton" }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "checkbox", name: "price", value: "200" }),
             " $200 - $150"
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             "p",
             { className: "filter-item" },
             " ",
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "checkbox", name: "price", value: "tommy hilfiger" }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "checkbox", name: "price", value: "150" }),
             " $150 - $100"
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             "p",
             { className: "filter-item" },
             " ",
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "checkbox", name: "price", value: "ralph lauren" }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "checkbox", name: "price", value: "100" }),
             " $100 - $50"
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             "p",
             { className: "filter-item" },
             " ",
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "checkbox", name: "price", value: "calvin klein" }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "checkbox", name: "price", value: "50" }),
             " $50 - $0"
           )
-        )
-      ),
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        "div",
-        { className: "filter-section list-group-item" },
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          "p",
-          { className: "filter-name", onClick: toggleFilter },
-          "Vestibulum at eros ",
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("span", { className: "fas fa-chevron-down" })
         )
       )
     )
@@ -9663,7 +9953,8 @@ var initState = {
   cart: [],
   currentProduct: [],
   message: null,
-  page: 0,
+  page: 1,
+  lastPage: 0,
   origin: window.location.origin
 };
 
@@ -9707,7 +9998,8 @@ var reducer = function reducer() {
       break;
     case __WEBPACK_IMPORTED_MODULE_0__types__["a" /* UPDATE_PAGE */]:
       return _extends({}, state, {
-        page: action.payload
+        page: action.payload.page,
+        lastPage: action.payload.last
       });
       break;
     default:

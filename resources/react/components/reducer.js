@@ -8,7 +8,8 @@ const initState  = {
   cart : [],
   currentProduct : [],
   message:null,
-  page:0,
+  page:1,
+  lastPage:0,
   origin: window.location.origin
 }
 
@@ -53,7 +54,8 @@ export const reducer = (state = initState, action ) => {
     case UPDATE_PAGE:
         return{
           ...state,
-          page:action.payload
+          page:action.payload.page,
+          lastPage: action.payload.last
         }
       break;
     default:

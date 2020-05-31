@@ -64,8 +64,8 @@ class ProductController extends Controller
        return response()->json($product);
     }
 
-    public function getFiltered($page){
-      $product = Product::getFilteredProducts($page);
+    public function getFiltered($page, Request $req){
+      $product = Product::getFilteredProducts($page, $req);
       return response()->json($product);
     }
 }
