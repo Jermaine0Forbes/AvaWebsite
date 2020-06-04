@@ -49,7 +49,12 @@
       &-arrow{
         color:$black;
         align-self: center;
+        background:transparent;
+        border-style:none;
         margin:0 8px;
+        &:hover{
+          text-decoration:underline;
+        }
         &.disabled{
           color:$grey;
           &:hover{

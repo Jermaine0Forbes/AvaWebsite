@@ -19,16 +19,15 @@ A personal e-commerce project that I'm creating with laravel & react.
 
 *Want to see more logs? visit* **logs.md**
 
-### 5/31/20
+### 6/4/20
 
 **Goals for the month**
-- ~Add react redux and modify current components~
-- ~make "add to cart" button change cart quantity icon~
+- add link back to github
+- add routes to missing urls, and add "currently working on" to empty pages
+- add visitors table
 - create cart list when clicking on cart quantity icon
 - Create the "check out" page
-- ~create the recent-arrivals page~
 
 **Currently**
-- The filter sidebar finally works...for the most part. I'm relieved since it took
-me some time to complete so it works. I still need to work on the pagination to see
-how it works if there is only 0 results or only 4 pages.
+- So I think I got most of the kinks out when navigating pages with the pagination
+module and the filter sidebar.

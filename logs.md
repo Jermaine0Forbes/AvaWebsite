@@ -1,5 +1,18 @@
 # Logs
 
+### 6/4/20
+
+**Goals for the month**
+- add link back to github
+- add routes to missing urls, and add "currently working on" to empty pages
+- add visitors table
+- create cart list when clicking on cart quantity icon
+- Create the "check out" page
+
+**Currently**
+- So I think I got most of the kinks out when navigating pages with the pagination
+module and the filter sidebar. 
+
 ### 5/31/20
 
 **Goals for the month**

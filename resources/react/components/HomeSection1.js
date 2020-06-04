@@ -5,22 +5,22 @@ import {PlaceholderImg} from "./Placeholder";
 
 const HBlock1 = () =>{
 
-  let x = (
-    <PlaceholderImg src="div.block-item-1 img.img-fluid">
-        <Fade  duration={500}>
-         <img className="img-fluid" src="/img/1400-2-22.jpg" alt=""/>
-         <div className="bg-container">
-             <div className="bg">
-                 <div className="text teal">
-                     <h4 className="hidden-md-down">spring - summer 2017</h4>
-                     <h2 >new arrivals</h2>
-                     <Link  to="/recent-arrivals" className="btn  btn-secondary">shop now</Link>
-                 </div>
-             </div>
-         </div>
-     </Fade>
-    </PlaceholderImg>
-  )
+  // let x = (
+  //   <PlaceholderImg src="div.block-item-1 img.img-fluid">
+  //       <Fade  duration={500}>
+  //        <img className="img-fluid" src="/img/1400-2-22.jpg" alt=""/>
+  //        <div className="bg-container">
+  //            <div className="bg">
+  //                <div className="text teal">
+  //                    <h4 className="hidden-md-down">spring - summer 2017</h4>
+  //                    <h2 >new arrivals</h2>
+  //                    <Link  to="/recent-arrivals" className="btn  btn-secondary">shop now</Link>
+  //                </div>
+  //            </div>
+  //        </div>
+  //    </Fade>
+  //   </PlaceholderImg>
+  // )
 
   return (
 

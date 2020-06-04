@@ -9,14 +9,18 @@ export default function RecentArrivals (){
 
   const [loading, setLoading] = useState(true);
   const [products,setProducts] = useState(null);
+  const [firstPage, setFirstPage] = useState(1);
+  const [secondPage, setSecondPage] = useState(2);
+  const [thirdPage, setThirdPage] = useState(3);
   const [filter, setFilter] = useState({category:null, price:null, sex:null, brand:null});
   const dispatch = useDispatch();
   const page = useSelector(state => state.page);
   const lastPage = useSelector(state => state.lastPage);
-  const showNext = lastPage-2 >= page ? true : false;
+  const showNext = lastPage-1 >= page ? true : false;
   const showPrev = page > 1 ? true : false;
   const origin = useSelector(state => state.origin);
   const url = origin+"/api/products/filter/";
+  // console.log("firstPage:"+firstPage);
   // console.log("lastPage:"+lastPage);
   // console.log("showNext:"+showNext);
   // console.log("products:"+products);
@@ -24,17 +28,25 @@ export default function RecentArrivals (){
   const moveAr = (num,text) => {
 
       Array.from(document.querySelectorAll(".page-link[data-rank]")).forEach((e) =>{
-        let r = e.dataset.rank;
+        let r = e.dataset.rank,val;
          switch (r) {
            case "first":
-             e.innerHTML = text == "Next"? num : num-2;
+             val = text == "Next"? num : num-2;
+             // console.log("first page:"+val);
+             setFirstPage(val)
              text == "Next" && e.classList.add("active");
              break;
            case "second":
-           e.innerHTML = text == "Next"? num+1 : num-1;
+           // e.innerHTML = text == "Next"? num+1 : num-1;
+           val = text == "Next"? num+1 : num-1;
+            // console.log("second page:"+val);
+           setSecondPage(val);
              break;
            default:
-           e.innerHTML = text == "Next"? num+2 : num;
+           // e.innerHTML = text == "Next"? num+2 : num;
+           val = text == "Next"? num+2 : num;
+            // console.log("third page:"+val);
+           setThirdPage(val);
            text == "Previous" && e.classList.add("active");
          }
 
@@ -42,28 +54,28 @@ export default function RecentArrivals (){
   }
     const handleArrow = (e) => {
       e.preventDefault();
-      const elem = document.querySelector(".page-link.active");
-      const link = parseInt(elem.textContent);
-      const text = e.target.textContent.trim();
-      let num = text == "Next" ? link+1 : link-1;
-      // num = (num < 1 || num > 22 )? 1: num;
-      // let num = link;
-      const rank = elem.dataset.rank;
-      const item = elem.closest(".page-item");
-      // console.log(link)
-      // console.log(item)
-      if( num < lastPage && num > 0){
-        elem.classList.remove("active")
-        if(rank == "third" && text == "Next"){
-          moveAr(num, text)
-        }else if(rank == "first" && text == "Previous" ){
-         moveAr(num,text)
-        }else{
-          let next = text == "Next" ? item.nextSibling.querySelector(".page-link"): item.previousSibling.querySelector(".page-link")
-          next.classList.add("active")
+      if(!loading){
+          const elem = document.querySelector(".page-link.active");
+          const link = parseInt(elem.textContent);
+          const text = e.target.textContent.trim();
+          let num = text == "Next" ? link+1 : link-1;
+          const rank = elem.dataset.rank;
+          const item = elem.closest(".page-item");
+          // console.log(link)
+          // console.log(item)
+          if( num <= lastPage && num > 0){
+            elem.classList.remove("active")
+            console.log("rank:"+rank)
+            console.log("arrow:"+text)
+            if((rank == "third" && text == "Next") || (rank == "first" && text == "Previous")){
+              moveAr(num, text)
+            }else{
+              let next = text == "Next" ? item.nextSibling.querySelector(".page-link"): item.previousSibling.querySelector(".page-link")
+              next.classList.add("active")
+            }
+             dispatch(updatePage(num,lastPage))
         }
-         dispatch(updatePage(num,lastPage))
-    }
+      }//!loading
 
   }//handleArrow
   const handleClick = (e) => {
@@ -76,16 +88,21 @@ export default function RecentArrivals (){
     if(num >= lastPage){
 
       Array.from(document.querySelectorAll(".page-link")).forEach(e => {
-        let r = e.dataset.rank;
+        let r = e.dataset.rank, val;
          switch (r) {
            case "first":
-             e.innerHTML = lastPage-2;
+             val = lastPage-2;
+             setFirstPage(val)
              break;
            case "second":
-           e.innerHTML = lastPage-1;
+           // e.innerHTML = lastPage-1;
+           val = lastPage-1;
+           setSecondPage(val)
              break;
            default:
-           e.innerHTML = lastPage;
+           // e.innerHTML = lastPage;
+           val = lastPage;
+           setThirdPage(val)
           e.classList.add("active");
          }
 
@@ -164,6 +181,9 @@ export default function RecentArrivals (){
     setFilter(data);
     console.log(data)
     setLoading(true)
+    setFirstPage(1);
+    setSecondPage(2);
+    setThirdPage(3);
     fetch(url+1,{
       method:"POST",
       headers: {
@@ -173,6 +193,7 @@ export default function RecentArrivals (){
     })
     .then(res => res.json())
     .then(res => {
+
       dispatch(updatePage(res.page, res.lastPage));
       setLoading(false);
       setProducts(res.data);
@@ -182,12 +203,28 @@ export default function RecentArrivals (){
   useEffect(() => {
     console.log("when page changes")
       setLoading(true)
+      if(document.querySelectorAll(".page-link.active").length == 0){
+        // console.log("first page:"+firstPage);
+        // console.log("second page:"+secondPage);
+        // console.log("third page:"+thirdPage);
+        let selector = page > 1 ? ".page-link[data-rank='third']": ".page-link[data-rank='first']";
+        document.querySelector(selector).classList.add("active")
+      }else if (document.querySelectorAll(".page-link.active").length > 1){
+        // console.log("foo")
+        document.querySelector(".page-link.active").classList.remove("active")
+      }
     // if( page > 1){
-      fetch(url+page)
+      fetch(url+page,{
+        method:"POST",
+        headers: {
+       'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(filter)
+      })
       .then(res => res.json())
       .then(res => {
         console.log(res)
-        dispatch(updatePage(res.page, res.lastPage));
+        lastPage != res.lastPage && dispatch(updatePage(res.page, res.lastPage));
         setLoading(false);
         setProducts(res.data);
       })
@@ -197,16 +234,6 @@ export default function RecentArrivals (){
   },[page])
 
 
-  // useEffect(() =>{
-  //   setShowNext(true)
-  //   setShowPrev(true)
-  //   if(page <= 1){
-  //     setShowPrev(false)
-  //   }
-  //   if(page >= lastPage-2 ){
-  //     setShowNext(false)
-  //   }
-  // },[lastPage]);
 
     return(
       <main id="recent-arrivals"  className="container wide pad-half padH">
@@ -241,9 +268,9 @@ export default function RecentArrivals (){
               <div className="filter-section list-group-item">
                 <p className="filter-name"  onClick={toggleFilter}>Gender <span className="fas fa-chevron-up"></span></p>
                 <div className="filter-list toggle">
-                  <p className="filter-item"> <a href="#"> Any</a></p>
-                  <p className="filter-item"> <a href="#"> Men</a></p>
-                  <p className="filter-item"> <a href="#"> Women</a></p>
+                  <p className="filter-item"> <input type="checkbox" name="sex" value="any" onChange={handleFilter}/> Any</p>
+                  <p className="filter-item"> <input type="checkbox" name="sex" value="male" onChange={handleFilter}/> Men</p>
+                  <p className="filter-item"> <input type="checkbox" name="sex" value="female" onChange={handleFilter}/> Women</p>
                 </div>
               </div>
               <div className="filter-section list-group-item">
@@ -263,17 +290,16 @@ export default function RecentArrivals (){
             <nav aria-label="Page navigation">
               <ul className="pagination">
 
-                  <li className="page-item"><a   className={showPrev ? "page-arrow" :"page-arrow disabled"} onClick={ showPrev ? handleArrow : null}
-                    href="#">
+                  <li className="page-item"><button className={showPrev ? " page-arrow" :" page-arrow disabled"} onClick={ showPrev ? handleArrow : null}>
                     <span className="fas fa-chevron-left"></span> Previous
-                    </a>
+                    </button>
                   </li>
 
-                <li className="page-item"><a className="page-link active" data-rank="first" onClick={handleClick} href="#">1</a></li>
-                <li className="page-item"><a className="page-link" data-rank="second"  onClick={handleClick} href="#">2</a></li>
-                <li className="page-item"><a className="page-link" data-rank="third" onClick={handleClick} href="#">3</a></li>
+                <li className="page-item"><a className={firstPage > lastPage || firstPage < 1 ? "page-link invisible":"page-link active"} data-rank="first" onClick={handleClick} href="#">{firstPage}</a></li>
+                <li className="page-item"><a className={secondPage > lastPage || secondPage < 1 ? "page-link invisible":"page-link"} data-rank="second"  onClick={secondPage > lastPage ? null :handleClick} href="#">{secondPage}</a></li>
+                <li className="page-item"><a className={  thirdPage > lastPage || thirdPage < 1  ? "page-link invisible" : "page-link"} data-rank="third" onClick={thirdPage > lastPage ? null :handleClick} href="#">{thirdPage}</a></li>
 
-                {lastPage == 0 || page >= lastPage-2 ?
+                {lastPage == 0 || page >= lastPage || thirdPage == lastPage || lastPage < 3 || secondPage == lastPage ?
                   null:
                   <React.Fragment>
                     <li className="page-item">...</li>
@@ -281,10 +307,10 @@ export default function RecentArrivals (){
                     </React.Fragment>
                   }
 
-                <li className="page-item"><a className={showNext ? "page-arrow" : "page-arrow disabled"} onClick={ showNext ? handleArrow : null}
-                   href="#">
-                  Next <span className="fas fa-chevron-right"></span>
-                  </a>
+                <li className="page-item">
+                  <button className={showNext ? "page-arrow" : "page-arrow disabled"} onClick={ showNext ? handleArrow : null}>
+                      Next <span className="fas fa-chevron-right"></span>
+                  </button>
                 </li>
               </ul>
             </nav>
@@ -345,79 +371,12 @@ const ProductSelection = ({loading, data}) => {
     const price = e.discount > 0 ?( e.price - e.discount_price).toFixed(2): e.price;
     return <Product key={i} id={e.id} price={price} img={e.image} name={e.name} url={origin}/>
   })
-
+  const noProducts = data == null || data.length == 0 || data == undefined ?  <h4 className="text-muted mx-auto">0 results found</h4> : null;
 
   return (
     <div className="row justify-content-between">
      {loading ? <Loader type="ball-pulse"  style={{textAlign:"center", display:"block", width:"100%"}}/> : products}
+     {loading ? null : noProducts}
     </div>
-  )
-}
-
-
-const FilterAside = () => {
-
-  const toggleFilter = (e) => {
-     const elem = e.target.classList.contains("fas") ? e.target.parentNode: e.target;
-    // console.log(elem);
-    const list = elem.nextSibling.classList.contains("filter-list")? elem.nextSibling: false;
-    const chevron = elem.querySelector(".fas").classList;
-    if(list){
-      const isClosed = !list.classList.contains("closed");
-      list.classList.toggle("closed",isClosed);
-
-    }
-    chevron.contains("fa-chevron-up")?chevron.replace("fa-chevron-up", "fa-chevron-down"):chevron.replace("fa-chevron-down","fa-chevron-up");
-
-    // console.log(e.target.nextSibling);
-  }
-
-
-  return (
-    <aside className="col-md-3 border-right">
-      <div className="filter-list-group list-group list-group-flush ">
-        <div className="filter-section list-group-item">
-          <p className="filter-name" onClick={toggleFilter}>Categories <span className="fas fa-chevron-up"></span></p>
-           <div className="filter-list toggle">
-             <p className="filter-item"> <input type="checkbox" name="category" value="shirt" /> Shirt</p>
-             <p className="filter-item"> <input type="checkbox" name="category" value="jacket"/> Jacket</p>
-             <p className="filter-item"> <input type="checkbox" name="category" value="sweater"/> Sweater</p>
-             <p className="filter-item"> <input type="checkbox" name="category" value="jeans"/> Jeans</p>
-             <p className="filter-item"> <input type="checkbox" name="category" value="shorts"/> Shorts</p>
-           </div>
-        </div>
-        <div className="filter-section list-group-item">
-          <p className="filter-name" onClick={toggleFilter}>Brand <span className="fas fa-chevron-up"></span></p>
-          <div className="filter-list toggle">
-            <p className="filter-item"> <input type="checkbox" name="brand" value="nike"/> nike</p>
-            <p className="filter-item"> <input type="checkbox" name="brand" value="gucci"/> gucci</p>
-            <p className="filter-item"> <input type="checkbox" name="brand" value="louis vuitton"/> louis vuitton</p>
-            <p className="filter-item"> <input type="checkbox" name="brand" value="tommy hilfiger"/> tommy hilfiger</p>
-            <p className="filter-item"> <input type="checkbox" name="brand" value="ralph lauren"/> ralph lauren</p>
-            <p className="filter-item"> <input type="checkbox" name="brand" value="calvin klein"/> calvin klein</p>
-            <p className="filter-item"> <input type="checkbox" name="brand" value="versace"/> versace</p>
-          </div>
-        </div>
-        <div className="filter-section list-group-item">
-          <p className="filter-name"  onClick={toggleFilter}>Gender <span className="fas fa-chevron-up"></span></p>
-          <div className="filter-list toggle">
-            <p className="filter-item"> <a href="#"> Any</a></p>
-            <p className="filter-item"> <a href="#"> Men</a></p>
-            <p className="filter-item"> <a href="#"> Women</a></p>
-          </div>
-        </div>
-        <div className="filter-section list-group-item">
-          <p className="filter-name"  onClick={toggleFilter}>Price <span className="fas fa-chevron-up"></span></p>
-            <div className="filter-list toggle">
-              <p className="filter-item"> <input type="checkbox" name="price" value="300"/> $300 - $250</p>
-              <p className="filter-item"> <input type="checkbox" name="price" value="250"/> $250 - $200</p>
-              <p className="filter-item"> <input type="checkbox" name="price" value="200"/> $200 - $150</p>
-              <p className="filter-item"> <input type="checkbox" name="price" value="150"/> $150 - $100</p>
-              <p className="filter-item"> <input type="checkbox" name="price" value="100"/> $100 - $50</p>
-              <p className="filter-item"> <input type="checkbox" name="price" value="50"/> $50 - $0</p>
-            </div>
-        </div>
-      </div>
-    </aside>
   )
 }
