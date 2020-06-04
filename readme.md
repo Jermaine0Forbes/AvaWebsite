@@ -1,4 +1,4 @@
-<p align="center"><img src="public/img/ava-logo-teal.svg" style="width:200px !important;"></p>
+<p align="center"><img src="public/img/logo-mobile.svg" style="width:200px !important;"></p>
 
 # Ava Website
 
