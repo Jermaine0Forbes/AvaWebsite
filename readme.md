@@ -1,5 +1,4 @@
-<p align="center"><img src="public/img/logo-mobile.svg" style="width:200px !important;"></p>
-
+![]( https://raw.githubusercontent.com/Jermaine0Forbes/AvaWebsite/master/public/img/logo-mobile.svg | width=100)
 # Ava Website
 
 A personal e-commerce project that I'm creating with laravel & react.
