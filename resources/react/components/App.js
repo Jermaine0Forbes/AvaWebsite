@@ -18,6 +18,11 @@ function App(){
   return(
     <Provider store={store}>
       <Router>
+         <section className="github-block">
+           <div className="container wide">
+             <a href="https://github.com/Jermaine0Forbes/AvaWebsite">View source on Github <span className="icon fab fa-github"></span></a>
+           </div>
+         </section>
           <Header/>
           <Main/>
           <Footer />

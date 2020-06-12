@@ -5417,6 +5417,20 @@ function App() {
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       __WEBPACK_IMPORTED_MODULE_2_react_router_dom__["a" /* BrowserRouter */],
       null,
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'section',
+        { className: 'github-block' },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'div',
+          { className: 'container wide' },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'a',
+            { href: 'https://github.com/Jermaine0Forbes/AvaWebsite' },
+            'View source on Github ',
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', { className: 'icon fab fa-github' })
+          )
+        )
+      ),
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__Header__["a" /* default */], null),
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__Main__["a" /* default */], null),
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__Footer__["a" /* default */], null),
