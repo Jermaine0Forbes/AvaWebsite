@@ -5307,14 +5307,9 @@ var About = function (_Component) {
           "section",
           { className: "row justify-content-center " },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            "h1",
-            null,
-            " I'm baby tbh swag neutra microdosing."
-          ),
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            "p",
-            { className: "col-md-8" },
-            "Deep v hell of chicharrones, man bun vaporware hammock 90's aesthetic blue bottle poutine forage bitters hot chicken flannel fanny pack. Vice edison bulb quinoa kinfolk cred affogato try-hard fanny pack four loko prism poke blog four dollar toast cornhole. Narwhal occupy fingerstache mlkshk waistcoat flannel. Bespoke vexillologist adaptogen blog. Coloring book marfa microdosing asymmetrical echo park lomo, chia bicycle rights tattooed 90's vexillologist shoreditch. La croix lomo hammock brooklyn 3 wolf moon shaman food truck iceland adaptogen chillwave cray locavore flannel paleo. Tumeric readymade sartorial, single-origin coffee messenger bag roof party biodiesel echo park food truck squid pork belly post-ironic deep v kogi. "
+            "h2",
+            { className: "text-muted text-capitalize" },
+            "currently working on"
           )
         )
       );
@@ -5357,11 +5352,24 @@ var Accessory = function (_Component) {
     value: function render() {
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         "main",
-        { className: "container wide pad-half padH" },
+        { id: "accessories", className: "container wide pad-half padH" },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           "div",
-          null,
-          "Accessories Page"
+          { className: "jumbotron" },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            "h1",
+            { className: "display-4" },
+            "Accessories Page"
+          )
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          "section",
+          { className: "row justify-content-center " },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            "h2",
+            { className: "text-muted text-capitalize" },
+            "currently working on"
+          )
         )
       );
     }
@@ -5417,20 +5425,6 @@ function App() {
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       __WEBPACK_IMPORTED_MODULE_2_react_router_dom__["a" /* BrowserRouter */],
       null,
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'section',
-        { className: 'github-block' },
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'div',
-          { className: 'container wide' },
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'a',
-            { href: 'https://github.com/Jermaine0Forbes/AvaWebsite' },
-            'View source on Github ',
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', { className: 'icon fab fa-github' })
-          )
-        )
-      ),
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__Header__["a" /* default */], null),
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__Main__["a" /* default */], null),
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__Footer__["a" /* default */], null),
@@ -6007,10 +6001,28 @@ var Header = function (_Component) {
     key: 'render',
     value: function render() {
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'header',
-        { className: 'container wide' },
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__HeaderBlock__["a" /* HeaderB1 */], null),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__HeaderBlock__["b" /* default */], null)
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.Fragment,
+        null,
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'section',
+          { className: 'github-container' },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            { className: 'github-block' },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'a',
+              { href: 'https://github.com/Jermaine0Forbes/AvaWebsite' },
+              'View source on Github ',
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', { className: 'icon fab fa-github' })
+            )
+          )
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'header',
+          { className: 'container wide' },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__HeaderBlock__["a" /* HeaderB1 */], null),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__HeaderBlock__["b" /* default */], null)
+        )
       );
     }
   }]);
@@ -7200,6 +7212,7 @@ var Login = function (_Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__Login__ = __webpack_require__(57);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__Cart__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__Product__ = __webpack_require__(63);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__Category__ = __webpack_require__(119);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -7207,6 +7220,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -7251,6 +7265,7 @@ var Main = function (_Component) {
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: '/men', component: __WEBPACK_IMPORTED_MODULE_9__Men__["a" /* default */] }),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: '/women', component: __WEBPACK_IMPORTED_MODULE_10__Women__["a" /* default */] }),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: "/product/:id", component: __WEBPACK_IMPORTED_MODULE_13__Product__["a" /* default */] }),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: "/category/:type", component: __WEBPACK_IMPORTED_MODULE_14__Category__["a" /* default */] }),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             __WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */],
             { exact: true, path: '/cart' },
@@ -7298,11 +7313,24 @@ var Men = function (_Component) {
     value: function render() {
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         "main",
-        { className: "container wide pad-half padH" },
+        { id: "men", className: "container wide pad-half padH" },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           "div",
-          null,
-          "Men's Page"
+          { className: "jumbotron" },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            "h1",
+            { className: "display-4" },
+            "Men's Page"
+          )
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          "section",
+          { className: "row justify-content-center " },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            "h2",
+            { className: "text-muted text-capitalize" },
+            "currently working on"
+          )
         )
       );
     }
@@ -7685,7 +7713,7 @@ function Product() {
 
     breadItem.push(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["f" /* Link */],
-      { to: "/" + type },
+      { to: "/category/" + type },
       __WEBPACK_IMPORTED_MODULE_5_lodash___default.a.capitalize(type)
     ));
 
@@ -9712,11 +9740,24 @@ var Women = function (_Component) {
     value: function render() {
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         "main",
-        { className: "container wide pad-half padH" },
+        { id: "accessories", className: "container wide pad-half padH" },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           "div",
-          null,
-          "Women's Page"
+          { className: "jumbotron" },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            "h1",
+            { className: "display-4" },
+            "Women's Page"
+          )
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          "section",
+          { className: "row justify-content-center " },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            "h2",
+            { className: "text-muted text-capitalize" },
+            "currently working on"
+          )
         )
       );
     }
@@ -58009,6 +58050,52 @@ module.exports = function(module) {
 __webpack_require__(40);
 module.exports = __webpack_require__(41);
 
+
+/***/ }),
+/* 118 */,
+/* 119 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_router_dom__ = __webpack_require__(2);
+/* harmony export (immutable) */ __webpack_exports__["a"] = Category;
+
+
+
+function Category() {
+  var _useParams = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["e" /* useParams */])(),
+      type = _useParams.type;
+
+  __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_react__["useEffect"])(function () {
+    document.title = "The Category Page";
+  }, []);
+
+  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+    "main",
+    { id: "about", className: "container wide pad-half padH" },
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      "div",
+      { className: "jumbotron" },
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        "h1",
+        { className: "display-4 text-capitalize" },
+        type,
+        " Page"
+      )
+    ),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      "section",
+      { className: "row justify-content-center " },
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        "h2",
+        { className: "text-muted text-capitalize" },
+        "currently working on"
+      )
+    )
+  );
+}
 
 /***/ })
 /******/ ]);

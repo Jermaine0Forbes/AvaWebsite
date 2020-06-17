@@ -66,7 +66,7 @@ export default function Product() {
     }
     if(accessory) breadItem.push(<Link to="/accessory">Accessory</Link>);
 
-     breadItem.push(<Link to={"/"+type}>{_.capitalize(type)}</Link>);
+     breadItem.push(<Link to={"/category/"+type}>{_.capitalize(type)}</Link>);
 
       breadItem.push(name);
 

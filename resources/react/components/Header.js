@@ -3,9 +3,6 @@ import HeaderB2, {HeaderB1 } from "./HeaderBlock";
 
 
 
-
-
-
 export default class Header extends Component{
 
   componentDidMount(){
@@ -17,11 +14,20 @@ export default class Header extends Component{
 
   render(){
     return(
-      <header className="container wide">
-        <HeaderB1 />
-        <HeaderB2 />
-      </header>
-    );
+      <React.Fragment>
+        <section className="github-container">
+          <div className="github-block">
+            <a href="https://github.com/Jermaine0Forbes/AvaWebsite">View source on Github <span className="icon fab fa-github"></span></a>
+          </div>
+        </section>
+        <header className="container wide">
+          <HeaderB1 />
+          <HeaderB2 />
+        </header>
+      </React.Fragment>
+      );
+
+
   }
 
 
