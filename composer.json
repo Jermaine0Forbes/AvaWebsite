@@ -6,9 +6,12 @@
     "type": "project",
     "require": {
         "php": "^7.2.1",
-       
+        "geoip2/geoip2": "^2.10",
+        "hisorange/browser-detect": "^4.2",
+        "jenssegers/mongodb": "^3.6",
         "laravel/framework": "5.8.*",
-        "laravel/tinker": "~1.0"
+        "laravel/tinker": "~1.0",
+        "torann/geoip": "1.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

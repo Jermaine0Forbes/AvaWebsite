@@ -24,12 +24,18 @@
   .cart-btn{
     background-color:$teal;
     border-color:transparent;
+    color:white;
     max-width:200px;
     padding: 0.5em 2em;
     margin-bottom:0.5em;
     font-size:1.3em;
     text-align:center;
-
+    &.disabled{
+      background-color: $dark-grey;
+      &:hover{
+        background-color:$dark-grey;
+      }
+    }
     &:hover{
       background-color:$pink;
     }

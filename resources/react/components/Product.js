@@ -18,6 +18,7 @@ export default function Product() {
   const dispatch = useDispatch();
   const[product,setProduct] = useState(null);
   const[number, setNumber] = useState(1);
+  const[size, setSize] = useState(false);
   const[comments, setComments] = useState(false);
   const [ref, inView, entry] = useInView({
          /* Optional options */
@@ -85,7 +86,7 @@ export default function Product() {
     if(size.includes("Small")){
       // console.log(size.search("Small"))
       return (
-        <select name="size" className="form-control">
+        <select name="size" className="form-control" onChange={() => {setSize(true)}}>
           <option default>choose a size</option>
           <option value="small">Small</option>
           <option value="medium">Medium</option>
@@ -97,7 +98,7 @@ export default function Product() {
       size = _.words(size)
       size.sort();
       return (
-        <select name="size" className="form-control">
+        <select name="size" className="form-control" onChange={() => {setSize(true)}}>
           <option default>choose a size</option>
         {  size.map((e,i) => {
             return <option value={e} key={i}>{e}</option>;
@@ -110,7 +111,7 @@ export default function Product() {
       size.sort()
 
       return (
-        <select name="size" className="form-control">
+        <select name="size" className="form-control" onChange={() => {setSize(true)}}>
           <option default>choose a size</option>
         {  size.map((e,i) => {
             return <option value={e} key={i}>{e}</option>;
@@ -120,7 +121,7 @@ export default function Product() {
 
     }
 
-    return (<span></span>)
+    return (<span id="no-size"></span>)
   }
 
   const setQuantity = (num) =>{
@@ -160,24 +161,29 @@ export default function Product() {
   }
 
   const addToCart = () =>{
-    console.log(number)
-    let quantity = cartItems + number;
-    let price = product.discount > 0 ? (product.price - (product.price * (product.discount * 0.01))).toFixed(2) : 0;
-    let item = {
-      price: price,
-      name: product.name,
-      id: id,
-      url: origin+"/product/"+id,
-      img: product.image,
-      quantity:number
+    if(size){
+
+      console.log(number)
+      let quantity = cartItems + number;
+      let price = product.discount > 0 ? (product.price - (product.price * (product.discount * 0.01))).toFixed(2) : 0;
+      let item = {
+        price: price,
+        name: product.name,
+        id: id,
+        url: origin+"/product/"+id,
+        img: product.image,
+        quantity:number
+      }
+      dispatch(updateQuantity(quantity))
+      dispatch(addItem(item))
     }
-    dispatch(updateQuantity(quantity))
-    dispatch(addItem(item))
+
   }
 
   useEffect(() => {
 
     window.scrollTo(1, 0);
+
     fetch(productUrl)
     .then(res => res.json())
     .then(res => {
@@ -187,6 +193,9 @@ export default function Product() {
       res.sizeList = sizeList(res.size);
       // console.log(res)
       setProduct(res)
+      if(document.getElementById("no-size")){
+        setSize(true);
+      }
     })
     .catch( err => console.error(err))
   },[])
@@ -270,7 +279,7 @@ export default function Product() {
               <input id="quantity-item" type="text"  readOnly value={number} />
             <button className="plus-btn" onClick={() => {setQuantity(1)}}><span className="fas fa-plus"></span></button>
           </div>
-          <button className="btn btn-primary cart-btn" onClick={ () => addToCart()}>Add to cart</button>
+          <button className={ size ? "btn btn-primary cart-btn": "btn disabled cart-btn"} onClick={ () => addToCart()}>Add to cart</button>
           <div className="product-links">
             <div className="wish-list">
               <a href="#" className="label">wishlist</a>

@@ -24,3 +24,5 @@ Route::get("/product/{id}", "ProductController@getProduct");
 Route::get("/product/comments/{id}", "ProductController@getComments");
 Route::get("/recent/products", "ProductController@recent");
 Route::get("/special/products", "ProductController@getSpecial");
+
+Route::post("/visit", "VisitorController@store");

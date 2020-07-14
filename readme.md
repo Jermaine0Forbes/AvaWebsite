@@ -18,11 +18,11 @@ A personal e-commerce project that I'm creating with laravel & react.
 
 *Want to see more logs? visit* **logs.md**
 
-### 6/4/20
+### 6/20/20
 
 **Goals for the month**
-- add link back to github
-- add routes to missing urls, and add "currently working on" to empty pages
+- ~add link back to github~
+- ~add routes to missing urls, and add "currently working on" to empty pages~
 - add visitors table
 - create cart list when clicking on cart quantity icon
 - Create the "check out" page

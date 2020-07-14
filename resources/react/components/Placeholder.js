@@ -9,22 +9,16 @@ export  function PlaceholderImg ({children,height}){
 
     useEffect(()=>{
 
-      // console.log(children.props)
-
-        const img = document.getElementById(children.props.id);
-
-      // console.log(img)
-
-      // let img = document.querySelector(src);
+      let img = document.getElementById(children.props.id);
       if(!img.complete){
         img.onload = () => {
-          // console.log("image loaded")
-          // console.log(img)
           setLoaded(true);
         }
       }else{
         setLoaded(true);
       }
+      return () => img = false;
+
     },[])
 
   return (
@@ -33,15 +27,13 @@ export  function PlaceholderImg ({children,height}){
           (
             <span>
               <div className="img-placeholder loads" style={{width:"100%",height:h}}></div>
-             <div style={{visibility:"hidden", position:"absolute"}}>
-                 {children}
-             </div>
-
+               <div style={{visibility:"hidden", position:"absolute"}}>
+                   {children}
+               </div>
             </span>
 
-      )
-    }
-
+          )
+      }
     </React.Fragment>
   )
 }
