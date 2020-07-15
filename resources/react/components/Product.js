@@ -6,6 +6,7 @@ import StarRating from './StarRating';
 import _ from "lodash";
 import {useDispatch, useSelector} from "react-redux";
 import {updateQuantity,addItem} from "./action"
+import {storeVisit} from "./global";
 
 
 export default function Product() {
@@ -183,7 +184,7 @@ export default function Product() {
   useEffect(() => {
 
     window.scrollTo(1, 0);
-
+    storeVisit();
     fetch(productUrl)
     .then(res => res.json())
     .then(res => {

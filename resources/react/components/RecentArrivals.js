@@ -4,6 +4,7 @@ import Loader from  'react-loaders';
 import {updatePage} from "./action";
 import {useDispatch, useSelector} from "react-redux";
 import {Fade} from 'react-reveal';
+import {storeVisit} from "./global";
 
 export default function RecentArrivals (){
 
@@ -232,6 +233,10 @@ export default function RecentArrivals (){
     // }
 
   },[page])
+
+  useEffect(() => {
+    storeVisit();
+  },[])
 
 
 

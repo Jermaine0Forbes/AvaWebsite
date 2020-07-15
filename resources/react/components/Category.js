@@ -1,11 +1,13 @@
 import React, {Component, useEffect} from "react";
 import {useParams} from "react-router-dom";
+import {storeVisit} from "./global";
 
 export default function Category(){
 const {type} = useParams();
 
   useEffect(() => {
     document.title = "The Category Page";
+    storeVisit();
   },[])
 
     return(

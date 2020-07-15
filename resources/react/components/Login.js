@@ -1,10 +1,12 @@
-import React,{Component} from 'react';
+import React, {Component, useEffect} from "react";
+import {storeVisit} from "./global";
 
 
 export default class Login extends Component{
 
   componentDidMount(){
     document.title = "Login Page";
+    storeVisit();
   }
 
   render(){

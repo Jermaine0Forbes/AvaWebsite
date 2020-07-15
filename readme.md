@@ -1,4 +1,4 @@
-![]( https://raw.githubusercontent.com/Jermaine0Forbes/AvaWebsite/master/public/img/logo-mobile.svg | width=100)
+<img src=https://raw.githubusercontent.com/Jermaine0Forbes/AvaWebsite/master/public/img/logo-mobile.svg />
 # Ava Website
 
 A personal e-commerce project that I'm creating with laravel & react.
@@ -18,15 +18,15 @@ A personal e-commerce project that I'm creating with laravel & react.
 
 *Want to see more logs? visit* **logs.md**
 
-### 6/20/20
+### 7/14/20
 
 **Goals for the month**
 - ~add link back to github~
 - ~add routes to missing urls, and add "currently working on" to empty pages~
-- add visitors table
+- ~add visitors table~
 - create cart list when clicking on cart quantity icon
 - Create the "check out" page
 
 **Currently**
-- So I think I got most of the kinks out when navigating pages with the pagination
-module and the filter sidebar.
+- I use mongodb to record visitors that come on to the website. Next, I need to
+make the login system functional.

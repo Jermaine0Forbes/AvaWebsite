@@ -1,7 +1,12 @@
-import React, {Component} from "react";
+import React, {Component, useEffect} from "react";
+import {storeVisit} from "./global";
 
 
 export default class Men extends Component{
+
+  componentDidMount(){
+    storeVisit();
+  }
 
   render(){
     return(

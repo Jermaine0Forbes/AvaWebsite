@@ -1,8 +1,10 @@
-import React, {Component} from "react";
-
+import React, {Component, useEffect} from "react";
+import {storeVisit} from "./global";
 
 export default class Accessory extends Component{
-
+  componentDidMount(){
+    storeVisit();
+  }
   render(){
     return(
       <main id="accessories" className="container wide pad-half padH">
