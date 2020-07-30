@@ -4,7 +4,7 @@ import Loader from  'react-loaders';
 import {updatePage} from "./action";
 import {useDispatch, useSelector} from "react-redux";
 import {Fade} from 'react-reveal';
-import {storeVisit} from "./global";
+import {storeVisit, origin} from "./global";
 
 export default function RecentArrivals (){
 
@@ -19,7 +19,7 @@ export default function RecentArrivals (){
   const lastPage = useSelector(state => state.lastPage);
   const showNext = lastPage-1 >= page ? true : false;
   const showPrev = page > 1 ? true : false;
-  const origin = useSelector(state => state.origin);
+  // const origin = useSelector(state => state.origin);
   const url = origin+"/api/products/filter/";
   // console.log("firstPage:"+firstPage);
   // console.log("lastPage:"+lastPage);
@@ -224,7 +224,7 @@ export default function RecentArrivals (){
       })
       .then(res => res.json())
       .then(res => {
-        console.log(res)
+        // console.log(res)
         lastPage != res.lastPage && dispatch(updatePage(res.page, res.lastPage));
         setLoading(false);
         setProducts(res.data);

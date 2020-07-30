@@ -17,7 +17,7 @@ export  function PlaceholderImg ({children,height}){
       }else{
         setLoaded(true);
       }
-      return () => img = false;
+      return () => img = null;
 
     },[])
 

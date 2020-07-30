@@ -1,5 +1,6 @@
 
 
+export const origin = window.location.origin;
 export  const storeVisit = () => {
   const url = window.location.origin+"/api/visit";
   const data = JSON.stringify({
@@ -15,7 +16,9 @@ export  const storeVisit = () => {
     body:data
   })
   .then(res => res.text())
-  .then(res => console.log(res))
+  .then(res => {
+    // console.log(res)
+  })
   .catch(err => console.log(err))
 
 }

@@ -10,7 +10,8 @@ const initState  = {
   message:null,
   page:1,
   lastPage:0,
-  origin: window.location.origin
+  total: 0
+  // origin: window.location.origin
 }
 
 
@@ -31,18 +32,37 @@ export const reducer = (state = initState, action ) => {
 
     case ADD_ITEM:
         let cart = state.cart;
-        if(cart.some(obj => obj.id == action.payload.id)){
-          cart = cart.map((obj) =>{
-            if(obj.id == action.payload.id ) obj.quantity +=action.payload.quantity;
+        let total = [];
 
+        if(cart.some(obj => { return obj.id == action.payload.id && obj.size == action.payload.size })){
+          cart = cart.map((obj) =>{
+            if(obj.id == action.payload.id ){
+              obj.quantity +=action.payload.quantity;
+
+            }
             return obj;
           })
         }else{
           cart.push(action.payload);
         }
+
+       // total += cart.map(e => {
+       //      let t = (parseInt(e.quantity * e.price)).toFixed(2)
+       //    return t;
+       //  })
+        cart.map((e) => {
+            total.push((e.quantity * e.price).toFixed(2))
+          // return t;
+        })
+
+        total = total.reduce((acc,cur) => {
+           return (Number(acc) + Number(cur)).toFixed(2);
+        })
+
         return{
           ...state,
-          cart:cart
+          cart:cart,
+          total: total
         }
       break;
     case UPDATE_QUANTITY:

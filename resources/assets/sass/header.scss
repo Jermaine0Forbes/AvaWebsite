@@ -130,6 +130,10 @@ header{
         font-size: 16px;
         &.active{
           background:$pink;
+
+          &:hover{
+             cursor:pointer;
+          }
         }
     }
 

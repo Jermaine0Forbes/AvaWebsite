@@ -164,15 +164,18 @@ export default function Product() {
   const addToCart = () =>{
     if(size){
 
-      console.log(number)
+      // console.log(number)
+      let productSize =  document.querySelector(".product-size select[name='size']");
+      let size = productSize ? productSize.value : null;
       let quantity = cartItems + number;
-      let price = product.discount > 0 ? (product.price - (product.price * (product.discount * 0.01))).toFixed(2) : 0;
+      let price = product.discount > 0 ? (product.price - (product.price * (product.discount * 0.01))).toFixed(2) : product.price;
       let item = {
         price: price,
         name: product.name,
         id: id,
         url: origin+"/product/"+id,
         img: product.image,
+        size: size,
         quantity:number
       }
       dispatch(updateQuantity(quantity))

@@ -5,16 +5,18 @@ import Main from "./Main";
 import FixedSocial from './FixedSocial';
 import Header from "./Header";
 import Footer from "./Footer";
-import Modal from "./Modal";
+import Modal,{CartModal} from "./Modal";
 import {createStore, applyMiddleware} from 'redux';
 import thunk from "redux-thunk";
 import logger from "redux-logger";
 import {Provider} from "react-redux";
 import {reducer} from "./reducer";
+import {Fade,Zoom} from 'react-reveal';
 
 const store = createStore(reducer, applyMiddleware(thunk,logger));
 
 function App(){
+
   return(
     <Provider store={store}>
       <Router>
@@ -23,6 +25,7 @@ function App(){
           <Footer />
           <FixedSocial />
           <Modal />
+          <CartModal />
       </Router>
     </Provider>
 

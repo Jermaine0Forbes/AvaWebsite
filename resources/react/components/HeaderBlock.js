@@ -7,7 +7,8 @@ const mapStateToProps = (state) => {
   return {
     quantity:state.quantity,
     cartIcon: state.cartIcon,
-    message:state.message
+    message:state.message,
+    cart: state.cart,
   }
 }
 
@@ -78,7 +79,27 @@ function MobileNav(){
 
  class HeaderB2 extends Component{
 
+   // constructor(){
+   //   open
+   // }
 
+  openModal(){
+    const checkModal = document.getElementById("cart-modal");
+    let items = ``;
+    checkModal.classList.add("open-modal");
+    //   this.props.cart.map((e) => {
+    //   items += `<li><p>Name: ${e.name}, Price: ${e.price}</p></li>`
+    // })
+    // checkModal.querySelector(".checkout-body ul").innerHTML = items;
+    // const container = document.getElementById("react");
+    // const div = document.createElement("div");
+    // // const cl = document.createAttribute("class");
+    // // cl.value = "open-modal";
+    // div.setAttribute("class", "open-modal");
+    // container.appendChild(div);
+    // container.style.marginLeft = "350px";
+
+  }
   render(){
     const {cartIcon,message, quantity} = this.props;
     const link = false;
@@ -125,7 +146,7 @@ function MobileNav(){
                   <a href="/"><span className="fa fa-search"></span></a>
                   {loginBtn}
                   <Link to="/cart"><span className="fa fa-shopping-cart"></span></Link>
-                  <span className={ quantity > 0 ? "shopping-number active" :"shopping-number"}>{quantity}</span>
+                  <span onClick={() => {this.openModal()}} className={ quantity > 0 ? "shopping-number active" :"shopping-number"}>{quantity}</span>
               </div>
           </div>
           <MobileNav />

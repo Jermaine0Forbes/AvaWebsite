@@ -32,6 +32,6 @@ class VisitorController extends Controller
       ];
 
       Visitor::create($data);
-      return  "data saved";
+      // return  "data saved";
     }
 }

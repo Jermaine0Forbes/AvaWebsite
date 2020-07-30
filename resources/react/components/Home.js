@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import Loader from  'react-loaders';
 import "loaders.css/loaders.css.js";
 import "loaders.css/loaders.min.css";
-import {Fade,Zoom,LightSpeed, Bounce} from 'react-reveal';
+import {Fade,Zoom} from 'react-reveal';
 import {storeVisit} from "./global";
 import HomeSection1 from "./HomeSection1";
 import HomeSection2 from "./HomeSection2";
