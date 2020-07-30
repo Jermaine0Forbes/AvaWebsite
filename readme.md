@@ -18,15 +18,14 @@ A personal e-commerce project that I'm creating with laravel & react.
 
 *Want to see more logs? visit* **logs.md**
 
-### 7/14/20
+### 7/30/20
 
 **Goals for the month**
 - ~add link back to github~
 - ~add routes to missing urls, and add "currently working on" to empty pages~
 - ~add visitors table~
-- create cart list when clicking on cart quantity icon
+- ~create cart list when clicking on cart quantity icon~
 - Create the "check out" page
 
 **Currently**
-- I use mongodb to record visitors that come on to the website. Next, I need to
-make the login system functional.
+- Created the cart list modal that shows the list of items you added to the cart

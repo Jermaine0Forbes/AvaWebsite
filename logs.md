@@ -1,5 +1,17 @@
 # Logs
 
+### 7/30/20
+
+**Goals for the month**
+- ~add link back to github~
+- ~add routes to missing urls, and add "currently working on" to empty pages~
+- ~add visitors table~
+- ~create cart list when clicking on cart quantity icon~
+- Create the "check out" page
+
+**Currently**
+- Created the cart list modal that shows the list of items you added to the cart
+
 ### 7/14/20
 
 **Goals for the month**
