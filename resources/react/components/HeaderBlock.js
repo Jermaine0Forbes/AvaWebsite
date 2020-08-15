@@ -104,7 +104,7 @@ function MobileNav(){
     const {cartIcon,message, quantity} = this.props;
     const link = false;
     const loginBtn = link ? <Link to="/login"><span className="fa fa-user"  data-toggle="tooltip" data-placement="bottom" title="Sign In"></span></Link>
-    : <a data-toggle="modal" data-target="#exampleModal"><span className="fa fa-user"  data-toggle="tooltip" data-placement="bottom" title="Sign In"></span></a>;
+    : <a data-toggle="modal" data-target="#loginModal"><span className="fa fa-user"  data-toggle="tooltip" data-placement="bottom" title="Sign In"></span></a>;
     return(
       <section id="header-block-2" className="row justify-content-center">
           <div className="row fluid pad-half padH">

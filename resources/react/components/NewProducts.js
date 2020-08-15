@@ -23,7 +23,9 @@ const NewProducts = () => {
        })
 
        useEffect( () => {
-         if(inView) console.log(inView); setVisible(true);
+         if(inView){
+           setVisible(true);
+         }
        },[inView])
 
 

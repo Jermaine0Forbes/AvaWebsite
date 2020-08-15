@@ -6409,7 +6409,7 @@ var HeaderB2 = function (_Component) {
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("span", { className: "fa fa-user", "data-toggle": "tooltip", "data-placement": "bottom", title: "Sign In" })
             ) : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 "a",
-                { "data-toggle": "modal", "data-target": "#exampleModal" },
+                { "data-toggle": "modal", "data-target": "#loginModal" },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("span", { className: "fa fa-user", "data-toggle": "tooltip", "data-placement": "bottom", title: "Sign In" })
             );
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -7509,7 +7509,7 @@ function Modal() {
 
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
     'div',
-    { className: 'modal fade', id: 'exampleModal', tabIndex: '-1', role: 'dialog', 'aria-labelledby': 'exampleModalLabel', 'aria-hidden': 'true' },
+    { className: 'modal fade', id: 'loginModal', tabIndex: '-1', role: 'dialog', 'aria-labelledby': 'loginModalLabel', 'aria-hidden': 'true' },
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'div',
       { className: 'modal-dialog', role: 'document' },
@@ -7521,7 +7521,7 @@ function Modal() {
           { className: 'modal-header' },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'h5',
-            { className: 'modal-title text-center', id: 'exampleModalLabel' },
+            { className: 'modal-title text-center', id: 'loginModalLabel' },
             'Login to Ava'
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -7741,7 +7741,9 @@ var NewProducts = function NewProducts() {
       entry = _useInView2[2];
 
   __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_react__["useEffect"])(function () {
-    if (inView) console.log(inView);setVisible(true);
+    if (inView) {
+      setVisible(true);
+    }
   }, [inView]);
 
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -7792,7 +7794,7 @@ function PlaceholderImg(_ref) {
       setLoaded(true);
     }
     return function () {
-      return img = null;
+      return img.onload = null;
     };
   }, []);
 
@@ -9465,7 +9467,9 @@ var SpecialProducts = function SpecialProducts() {
 
 
   __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_react__["useEffect"])(function () {
-    if (inView) console.log(inView);setVisible(true);
+    if (inView) {
+      setVisible(true);
+    }
   }, [inView]);
 
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(

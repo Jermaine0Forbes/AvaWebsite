@@ -50,7 +50,9 @@ import { useInView } from 'react-intersection-observer';
 
 
          useEffect( () => {
-           if(inView) console.log(inView); setVisible(true);
+           if(inView){
+             setVisible(true);
+           }
          },[inView])
 
 
