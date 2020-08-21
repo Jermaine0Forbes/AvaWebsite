@@ -1,39 +1,45 @@
-import React,{useEffect, useRef} from 'react';
+import React,{useEffect, useRef, useState} from 'react';
 import {Fade,Zoom} from 'react-reveal';
 import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 
 export default function Modal(){
+  const [signup, setPage ] = useState(false);
+
+  // useEffect(() => {
+  //
+  //
+  //
+  // }, [signup])
 
   return (
   <div className="modal fade" id="loginModal" tabIndex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
     <div className="modal-dialog" role="document">
       <div className="modal-content">
         <div className="modal-header">
-          <h5 className="modal-title text-center" id="loginModalLabel">Login to Ava</h5>
-          <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+          <img id="logo" src="img/logo-mobile.svg" />
         </div>
         <div className="modal-body">
+          <h5 className="modal-title text-center" id="loginModalLabel">Login to Ava</h5>
           <form className="form login-form" method="get">
             <div className="form-group">
-              <h5>Email</h5>
-              <input className="form-control" type="email"  name="email"/>
+              <input className="form-control" type="email"  name="email" placeholder="Email"/>
             </div>
             <div className="form-group">
-              <h5>password</h5>
-              <input className="form-control" type="password"  name="password"/>
+              <input className="form-control" type="password"  name="password" placeholder="Password"/>
             </div>
             <div className="form-group">
-              <input className="btn btn-primary mx-auto" type="submit"  value="Submit"/>
+              <input className="btn  mx-auto" type="submit"  value="Submit"/>
             </div>
+              <div className="dropdown-divider"></div>
+
+              <div className="form-group">
+                <input className="btn  mx-auto" type="submit"  value="google"/>
+              </div>
           </form>
         </div>
         <div className="modal-footer">
-
-         <a href="#" className="text-primary text-underline">Register if you don't have an account</a>
-
+          <p className="signup-msg">Don't have an account? <a href="#" onClick={()=> console.log("foo")} className="text-primary text-underline">Register </a></p>
         </div>
       </div>
     </div>

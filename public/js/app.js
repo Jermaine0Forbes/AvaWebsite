@@ -7500,12 +7500,24 @@ var Men = function (_Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_router_dom__ = __webpack_require__(2);
 /* harmony export (immutable) */ __webpack_exports__["a"] = Modal;
 /* harmony export (immutable) */ __webpack_exports__["b"] = CartModal;
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
 
 
 
 
 
 function Modal() {
+  var _useState = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_react__["useState"])(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      signup = _useState2[0],
+      setPage = _useState2[1];
+
+  // useEffect(() => {
+  //
+  //
+  //
+  // }, [signup])
 
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
     'div',
@@ -7519,51 +7531,39 @@ function Modal() {
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
           { className: 'modal-header' },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { id: 'logo', src: 'img/logo-mobile.svg' })
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'div',
+          { className: 'modal-body' },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'h5',
             { className: 'modal-title text-center', id: 'loginModalLabel' },
             'Login to Ava'
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'button',
-            { type: 'button', className: 'close', 'data-dismiss': 'modal', 'aria-label': 'Close' },
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              'span',
-              { 'aria-hidden': 'true' },
-              '\xD7'
-            )
-          )
-        ),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'div',
-          { className: 'modal-body' },
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'form',
             { className: 'form login-form', method: 'get' },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'div',
               { className: 'form-group' },
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'h5',
-                null,
-                'Email'
-              ),
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { className: 'form-control', type: 'email', name: 'email' })
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { className: 'form-control', type: 'email', name: 'email', placeholder: 'Email' })
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'div',
               { className: 'form-group' },
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'h5',
-                null,
-                'password'
-              ),
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { className: 'form-control', type: 'password', name: 'password' })
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { className: 'form-control', type: 'password', name: 'password', placeholder: 'Password' })
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'div',
               { className: 'form-group' },
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { className: 'btn btn-primary mx-auto', type: 'submit', value: 'Submit' })
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { className: 'btn  mx-auto', type: 'submit', value: 'Submit' })
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'dropdown-divider' }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'div',
+              { className: 'form-group' },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { className: 'btn  mx-auto', type: 'submit', value: 'google' })
             )
           )
         ),
@@ -7571,9 +7571,16 @@ function Modal() {
           'div',
           { className: 'modal-footer' },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'a',
-            { href: '#', className: 'text-primary text-underline' },
-            'Register if you don\'t have an account'
+            'p',
+            { className: 'signup-msg' },
+            'Don\'t have an account? ',
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'a',
+              { href: '#', onClick: function onClick() {
+                  return console.log("foo");
+                }, className: 'text-primary text-underline' },
+              'Register '
+            )
           )
         )
       )

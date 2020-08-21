@@ -9,6 +9,60 @@
 
 
   &Modal{
-    background:red;
+    background:transparentize($black, 0.5);
+
+    .modal{
+
+      &-body{
+        .form-group{
+          display:flex;
+          justify-content: center;
+          // text-align:center;
+          width:70%;
+          margin: auto;
+          margin-top:1em;
+          margin-bottom:1.5em;
+        }
+        input{
+
+          &.btn{
+            // text-align:center;
+            background:$teal;
+            color:white;
+            display:block;
+            width:100%;
+          }
+
+          &.form-control{
+            background:$grey;
+            border-style:none;
+          }
+
+          &::placeholder{
+            text-align:center;
+          }
+        }
+      }//body
+
+      &-footer{
+        .signup-msg{
+          margin:auto;
+          text-align:center;
+          font-size:0.7em;
+        }
+
+
+      }
+
+
+      &-header{
+        display:flex;
+        justify-content: center;
+         #logo{
+           width:200px;
+           margin-top:-3em;
+         }
+      }//header
+    }
   }
 }
