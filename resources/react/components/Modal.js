@@ -6,6 +6,72 @@ import {Link} from "react-router-dom";
 export default function Modal(){
   const [signup, setPage ] = useState(false);
 
+  const register = (
+    <React.Fragment>
+      <div className="modal-body">
+        <h5 className="modal-title text-center" id="loginModalLabel">Register with Ava</h5>
+        <form className="form login-form" method="get">
+          <div className="form-group">
+            <input className="form-control" type="email"  name="email" placeholder="Email" defaultValue=""/>
+          </div>
+          <div className="form-group">
+            <input className="form-control" type="password"  name="password" placeholder="Password" defaultValue=""/>
+          </div>
+          <div className="form-group">
+            <input className="form-control" type="password"  name="confirm-password" placeholder="Confirm Password" defaultValue=""/>
+          </div>
+          <div className="form-group">
+            <input className="btn mx-auto" type="submit"  value="Submit"/>
+          </div>
+            <div className="dropdown-divider"></div>
+
+            <div className="form-group">
+              <button className="google-btn">
+                <span className="fab fa-google"></span>
+                <span className="name"> Google</span>
+              </button>
+            </div>
+        </form>
+      </div>
+      <div className="modal-footer">
+        <p className="signup-msg">Already have an account? <a href="#" onClick={()=> {setPage(false)}} className="text-primary text-underline">Login </a></p>
+      </div>
+
+    </React.Fragment>
+
+  )
+
+  const login = (
+    <React.Fragment>
+      <div className="modal-body">
+        <h5 className="modal-title text-center" id="loginModalLabel">Login to Ava</h5>
+        <form className="form login-form" method="get">
+          <div className="form-group">
+            <input className="form-control" type="email"  name="email" placeholder="Email" defaultValue=""/>
+          </div>
+          <div className="form-group">
+            <input className="form-control" type="password"  name="password" placeholder="Password" defaultValue=""/>
+          </div>
+          <div className="form-group">
+            <input className="btn  mx-auto" type="submit"  value="Submit"/>
+          </div>
+            <div className="dropdown-divider"></div>
+
+            <div className="form-group">
+              <button className="google-btn">
+                <span className="fab fa-google"></span>
+                <span className="name"> Google</span>
+              </button>
+            </div>
+        </form>
+      </div>
+      <div className="modal-footer">
+        <p className="signup-msg">Don't have an account? <a href="#" onClick={()=> {setPage(true)}} className="text-primary text-underline">Register </a></p>
+      </div>
+
+    </React.Fragment>
+
+  )
   // useEffect(() => {
   //
   //
@@ -19,28 +85,9 @@ export default function Modal(){
         <div className="modal-header">
           <img id="logo" src="img/logo-mobile.svg" />
         </div>
-        <div className="modal-body">
-          <h5 className="modal-title text-center" id="loginModalLabel">Login to Ava</h5>
-          <form className="form login-form" method="get">
-            <div className="form-group">
-              <input className="form-control" type="email"  name="email" placeholder="Email"/>
-            </div>
-            <div className="form-group">
-              <input className="form-control" type="password"  name="password" placeholder="Password"/>
-            </div>
-            <div className="form-group">
-              <input className="btn  mx-auto" type="submit"  value="Submit"/>
-            </div>
-              <div className="dropdown-divider"></div>
-
-              <div className="form-group">
-                <input className="btn  mx-auto" type="submit"  value="google"/>
-              </div>
-          </form>
-        </div>
-        <div className="modal-footer">
-          <p className="signup-msg">Don't have an account? <a href="#" onClick={()=> console.log("foo")} className="text-primary text-underline">Register </a></p>
-        </div>
+        {
+          signup ? register : login
+        }
       </div>
     </div>
 </div>

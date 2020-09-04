@@ -42,6 +42,20 @@
             text-align:center;
           }
         }
+
+        .google-btn{
+          color:white;
+          background:#0099ff;
+          border-style:none;
+          border-radius:5px;
+          width:100%;
+          padding:7px;
+          display:flex;
+          align-items: center;
+           .name{
+             margin:auto;
+           }
+        }
       }//body
 
       &-footer{
