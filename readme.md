@@ -18,6 +18,20 @@ A personal e-commerce project that I'm creating with laravel & react.
 
 *Want to see more logs? visit* **logs.md**
 
+### 9/21/20
+
+**Goals for the month**
+- create login system
+- add JWT in the backend
+- develop the cart page
+- create checkout page
+- add stripe functionality
+
+**Currently**
+- created login & register modals, now I need to install the JWT library within
+Laravel so that I can encrypt the data. And then finally focus on adding stripe into the application
+
+
 ### 7/30/20
 
 **Goals for the month**
