@@ -1,5 +1,6 @@
 import {GET_RECENT,GET_RECENT_SUCCESS
-        ,ADD_ITEM, UPDATE_QUANTITY, UPDATE_PAGE} from "./types";
+        ,ADD_ITEM, UPDATE_QUANTITY, UPDATE_PAGE,
+        USER_LOGIN, USER_REGISTER,} from "./types";
 
 
 const initState  = {
@@ -10,7 +11,8 @@ const initState  = {
   message:null,
   page:1,
   lastPage:0,
-  total: 0
+  total: 0,
+  user:null
   // origin: window.location.origin
 }
 
@@ -76,6 +78,12 @@ export const reducer = (state = initState, action ) => {
           ...state,
           page:action.payload.page,
           lastPage: action.payload.last
+        }
+      break;
+    case USER_REGISTER:
+        return{
+          ...state,
+          user:action.payload,
         }
       break;
     default:

@@ -2,6 +2,7 @@ import React,{useEffect, useRef, useState} from 'react';
 import {Fade,Zoom} from 'react-reveal';
 import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
+import {userRegister} from "./action";
 
 export default function Modal(){
   const [signup, setPage ] = useState(false);
@@ -68,27 +69,34 @@ function LoginModal({action}){
 }
 
 function RegisterModal({action}){
+
+  // I need to add first & last name fields in order to create a user
+
+  const dispatch = useDispatch();
   const onRegister = (e) => {
     e.preventDefault();
     const form = document.getElementById("register-form");
-    const data = new FormData(form);
+    const data = {
+      email : document.querySelector("#register-form input[name='email']").value,
+      password: document.querySelector("#register-form input[name='password']").value
+    }
 
-    console.log(data)
+    dispatch(userRegister(data,form));
   }
 
   return(
     <React.Fragment>
       <div className="modal-body">
         <h5 className="modal-title text-center" id="loginModalLabel">Register with Ava</h5>
-        <form id="register-form" className="form login-form"  onSubmit={onRegister}>
+        <form id="register-form" className="form login-form" method="post"  onSubmit={onRegister}>
           <div className="form-group">
-            <input className="form-control" type="email"  name="email" placeholder="Email" defaultValue=""/>
+            <input className="form-control" type="email"  name="email" placeholder="Email" defaultValue="jermaine0forbes@gmail.com"/>
           </div>
           <div className="form-group">
-            <input className="form-control" type="password"  name="password" placeholder="Password" defaultValue=""/>
+            <input className="form-control" type="password"  name="password" placeholder="Password" defaultValue="password"/>
           </div>
           <div className="form-group">
-            <input className="form-control" type="password"  name="confirm-password" placeholder="Confirm Password" defaultValue=""/>
+            <input className="form-control" type="password"  name="confirm-password" placeholder="Confirm Password" defaultValue="password"/>
           </div>
           <div className="form-group">
             <input className="btn mx-auto" type="submit"  value="Submit" />

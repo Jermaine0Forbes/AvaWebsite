@@ -26,3 +26,6 @@ Route::get("/recent/products", "ProductController@recent");
 Route::get("/special/products", "ProductController@getSpecial");
 
 Route::post("/visit", "VisitorController@store");
+
+Route::post("/register","LoginController@register");
+Route::get("/login","LoginController@login");

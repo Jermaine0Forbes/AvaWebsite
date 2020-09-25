@@ -24,9 +24,9 @@ function App(){
           <Main/>
           <Footer />
           <FixedSocial />
-          <Modal />
           <CartModal />
       </Router>
+      <Modal />
     </Provider>
 
 

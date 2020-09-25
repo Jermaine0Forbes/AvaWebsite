@@ -14,6 +14,11 @@
 Route::get("/test", "HomeController@test");
 
 // Route::get('/{path?}', "HomeController@index");
+
+
+
+// Route::view('{reactRoutes}', "HomeController@index")
+// ->where("reactRoutes",'^((?!api).)*$');
 Route::view('/{path?}/{id?}', "react");
 // Route::view('/{path?}', "react");
 
