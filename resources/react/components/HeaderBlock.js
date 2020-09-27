@@ -1,14 +1,19 @@
-import React, {Component} from 'react';
+import React, {Component,useState, useEffect} from 'react';
 import {Link} from "react-router-dom";
 import {AccessoryMenu, MenMenu, WomenMenu} from "./SubMenu";
 import {connect} from 'react-redux';
 import {addItem} from "./action";
+import {tokenNotExpired} from "./global";
+import {useSelector} from "react-redux";
+
 const mapStateToProps = (state) => {
   return {
     quantity:state.quantity,
     cartIcon: state.cartIcon,
     message:state.message,
     cart: state.cart,
+    token: state.token,
+    firstName: state.firstName
   }
 }
 
@@ -17,17 +22,25 @@ const mapDispatchToProps = {
 };
 
 export function HeaderB1(){
+  const [logged, setLog] = useState(false);
+  const token = useSelector(state => state.token);
+  const name = useSelector(state => state.firstName) || localStorage.getItem("name");
+
+  useEffect(() => {
+    if(tokenNotExpired() && name)
+     setLog(true)
+  },[token]);
 
   return(
-    <section id="header-block-1" className="row pad hidden-md-down ">
-        <div className="fluid-max-4">
+    <section id="header-block-1" className="hidden-md-down ">
+        <div className="fluid-max-4 ">
             <span>Your Language: english <span className="fa fa-angle-down"></span></span>
 
 
             <span className="pad-half padH">Currency: USD <span className="fa fa-angle-down"></span></span>
         </div>
-        <div className="flex-right">
-            welcome to our online store!
+        <div className={logged? "flex-right greeting-block ": "flex-right "}>
+            { logged ? <div>welcome back {name}!</div>:<span>welcome to our online store!</span>  }
         </div>
     </section>
   )
@@ -79,9 +92,9 @@ function MobileNav(){
 
  class HeaderB2 extends Component{
 
-   // constructor(){
-   //   open
-   // }
+   constructor(){
+     super();
+   }
 
   openModal(){
     const checkModal = document.getElementById("cart-modal");
@@ -101,10 +114,40 @@ function MobileNav(){
 
   }
   render(){
-    const {cartIcon,message, quantity} = this.props;
+    const {cart,cartIcon,firstName,message, quantity, token} = this.props;
     const link = false;
-    const loginBtn = link ? <Link to="/login"><span className="fa fa-user"  data-toggle="tooltip" data-placement="bottom" title="Sign In"></span></Link>
-    : <a data-toggle="modal" data-target="#loginModal"><span className="fa fa-user"  data-toggle="tooltip" data-placement="bottom" title="Sign In"></span></a>;
+    let loginBtn;
+     console.log(this.props)
+    if(tokenNotExpired()){
+      loginBtn = (
+      <div className="btn-group">
+        <button type="button" className="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span className="fa fa-user pink"  title="User"></span>
+        </button>
+        <div className="dropdown-menu dropdown-menu-right">
+          <h5 className="dropdown-item header teal">{localStorage.getItem("name")}</h5>
+          <button className="dropdown-item" type="button">Account</button>
+          <button className="dropdown-item" type="button">Orders</button>
+          <button className="dropdown-item" type="button">History</button>
+          <button className="dropdown-item" type="button">Logout</button>
+        </div>
+      </div>
+
+        )
+    }else{
+      loginBtn = (
+      <div className="btn-group">
+        <button type="button" className="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" >
+          <span className="fa fa-user"  title="User"></span>
+        </button>
+        <div className="dropdown-menu dropdown-menu-right">
+          <button className="dropdown-item" type="button" data-toggle="modal" data-target="#loginModal">Login</button>
+          <button className="dropdown-item" type="button" data-toggle="modal" data-target="#loginModal">Sign Up</button>
+        </div>
+      </div>
+
+        )
+    }
     return(
       <section id="header-block-2" className="row justify-content-center">
           <div className="row fluid pad-half padH">

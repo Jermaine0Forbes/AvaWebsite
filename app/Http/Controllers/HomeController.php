@@ -3,17 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Faker\Generator as Faker;
 
 class HomeController extends Controller
 {
-    public function index(){
-      return view("react", ["title" => "Ava Fashion | For all the fashion you need"]);
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
     }
 
-    public function test(){
-      // $f = new Faker();
-      // echo $f->name;
-      return "foo";
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function index()
+    {
+        return view('home');
     }
 }

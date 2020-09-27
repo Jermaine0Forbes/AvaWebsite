@@ -1,6 +1,7 @@
-
+import jwt_decode from "jwt-decode";
 
 export const origin = window.location.origin;
+export const hostname = window.location.hostname;
 export  const storeVisit = () => {
   const url = window.location.origin+"/api/visit";
   const data = JSON.stringify({
@@ -21,4 +22,20 @@ export  const storeVisit = () => {
   })
   .catch(err => console.log(err))
 
+}
+
+export const tokenNotExpired = () => {
+  const token = localStorage.getItem("access_token");
+  if(!token){
+    return false;
+  }
+  const access = jwt_decode(token);
+  if(Date.now() >= access.exp*1000){
+    console.log("token expired")
+    //  console.log(access)
+    // console.log("now "+Date.now())
+    // console.log("exp "+access.exp*1000)
+     return false;
+  }
+  return true;
 }

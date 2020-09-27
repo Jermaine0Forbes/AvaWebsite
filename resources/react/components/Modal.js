@@ -2,7 +2,9 @@ import React,{useEffect, useRef, useState} from 'react';
 import {Fade,Zoom} from 'react-reveal';
 import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
-import {userRegister} from "./action";
+import {userRegister, userLogin} from "./action";
+import Loader from  'react-loaders';
+import {origin,hostname} from './global';
 
 export default function Modal(){
   const [signup, setPage ] = useState(false);
@@ -29,13 +31,23 @@ export default function Modal(){
 }
 
 function LoginModal({action}){
+   const [loading, setLoading] = useState(false);
+   const token  = useSelector(state => state.token);
+   const dispatch = useDispatch();
    const onLogin = (e) => {
      e.preventDefault();
      const form = document.getElementById("login-form");
      const data = new FormData(form);
-     console.log(data)
-     return false;
+     setLoading(true);
+     dispatch(userLogin(data));
    }
+
+   useEffect(()=> {
+     if(token){
+       setLoading(false);
+       $("#loginModal").modal('hide');
+     }
+   },[token])
   return(
     <React.Fragment>
       <div className="modal-body">
@@ -48,8 +60,11 @@ function LoginModal({action}){
             <input className="form-control" type="password"  name="password" placeholder="Password" defaultValue=""/>
           </div>
           <div className="form-group">
-            <input className="btn  mx-auto" type="submit"  value="Submit" />
+            <input className="btn  mx-auto" type="submit"  value={loading ? "Processing": "Submit"} />
           </div>
+          {
+            loading ? <Loader type="ball-pulse"  style={{textAlign:"center", display:"block", width:"100%"}}/>: null
+          }
             <div className="dropdown-divider"></div>
 
             <div className="form-group">
@@ -70,25 +85,36 @@ function LoginModal({action}){
 
 function RegisterModal({action}){
 
-  // I need to add first & last name fields in order to create a user
+  const [loading, setLoading] = useState(false);
+  const token = useSelector(state => state.token);
 
   const dispatch = useDispatch();
   const onRegister = (e) => {
     e.preventDefault();
     const form = document.getElementById("register-form");
-    const data = {
-      email : document.querySelector("#register-form input[name='email']").value,
-      password: document.querySelector("#register-form input[name='password']").value
-    }
-
+    const data = new FormData(form);
+    setLoading(true)
     dispatch(userRegister(data,form));
   }
+
+  useEffect(() => {
+
+    if(token){
+      setLoading(false)
+      // $(".modal-backdrop").fadeOut(500);
+      $("#loginModal").modal('hide');
+    }
+  },[token]);
 
   return(
     <React.Fragment>
       <div className="modal-body">
         <h5 className="modal-title text-center" id="loginModalLabel">Register with Ava</h5>
         <form id="register-form" className="form login-form" method="post"  onSubmit={onRegister}>
+          <div className="form-group">
+            <input className="form-control" type="text"  name="first_name" placeholder="First Name" defaultValue="Jermaine"/>
+            <input className="form-control" type="text"  name="last_name" placeholder="Last Name" defaultValue="Forbes"/>
+          </div>
           <div className="form-group">
             <input className="form-control" type="email"  name="email" placeholder="Email" defaultValue="jermaine0forbes@gmail.com"/>
           </div>
@@ -99,8 +125,11 @@ function RegisterModal({action}){
             <input className="form-control" type="password"  name="confirm-password" placeholder="Confirm Password" defaultValue="password"/>
           </div>
           <div className="form-group">
-            <input className="btn mx-auto" type="submit"  value="Submit" />
+            <input className="btn mx-auto" type="submit"  value={loading ? "Processing": "Submit"} />
           </div>
+           {
+             loading ? <Loader type="ball-pulse"  style={{textAlign:"center", display:"block", width:"100%"}}/>: null
+           }
             <div className="dropdown-divider"></div>
 
             <div className="form-group">

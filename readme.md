@@ -1,4 +1,5 @@
 <img src=https://raw.githubusercontent.com/Jermaine0Forbes/AvaWebsite/master/public/img/logo-mobile.svg />
+
 # Ava Website
 
 A personal e-commerce project that I'm creating with laravel & react.
@@ -17,6 +18,19 @@ A personal e-commerce project that I'm creating with laravel & react.
 ## Logs
 
 *Want to see more logs? visit* **logs.md**
+
+### 9/27/20
+
+**Goals for the month**
+- ~create login system~
+- ~add JWT in the backend~
+- develop the cart page
+- create checkout page
+- add stripe functionality
+
+**Currently**
+- Login system is working, I just need to add logout functionality within react.Now, I'm focused on developing the cart and checkout pages.
+
 
 ### 9/21/20
 

@@ -12,7 +12,11 @@ const initState  = {
   page:1,
   lastPage:0,
   total: 0,
-  user:null
+  user:null,
+  token:null,
+  error:null,
+  message:null,
+  firstName:null
   // origin: window.location.origin
 }
 
@@ -80,10 +84,14 @@ export const reducer = (state = initState, action ) => {
           lastPage: action.payload.last
         }
       break;
+    case USER_LOGIN:
     case USER_REGISTER:
         return{
           ...state,
-          user:action.payload,
+          firstName:action.user,
+          token: action.token,
+          error: action.error,
+          message: action.message
         }
       break;
     default:

@@ -28,3 +28,7 @@ Route::view('/{path?}/{id?}', "react");
 // Route::get('/', function () {
 //     return view('home', ['title'=>"Ava Fashion", 'id' => "home"]);
 // });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
