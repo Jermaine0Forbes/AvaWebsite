@@ -57,7 +57,7 @@ function LoginModal({action}){
             <input className="form-control" type="email"  name="email" placeholder="Email" defaultValue=""/>
           </div>
           <div className="form-group">
-            <input className="form-control" type="password"  name="password" placeholder="Password" defaultValue=""/>
+            <input className="form-control" type="password"  name="password" placeholder="Password" defaultValue="password"/>
           </div>
           <div className="form-group">
             <input className="btn  mx-auto" type="submit"  value={loading ? "Processing": "Submit"} />

@@ -117,7 +117,7 @@ function MobileNav(){
     const {cart,cartIcon,firstName,message, quantity, token} = this.props;
     const link = false;
     let loginBtn;
-     console.log(this.props)
+     // console.log(this.props)
     if(tokenNotExpired()){
       loginBtn = (
       <div className="btn-group">
@@ -189,7 +189,7 @@ function MobileNav(){
                   <a href="/"><span className="fa fa-search"></span></a>
                   {loginBtn}
                   <Link to="/cart"><span className="fa fa-shopping-cart"></span></Link>
-                  <span onClick={() => {this.openModal()}} className={ quantity > 0 ? "shopping-number active" :"shopping-number"}>{quantity}</span>
+                  <span onClick={() => {this.openModal()}} className={ quantity > 0 || localStorage.getItem("amount") > 0 ? "shopping-number active" :"shopping-number"}>{localStorage.getItem("amount")}</span>
               </div>
           </div>
           <MobileNav />

@@ -32,6 +32,7 @@ export const tokenNotExpired = () => {
   const access = jwt_decode(token);
   if(Date.now() >= access.exp*1000){
     console.log("token expired")
+     localStorage.clear();
     //  console.log(access)
     // console.log("now "+Date.now())
     // console.log("exp "+access.exp*1000)

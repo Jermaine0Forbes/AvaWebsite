@@ -1,4 +1,46 @@
 /*====================================
+    #cart
+====================================*/
+
+#cart{
+
+
+  .checkout-btn{
+    background:$teal;
+    border-radius:5px;
+    padding:0.5em;
+    color:white;
+    max-width:220px;
+    &:hover{
+      background:$pink;
+      text-decoration:none;
+    }
+  }
+  .shopping-cart{
+    &-container{
+      margin:auto;
+      width:80%;
+
+    }
+  }
+  .subtotal{
+    &-container{
+      display:flex;
+      flex-direction:column;
+      align-items: flex-end;
+      padding-bottom:3em;
+
+    }
+    &-block{
+      font-size:20px;
+      margin-bottom:1em;
+    }
+  }
+}
+
+
+
+/*====================================
     #cart-modal
 ====================================*/
 

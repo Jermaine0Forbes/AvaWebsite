@@ -11,14 +11,33 @@ import Men from "./Men";
 import Women from "./Women";
 import Login from "./Login";
 import Cart from "./Cart";
+import Checkout from "./Checkout";
 import Product from "./Product";
 import Category from "./Category";
+import {tokenNotExpired} from "./global";
+import {connect} from "react-redux";
+
+const mapStateToProps = (state) => {
+  return {
+    token: state.token,
+    firstName: state.firstName
+  }
+}
 
 
-export default class Main extends Component{
+ class Main extends Component{
+
+  componentDidUpdate(prev){
+
+    console.log('triggered')
+
+    // if(this.props.token !== prev.token)
+
+  }
 
   render(){
-     const isLoggedIn = false;
+     const isLoggedIn = tokenNotExpired();
+     console.log(isLoggedIn)
     return(
       <React.Fragment>
         <Switch>
@@ -33,7 +52,10 @@ export default class Main extends Component{
           <Route path={"/product/:id"}   component={Product}/>
           <Route path={"/category/:type"}   component={Category}/>
           <Route exact path="/cart">
-            {isLoggedIn ?<Cart/>:  <Redirect to="/login" />}
+            {tokenNotExpired()?<Cart/>:  <Redirect to="/login" />}
+          </Route>
+          <Route exact path="/checkout">
+            {tokenNotExpired()?<Checkout/>:  <Redirect to="/login" />}
           </Route>
           <Route path="/login"  component={Login}/>
         </Switch>
@@ -41,3 +63,5 @@ export default class Main extends Component{
     )
   }
 }
+
+export default connect(mapStateToProps)(Main);

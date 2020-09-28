@@ -24,13 +24,14 @@ A personal e-commerce project that I'm creating with laravel & react.
 **Goals for the month**
 - ~create login system~
 - ~add JWT in the backend~
-- develop the cart page
-- create checkout page
+- ~develop the cart page~
+- ~create checkout page~
 - add stripe functionality
 
 **Currently**
 - Login system is working, I just need to add logout functionality within react.Now, I'm focused on developing the cart and checkout pages.
-
+- The cart page now shows the items, the quantity, and total price. Now, I need
+to add the stripe API in the checkout page
 
 ### 9/21/20
 

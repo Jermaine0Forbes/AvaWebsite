@@ -65,6 +65,10 @@ export const reducer = (state = initState, action ) => {
            return (Number(acc) + Number(cur)).toFixed(2);
         })
 
+        localStorage.setItem("total",total);
+        localStorage.setItem("cart",JSON.stringify(cart));
+        localStorage.setItem("amount",state.quantity);
+
         return{
           ...state,
           cart:cart,
