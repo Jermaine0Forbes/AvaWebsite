@@ -19,6 +19,20 @@ A personal e-commerce project that I'm creating with laravel & react.
 
 *Want to see more logs? visit* **logs.md**
 
+
+### 9/28/20
+
+**Goals for the month**
+- ~create login system~
+- ~add JWT in the backend~
+- ~develop the cart page~
+- ~create checkout page~
+- ~add stripe functionality~
+
+**Currently**
+- Added stripe hooks and components to the checkout page and did a little bit of styling. Now, I just need to make sure that the test
+payment will go through properly.
+
 ### 9/27/20
 
 **Goals for the month**
