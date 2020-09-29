@@ -10,10 +10,9 @@ export const userLoginSuccess = (data) => {
   const user = jwt_decode(data.access_token);
 
   localStorage.setItem("access_token", data.access_token);
-  localStorage.setItem("name",data.firstName);
+  localStorage.setItem("name",JSON.stringify(data.name));
   return{
     type:USER_LOGIN,
-    firstName:data.firstName,
     token:data.access_token,
     error:data.error,
     message:data.message,
@@ -42,10 +41,9 @@ export const userRegisterSuccess = (data) => {
 
 
     localStorage.setItem("access_token", data.access_token);
-    localStorage.setItem("name", data.firstName());
+    localStorage.setItem("name",JSON.stringify(data.name));
   return{
     type:USER_REGISTER,
-    firstName:data.firstName,
     token:data.access_token,
     error:data.error,
     message:data.message,

@@ -149,15 +149,16 @@ function RegisterModal({action}){
 }
 
 export  function CartModal(){
-  const q = useSelector(state => state.quantity)
-  const total = useSelector(state => state.total)
-  const cartItems = useSelector(state => state.cart);
+  const q =  useSelector(state => state.quantity);
+  const total = localStorage.getItem("total");
+  let cartItems = JSON.parse(localStorage.getItem("cart"));
   const modal = useRef();
 
   useEffect(() => {
     if(modal.current)
      console.log(modal.current.className)
-  })
+
+  },[q])
 
   const closeMod = () =>{
     const modal = document.getElementById("cart-modal")
@@ -190,7 +191,7 @@ export  function CartModal(){
               }
           </div>
           <div className="cart-footer">
-            <Link to="/cart" className="cart-btn btn">Go to Checkout <span id="total-price">${total}</span></Link>
+            <Link to="/checkout" className="cart-btn btn">Go to Checkout <span id="total-price">${total}</span></Link>
           </div>
         </nav>
       </div>

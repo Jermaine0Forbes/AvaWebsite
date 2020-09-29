@@ -98,11 +98,16 @@ class LoginController extends Controller
     protected function respondWithToken($token,$msg)
   {
       return response()->json([
-          'firstName' => $this->user->first_name,
+          'name' => [
+                      "first" => $this->user->first_name,
+                      "last" => $this->user->last_name,
+                      "full" => $this->user->first_name." ".$this->user->last_name
+                      ],
           'access_token' => $token,
           'token_type' => 'bearer',
           // 'expires_in' => auth()->factory()->getTTL() * 120, // expires in two hours
-          'expires_in' => auth()->factory()->getTTL() * 60, // expires in an hour
+          'expires_in' => auth()->factory()->getTTL() * 240, // expires in 4 hours
+          // 'expires_in' => auth()->factory()->getTTL() * 60, // expires in an hour
           'error' => null,
            'message' => $msg
       ]);

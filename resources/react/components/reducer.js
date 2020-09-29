@@ -16,7 +16,6 @@ const initState  = {
   token:null,
   error:null,
   message:null,
-  firstName:null
   // origin: window.location.origin
 }
 
@@ -92,7 +91,6 @@ export const reducer = (state = initState, action ) => {
     case USER_REGISTER:
         return{
           ...state,
-          firstName:action.user,
           token: action.token,
           error: action.error,
           message: action.message

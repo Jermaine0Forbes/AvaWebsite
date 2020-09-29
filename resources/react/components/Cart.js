@@ -42,9 +42,9 @@ const mapStateToProps = (state) => {
 }
 
 const CartTable = () => {
-  const cart = useSelector(state => state.cart).length || JSON.parse(localStorage.getItem("cart"));
-  const total = useSelector(state => state.total) || localStorage.getItem("total");
-  console.log(cart)
+  // const cart = useSelector(state => state.cart).length || JSON.parse(localStorage.getItem("cart"));
+  const cart =  JSON.parse(localStorage.getItem("cart"));
+  const total = localStorage.getItem("total");
   return(
     <React.Fragment>
       <table className="table">

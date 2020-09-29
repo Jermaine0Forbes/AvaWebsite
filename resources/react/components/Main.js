@@ -20,7 +20,6 @@ import {connect} from "react-redux";
 const mapStateToProps = (state) => {
   return {
     token: state.token,
-    firstName: state.firstName
   }
 }
 
@@ -37,7 +36,7 @@ const mapStateToProps = (state) => {
 
   render(){
      const isLoggedIn = tokenNotExpired();
-     console.log(isLoggedIn)
+     // console.log(isLoggedIn)
     return(
       <React.Fragment>
         <Switch>

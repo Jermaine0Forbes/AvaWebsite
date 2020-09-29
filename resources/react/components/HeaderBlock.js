@@ -24,7 +24,7 @@ const mapDispatchToProps = {
 export function HeaderB1(){
   const [logged, setLog] = useState(false);
   const token = useSelector(state => state.token);
-  const name = useSelector(state => state.firstName) || localStorage.getItem("name");
+  const name =  JSON.parse(localStorage.getItem("name"));
 
   useEffect(() => {
     if(tokenNotExpired() && name)
@@ -40,7 +40,7 @@ export function HeaderB1(){
             <span className="pad-half padH">Currency: USD <span className="fa fa-angle-down"></span></span>
         </div>
         <div className={logged? "flex-right greeting-block ": "flex-right "}>
-            { logged ? <div>welcome back {name}!</div>:<span>welcome to our online store!</span>  }
+            { logged ? <div>welcome back {name.first}!</div>:<span>welcome to our online store!</span>  }
         </div>
     </section>
   )
@@ -114,8 +114,8 @@ function MobileNav(){
 
   }
   render(){
-    const {cart,cartIcon,firstName,message, quantity, token} = this.props;
-    const link = false;
+    const {cart,cartIcon,message, quantity, token} = this.props;
+    const name = JSON.parse(localStorage.getItem("name"));
     let loginBtn;
      // console.log(this.props)
     if(tokenNotExpired()){
@@ -125,7 +125,7 @@ function MobileNav(){
           <span className="fa fa-user pink"  title="User"></span>
         </button>
         <div className="dropdown-menu dropdown-menu-right">
-          <h5 className="dropdown-item header teal">{localStorage.getItem("name")}</h5>
+          <h5 className="dropdown-item header teal">{name.full}</h5>
           <button className="dropdown-item" type="button">Account</button>
           <button className="dropdown-item" type="button">Orders</button>
           <button className="dropdown-item" type="button">History</button>
@@ -189,7 +189,9 @@ function MobileNav(){
                   <a href="/"><span className="fa fa-search"></span></a>
                   {loginBtn}
                   <Link to="/cart"><span className="fa fa-shopping-cart"></span></Link>
-                  <span onClick={() => {this.openModal()}} className={ quantity > 0 || localStorage.getItem("amount") > 0 ? "shopping-number active" :"shopping-number"}>{localStorage.getItem("amount")}</span>
+                  <span onClick={() => {this.openModal()}} className={ quantity > 0 || localStorage.getItem("amount") > 0 ? "shopping-number active" :"shopping-number"}>
+                  { quantity >= localStorage.getItem("amount")? quantity : localStorage.getItem("amount")}
+                  </span>
               </div>
           </div>
           <MobileNav />
