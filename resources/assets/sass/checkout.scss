@@ -85,10 +85,11 @@
     }
   }
 
-  #stripe-form{
+  #stripe-form,.stripe-form{
     background:#262626;
     border-radius:5px;
     max-width:350px;
+    margin-bottom:0.5em;
     padding:5px;
 
 

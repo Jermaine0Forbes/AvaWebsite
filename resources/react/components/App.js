@@ -12,6 +12,7 @@ import logger from "redux-logger";
 import {Provider} from "react-redux";
 import {reducer} from "./reducer";
 import {Fade,Zoom} from 'react-reveal';
+import "babel-polyfill" ;
 
 const store = createStore(reducer, applyMiddleware(thunk,logger));
 

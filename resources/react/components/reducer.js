@@ -68,6 +68,10 @@ export const reducer = (state = initState, action ) => {
         localStorage.setItem("cart",JSON.stringify(cart));
         localStorage.setItem("amount",state.quantity);
 
+        // fetch(""{
+        //
+        // })
+
         return{
           ...state,
           cart:cart,

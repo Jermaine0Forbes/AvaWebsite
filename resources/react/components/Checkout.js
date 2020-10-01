@@ -1,18 +1,64 @@
 import React, {Component, useEffect} from "react";
 import {storeVisit} from "./global";
 import {useSelector, useDispatch} from "react-redux";
-import {Elements,CardElement,useStripe, useElements} from '@stripe/react-stripe-js';
+import {Elements,CardElement, CardNumberElement, CardExpiryElement, CardCvcElement, useStripe, useElements} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
 
 const key = "pk_test_EIWGM9Ma7mf9JEyaSlxqU93b";
 const stripePromise = loadStripe(key);
+/*
+ Visa
+ Card Number: 4242 4242 4242 4242
+ CVC: Any 3 digit Number
+ Date: Any future date
 
+
+ <CardElement
+   id="stripe-form"
+   options={{
+
+     style: {
+       base: {
+         fontSize: '18px',
+         color: '#e6e6e6',
+         padding:"2px",
+         '::placeholder': {
+           color: '#e6e6e6',
+           // backgroundColor:"#262626",
+
+         },
+       },
+       invalid: {
+         color: '#9e2146',
+       },
+     },
+   }}
+ />
+*/
+
+const cardStyle = {
+
+  style: {
+    base: {
+      fontSize: '18px',
+      color: '#e6e6e6',
+      '::placeholder': {
+        color: '#e6e6e6',
+        // backgroundColor:"#262626",
+
+      },
+    },
+    invalid: {
+      color: '#9e2146',
+    },
+  },
+}
 const CheckoutForm = () => {
 
   const stripe = useStripe();
   const elements = useElements();
 
-  const handleSubmit = (e) =>{
+  const handleSubmit = async (e) =>{
     e.preventDefault();
 
     if (!stripe || !elements) {
@@ -27,7 +73,7 @@ const CheckoutForm = () => {
     const cardElement = elements.getElement(CardElement);
 
     // Use your card Element with other Stripe.js APIs
-    const {error, paymentMethod} =  stripe.createPaymentMethod({
+    const {error, paymentMethod} = await stripe.createPaymentMethod({
       type: 'card',
       card: cardElement,
     });
@@ -40,28 +86,11 @@ const CheckoutForm = () => {
 };
   return(
     <form onSubmit={handleSubmit}>
-      <CardElement
-        id="stripe-form"
-        options={{
+      <CardNumberElement className="stripe-form" options={cardStyle} />
+      <CardExpiryElement className="stripe-form" options={cardStyle} />
+      <CardCvcElement className="stripe-form" options={cardStyle} />
 
-          style: {
-            base: {
-              fontSize: '18px',
-              color: '#e6e6e6',
-              padding:"px",
-              borderRadius:"5px",
-              '::placeholder': {
-                color: '#e6e6e6',
-                // backgroundColor:"#262626",
 
-              },
-            },
-            invalid: {
-              color: '#9e2146',
-            },
-          },
-        }}
-      />
     <button className="order-btn" type="submit" disabled={!stripe}>
          Place Order
        </button>
@@ -93,7 +122,7 @@ export default function Checkout () {
             }
 
               <h2 className="checkout-header">Billing Address</h2>
-              <p class="text-muted">123 Main St., Boca Raton, Fl, 33145</p>
+              <p className="text-muted">123 Main St., Boca Raton, Fl, 33145</p>
 
         </div>
 

@@ -20,6 +20,20 @@ A personal e-commerce project that I'm creating with laravel & react.
 *Want to see more logs? visit* **logs.md**
 
 
+### 9/30/20
+**Goals for the month**
+
+- Create endpoint to save Cart items
+- Create User Account Page to add or change card/billing/shipping info
+- Create table to save order details
+- Create admin tables and roles
+- Create admin panel to modify product details.
+
+**Currently**
+- Added babel-polyfill in order to async method work on react-stripe payment
+- Created model/controller  for Cart and created carts collection in mongodb.
+
+
 ### 9/28/20
 
 **Goals for the month**
