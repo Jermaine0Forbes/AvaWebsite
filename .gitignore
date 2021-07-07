@@ -1,11 +1,16 @@
 /node_modules
+/package-lock.json
 /public/hot
 /public/storage
 /storage/*.key
+/react-app/package-lock.json
+/react-app/node_modules
 /vendor
 /.idea
 /.vagrant
+/.env
+./composer-lock
 Homestead.json
 Homestead.yaml
 npm-debug.log
-.env
+composer.lock

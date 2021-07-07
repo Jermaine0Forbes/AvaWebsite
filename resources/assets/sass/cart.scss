@@ -1,0 +1,159 @@
+/*====================================
+    #cart
+====================================*/
+
+#cart{
+
+
+  .checkout-btn{
+    background:$teal;
+    border-radius:5px;
+    padding:0.5em;
+    color:white;
+    max-width:220px;
+    &:hover{
+      background:$pink;
+      text-decoration:none;
+    }
+  }
+  .shopping-cart{
+    &-container{
+      margin:auto;
+      width:80%;
+
+    }
+  }
+  .subtotal{
+    &-container{
+      display:flex;
+      flex-direction:column;
+      align-items: flex-end;
+      padding-bottom:3em;
+
+    }
+    &-block{
+      font-size:20px;
+      margin-bottom:1em;
+    }
+  }
+}
+
+
+
+/*====================================
+    #cart-modal
+====================================*/
+
+#cart-modal{
+  display:none;
+  height:0;
+  width:0;
+  transition:all 0.3s;
+  position:fixed;
+  z-index: 100;
+  top:0;
+
+  &.open-modal{
+    background:transparentize($black,0.5);
+    height:100%;
+    width:100%;
+    display:block;
+  }
+
+
+  .cart-{
+    &body{
+      min-height:300px;
+      overflow-y:scroll;
+      // margin:1em 0;
+      width:100%;
+      background:$lite-grey;
+      height:100%;
+    }
+
+    &btn{
+      margin:auto;
+      display:block;
+      font-size:21px;
+      background:$teal;
+      text-transform: capitalize;
+      color:white;
+      width:90%;
+      transition:all 0.3s;
+      &:hover{
+        background:$pink;
+      }
+    }
+
+    &footer{
+      position:absolute;
+      bottom:0;
+      background:white;
+      padding:0.5em 0;
+      width:95%;
+    }
+
+    &header{
+
+      display:flex;
+      justify-content: space-between;
+      align-items:baseline;
+      padding-bottom: 0.5em ;
+      border-bottom: 1px solid $grey;
+      text-transform:uppercase;
+      .btn{
+        color:white;
+        background:$teal;
+        transition:all 0.3s;
+        padding:0.5em;
+        // font-size:16px;
+        &:hover{
+          background:$pink;
+        }
+      }
+    }
+    &item{
+      position:relative;
+      .name{
+        font-size:16px;
+      }
+      .price,.quantity{
+        font-size:14px;
+      }
+      .size{
+        position:absolute;
+        top:10px;
+        right:0;
+        background:$dark-grey;
+        border-radius:3px;
+        text-transform:capitalize;
+        padding:2px;
+        color:white;
+        width:70px;
+        font-size:12px;
+      }
+      span{
+        padding:0 6px;
+        display:flex;
+        align-items:center;
+        justify-content: center;
+      }
+    }
+    &menu{
+      background:white;
+      width:450px;
+      padding:1em;
+      height:100%;
+      position:relative;
+    }
+
+  }
+
+  #total-price{
+    background: transparentize(white, 0.5);
+    border-radius:5px;
+    padding:2px 5px;
+    margin-left:10px;
+
+  }
+}

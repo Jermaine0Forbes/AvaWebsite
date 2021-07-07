@@ -16,19 +16,22 @@
         top:45%;
         z-index:2;
         border-style:none;
-        background:transparent;
-        color:$grey;
+        background-color:$grey;
+        border-radius:10%;
+        padding:15px 10px;
+        // padding-left: 8px;
+        color:white;
         font-size:1.5em;
         transition:all 0.3s;
         &:hover{
-            color:$pink;
+            background-color:$dark-grey;
         }
     }
     .slick-left{
-        left:0;
+        left:-15px;
     }
     .slick-right{
-        right:0;
+        right:-15px;
     }
 }
 
@@ -217,7 +220,12 @@
 /*====================================
     #home-block-2
 ====================================*/
+#home-block-2{
 
+  .new-products{
+    padding-top:2em;
+  }
+}
 
 /*====================================
     #home-block-4
@@ -281,6 +289,7 @@
     }
 
 }
+
 
 
 /*====================================

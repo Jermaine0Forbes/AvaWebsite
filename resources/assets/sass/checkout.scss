@@ -1,0 +1,97 @@
+/*====================================
+    #checkout
+====================================*/
+
+#checkout{
+
+  .checkout{
+
+    &-header{
+      font-size:24px;
+    }
+  }
+  .item{
+
+    &-block{
+      margin-bottom:1em;
+    }
+
+    &-container{
+
+    }
+
+    &-details{
+
+       span {
+         margin-right:15px;
+         font-size:0.8em;
+       }
+    }
+    &-img{
+      max-width:50px;
+      max-height:50px;
+      margin-right: 1em;
+    }
+
+    &-header{
+      display:flex;
+      align-items: center;
+    }
+
+    &-name{
+      font-size:20px;
+      font-weight:bold;
+      color:$teal;
+      letter-spacing: -1px;
+      font-weight:lighter;
+    }
+
+
+  }//item
+
+  #details-container{
+    border-right:3px solid $lite-grey;
+    margin-right:1em;
+  }
+
+  #order-container{
+    p{
+      font-size:0.8em;
+      margin-bottom:5px;
+      text-transform:capitalize;
+
+    }
+  }
+
+  .order{
+
+    &-btn{
+      border-radius:3px;
+      color:white;
+      background:$teal;
+      display:block;
+      border-style:none;
+      padding:0.3em 0.5em;
+      font-size:20px;
+      margin-top:1em;
+      transition: 0.3s;
+      width:100%;
+      max-width:350px;
+
+      &:hover{
+        background:$pink;
+      }
+
+    }
+  }
+
+  #stripe-form,.stripe-form{
+    background:#262626;
+    border-radius:5px;
+    max-width:350px;
+    margin-bottom:0.5em;
+    padding:5px;
+
+
+  }
+}
